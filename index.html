@@ -19,17 +19,17 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,0,500;6..72,1,300;6..72,1,400&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-home">
 
 <header class="wrap">
   <nav class="site-nav" aria-label="Main">
-    <a class="name" href="index.html">Natthapath Damrongsri</a>
+    <a class="mono" href="index.html" aria-label="Natthapath Damrongsri — home">N.</a>
     <ul>
       <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#who">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -42,22 +42,7 @@
     <p class="role-label">UX/UI PRODUCT DESIGNER · BANGKOK</p>
     <h1 class="thesis">Real product work rarely starts from a clear brief.</h1>
     <p class="hero-para">I work where the requirements are still shifting — turning unclear asks into interfaces that make sense, and choosing what works over what just looks good.</p>
-    <p class="hero-status"><em>Open to product design opportunities — <a href="mailto:natthapath.d@gmail.com">natthapath.d@gmail.com</a></em></p>
-  </section>
-
-  <!-- ============ what gets easier ============ -->
-  <section class="sect sect-first" id="easier">
-    <h2 class="sect-label">What gets easier</h2>
-    <div class="easier reading">
-      <p>Complexity never really disappears — in good design it just <span class="anno-anchor">stops being the user's problem</span>. My job is to absorb it while designing, so the screen stays quiet.</p>
-      <span class="anno-mark">
-        <svg class="anno-conn" viewBox="0 0 96 54" aria-hidden="true">
-          <path d="M92 8 C60 6 34 14 6 17"/>
-          <path d="M6 17 L16 12 M6 17 L15 23"/>
-        </svg>
-        <span class="anno-note">do it well and no one sees it happened</span>
-      </span>
-    </div>
+    <a class="h-open" href="mailto:natthapath.d@gmail.com">Connect Me</a>
   </section>
 
   <!-- ============ work ============ -->
@@ -65,16 +50,18 @@
     <h2 class="sect-label">Situations I've worked through</h2>
     <div class="proj-index">
 
-      <a class="proj-row" href="cdp.html" aria-label="Customer Data Platform — Segment &amp; Condition Builder, view case study">
+      <a class="proj-row" href="cdp.html" aria-label="Customer Data Platform — Making an Existing CDP Legible, view case study">
         <span class="pr-num">01</span>
         <div class="pr-main">
-          <h3 class="pr-headline">Complex logic that couldn't be simplified</h3>
-          <p class="pr-meta">SaaS<span class="dot">·</span>Segment Builder<span class="dot">·</span>Condition Logic</p>
-          <p class="pr-title">Customer Data Platform — Segment &amp; Condition Builder</p>
-          <p class="pr-desc">Marketing teams build audience segments out of layered attributes, events, and consent rules. I turned that tangle of logic into a workspace they could read and build in with confidence. The advanced search underneath was the hardest piece to get right — and the piece they'd never have to think about.</p>
+          <h3 class="pr-headline">An existing product that had to become legible</h3>
+          <p class="pr-meta">Enterprise SaaS<span class="dot">·</span>Design System<span class="dot">·</span>Data &amp; Campaign Workflows</p>
+          <p class="pr-title">Customer Data Platform — Making an Existing CDP Legible</p>
+          <p class="pr-desc">The CDP already existed and worked — I joined to make it readable and continuable. A design system foundation, clearer information architecture, guided identity setup, and data-to-campaign workflows across 20+ product areas, prepared so Dev, PM, and QA could keep building from the specs.</p>
+          <p class="pr-dec"><span class="k">Decision</span><span class="v">Build the shared language before the screens.</span></p>
         </div>
         <div class="pr-preview">
-          <span class="pr-img"><img src="assets/projects/cdp/cover.png" alt="Customer Data Platform cover — segment and journey builder dashboard."></span>
+          <span class="pr-img"><img src="assets/cdp/cover.png" alt="Customer Data Platform cover — segment and journey builder dashboard."></span>
+          <span class="pin-note r1" aria-hidden="true">"marketers need to own their own segments"<small>stakeholder · week 1</small></span>
           <span class="pr-link">Case study →</span>
         </div>
       </a>
@@ -82,13 +69,15 @@
       <a class="proj-row" href="3bb-member.html" aria-label="3BB Member App and Website — view case study">
         <span class="pr-num">02</span>
         <div class="pr-main">
-          <h3 class="pr-headline">A migration with a system underneath</h3>
+          <h3 class="pr-headline">One product, three customer realities</h3>
           <p class="pr-meta">Mobile<span class="dot">·</span>Web<span class="dot">·</span>Migration UX</p>
           <p class="pr-title">3BB Member App and Website</p>
-          <p class="pr-desc">3BB Member was already live for millions — my job wasn't to redesign it. It was to work inside a large inherited file, update the flows where migration logic actually changed the user's path, and get those screens ready for development and QA.</p>
+          <p class="pr-desc">During the 3BB → AIS transition, customers were still on 3BB, already migrated, or waiting — and the live app couldn't show them all the same thing. I designed the states: the right status, explanation, and next action for each group, inside the product system millions of members already knew.</p>
+          <p class="pr-dec"><span class="k">Decision</span><span class="v">Every state the rule creates gets designed.</span></p>
         </div>
         <div class="pr-preview">
-          <span class="pr-img is-muted"><img src="assets/projects/3bb-member/cover.png" alt="3BB Member migration cover — 3BB to AIS, version 4.0.35."></span>
+          <span class="pr-img is-muted"><img src="assets/3bb-member/cover.png" alt="3BB Member migration cover — 3BB to AIS, version 4.0.35."></span>
+          <span class="pin-note r2" aria-hidden="true">"migration-affected flows ONLY"<small>PM alignment · day 3</small></span>
           <span class="pr-link">Case study →</span>
         </div>
       </a>
@@ -100,9 +89,11 @@
           <p class="pr-meta">Retail<span class="dot">·</span>Physical Terminal<span class="dot">·</span>Operational UX</p>
           <p class="pr-title">Counter Service POS</p>
           <p class="pr-desc">Point-of-sale terminals run on speed and muscle memory. The job was to improve the hierarchy without moving what cashiers' hands already knew — better, without making anyone relearn.</p>
+          <p class="pr-dec"><span class="k">Decision</span><span class="v">Improve the hierarchy without moving anything a cashier's hands already know.</span></p>
         </div>
         <div class="pr-preview">
-          <span class="pr-img"><img src="assets/projects/counter-service-pos/cover.png" alt="Counter Service POS preview — categorized billers grid on the cashier home screen."></span>
+          <span class="pr-img"><img src="assets/counter-service-pos/cover.png" alt="Counter Service POS preview — categorized billers grid on the cashier home screen."></span>
+          <span class="pin-note r3" aria-hidden="true">"do NOT move anything"<small>ops manager · kickoff</small></span>
           <span class="pr-link">View proposal →</span>
         </div>
       </a>
@@ -119,24 +110,23 @@
     </div>
   </section>
 
-  <!-- ============ working habits ============ -->
-  <section class="sect" id="habits">
-    <h2 class="sect-label">How I work</h2>
-    <ul class="habits reading">
-      <li><span class="lead">Start from</span> what's there.</li>
-      <li><span class="lead">Make a first useful version.</span> <span class="expl">(Perfection is for iteration three.)</span></li>
-      <li><span class="lead">Reduce confusion</span> before adding polish.</li>
-      <li><span class="lead">Respect what can't change;</span> question what can.</li>
-      <li><span class="lead">Don't make people relearn.</span></li>
-      <li><span class="lead">Learn enough</span> for the next decision.</li>
-    </ul>
-  </section>
-
-  <!-- ============ about ============ -->
-  <section class="sect" id="about">
+  <!-- ============ who made this ============ -->
+  <section class="sect who" id="who">
     <h2 class="sect-label">About</h2>
-    <div class="about reading">
-      <p>I'm a Bangkok-based UX/UI designer who stays quiet at the start. I'd rather understand the messy reality before proposing a clean solution. And I care about what I leave behind — clean files, clear docs, a system that outlasts my time on the project.</p>
+    <div class="who-grid">
+      <div>
+        <p class="who-thesis">Natthapath Damrongsri — I work at the intersection of complex logic and everyday use.</p>
+        <p>Enterprise SaaS, a mobile app used by over a million people, and operational tools where a confusing interface has a real cost. Complexity never really disappears — in good design it just stops being the user's problem. My job is to absorb it while designing, so the screen stays quiet.</p>
+        <p>I stay quiet at the start too. I'd rather understand the messy reality before proposing a clean solution. And I care about what gets left behind — clean files, clear docs, a system that keeps working after I've moved on.</p>
+      </div>
+      <ul class="habits">
+        <li><span class="lead">Start from</span> what's there.</li>
+        <li><span class="lead">Make a first useful version.</span> <span class="expl">(Perfection is for iteration three.)</span></li>
+        <li><span class="lead">Reduce confusion</span> before adding polish.</li>
+        <li><span class="lead">Respect what can't change;</span> question what can.</li>
+        <li><span class="lead">Don't make people relearn.</span></li>
+        <li><span class="lead">Learn enough</span> for the next decision.</li>
+      </ul>
     </div>
   </section>
 

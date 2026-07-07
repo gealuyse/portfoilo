@@ -3,94 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer Data Platform — Segment &amp; Condition Builder · Natthapath Damrongsri</title>
-<meta name="description" content="Segment builder for a CDP where marketers build audience logic from attributes, events, consent rules, and nested conditions.">
+<title>Customer Data Platform — Making an Existing CDP Legible · Natthapath Damrongsri</title>
+<meta name="description" content="I joined an existing Customer Data Platform to make it legible — a design system foundation, clearer information architecture, guided setup, and data &amp; campaign workflows the team could keep building. The foundation is re-set live on this page.">
 <link rel="canonical" href="https://gealuyse.github.io/portfoilo/cdp.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Customer Data Platform — Segment &amp; Condition Builder">
-<meta property="og:description" content="Segment builder for a CDP where marketers build audience logic from attributes, events, consent rules, and nested conditions.">
+<meta property="og:title" content="Customer Data Platform — Making an Existing CDP Legible">
+<meta property="og:description" content="A design system foundation, clearer information architecture, guided setup, and data &amp; campaign workflows the team could keep building — with the foundation re-set live on the page.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/cdp.html">
 <meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Customer Data Platform — Segment &amp; Condition Builder">
-<meta name="twitter:description" content="Segment builder for a CDP where marketers build audience logic from attributes, events, consent rules, and nested conditions.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='24' font-family='Georgia,serif' font-size='24' text-anchor='middle' fill='%231C1B1A'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,0,500;6..72,1,300&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script>if(matchMedia('(prefers-reduced-motion: no-preference)').matches)document.documentElement.classList.add('js-reveal');</script>
-</head>
-<body>
+<style>
+/* CDP-specific plate internals. Product tokens (orange primary, blue
+   accent) appear only inside plates — the frame stays paper and ink. */
+:root{--o4:#E4762F;--o5:#C25E1F;--b6:#2F63A7;}
 
-<main class="wrap-ed">
+/* plate 01 — color ramps */
+.ramp-name{font:500 9.5px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);display:block;margin:14px 0 6px;}
+.ramp-name:first-child{margin-top:0;}
+.ramp{display:flex;gap:2px;}
+.sw{flex:1;height:32px;position:relative;border:1px solid rgba(28,27,26,.07);}
+.sw.pri::after{content:'▲ primary';position:absolute;left:50%;transform:translateX(-50%);top:36px;font:500 8px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap;}
+.ramp.tall{margin-bottom:18px;}
+.ramp-ends{display:flex;justify-content:space-between;font:400 9px/1 var(--mono);color:var(--faint);margin-top:4px;}
+
+/* plate 02 — type scale */
+.trow{display:flex;align-items:baseline;gap:20px;padding:11px 0;border-top:1px solid var(--panel);}
+.trow:first-child{border-top:none;}
+.trow .tn{font:500 9.5px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sub);width:96px;flex:none;}
+.trow .ts{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+.trow .tz{font:400 9px/1.6 var(--mono);color:var(--faint);margin-left:auto;white-space:nowrap;}
+.t-display{font:300 42px/1.05 var(--sans);letter-spacing:-.02em;}
+.t-headline{font:400 29px/1.15 var(--sans);letter-spacing:-.015em;}
+.t-title{font:500 20px/1.25 var(--sans);letter-spacing:-.008em;}
+.t-label{font:500 12.5px/1.4 var(--sans);letter-spacing:.05em;text-transform:uppercase;}
+.t-body{font:400 15px/1.5 var(--sans);}
+.t-caption{font:400 11.5px/1.5 var(--sans);color:var(--sub);}
+
+/* plate 03 — buttons */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 10px;}
+.bcell b{display:block;font:500 8.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
+.btn{display:inline-block;font:500 12px/1 var(--sans);padding:10px 16px;white-space:nowrap;}
+.b-filled{background:var(--o4);color:#fff;}
+.b-outlined{border:1px solid var(--o4);color:var(--o5);}
+.b-ghost{color:var(--o5);background:rgba(228,118,47,.08);}
+.b-link{color:var(--o5);text-decoration:underline;text-underline-offset:3px;padding-left:0;}
+.b-disabled{background:var(--panel);color:var(--faint);}
+.bstates{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--panel);}
+.bstates .btn{font-size:11px;padding:8px 12px;}
+.b-hover{background:var(--o5);color:#fff;}
+.b-active{background:#9C4A18;color:#fff;}
+
+/* plate 04 — wayfinding */
+.crumbline{font:500 10.5px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
+.crumbline b{color:var(--ink);font-weight:500;}
+.tabs{display:flex;gap:2px;margin-top:14px;border-bottom:1px solid var(--hair);overflow-x:auto;}
+.tab{font:500 11.5px/1 var(--sans);color:var(--sub);padding:9px 14px;white-space:nowrap;}
+.tab.on{color:var(--ink);border-bottom:2px solid var(--o4);margin-bottom:-1px;}
+.pgn{display:flex;gap:4px;margin-top:16px;font:400 11px/1 var(--mono);color:var(--sub);}
+.pg{border:1px solid var(--hair);padding:6px 9px;}
+.pg.on{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+/* plate 05 — progress tracker */
+.tracker{display:flex;margin-top:2px;border:1px solid var(--hair);overflow-x:auto;}
+.tk{flex:1;min-width:110px;padding:10px 12px;border-right:1px solid var(--hair);}
+.tk:last-child{border-right:none;}
+.tk i{display:block;width:16px;height:16px;font:500 9px/15px var(--mono);text-align:center;font-style:normal;border:1.5px solid var(--sub);color:var(--sub);margin-bottom:6px;}
+.tk.done i{background:var(--o4);border-color:var(--o4);color:#fff;}
+.tk b{display:block;font:500 10px/1.35 var(--sans);}
+.tk span{font:400 8.5px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--faint);}
+
+/* plate 06 — journey nodes */
+.nodes{display:flex;flex-wrap:wrap;gap:6px;}
+.ngl{flex-basis:100%;font:500 8.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:8px 0 2px;}
+.ngl:first-child{margin-top:0;}
+.node{font:400 10.5px/1 var(--mono);color:var(--sub);border:1px solid var(--hair);border-left:3px solid var(--slate);background:var(--paper);padding:7px 9px;white-space:nowrap;}
+.node.t{border-left-color:var(--o4);}
+.node.a{border-left-color:var(--b6);}
+.node.c{border-left-color:var(--warn);}
+.noderule{display:flex;gap:12px;align-items:baseline;border-left:2px solid var(--slate);background:var(--panel);margin-top:16px;padding:10px 14px;}
+.noderule b{font:500 9px/1.7 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--slate);white-space:nowrap;}
+.noderule span{font:400 12px/1.6 var(--sans);color:var(--sub);}
+
+/* plate 07 — RFM (the donut keeps the product's circular geometry) */
+.rfm{display:flex;gap:26px;flex-wrap:wrap;align-items:center;}
+.donut{width:132px;height:132px;flex:none;border-radius:50%;position:relative;
+  background:conic-gradient(var(--o4) 0 22%, var(--o5) 22% 38%, #EFAD7C 38% 52%, var(--warn) 52% 62%, #5B7FA6 62% 74%, var(--b6) 74% 84%, #ABA69C 84% 100%);}
+.donut::after{content:'RFM';position:absolute;inset:34px;border-radius:50%;background:var(--paper);font:500 11px/64px var(--mono);letter-spacing:.14em;text-align:center;color:var(--sub);}
+.legend{list-style:none;columns:2;column-gap:28px;min-width:280px;flex:1;}
+@media(max-width:600px){.legend{columns:1;}}
+.legend li{font:400 11.5px/1.5 var(--sans);color:var(--sub);padding:4px 0;display:flex;gap:8px;align-items:baseline;break-inside:avoid;}
+.legend i{width:9px;height:9px;flex:none;transform:translateY(1px);}
+.tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--panel);}
+.tag{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--hair);color:var(--sub);background:var(--panel);}
+.tag.warn{color:var(--warn);border-color:rgba(180,67,44,.4);background:rgba(180,67,44,.06);}
+
+/* where each set landed */
+.used{width:100%;border-collapse:collapse;margin-top:26px;max-width:760px;}
+.used th{font:500 9.5px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);text-align:left;padding:0 12px 8px 0;border-bottom:1px solid var(--ink);}
+.used td{font:400 12.5px/1.6 var(--sans);color:var(--sub);padding:8px 12px 8px 0;border-bottom:1px solid var(--panel);vertical-align:top;}
+.used td:first-child{font-weight:500;color:var(--ink);white-space:nowrap;}
+</style>
+</head>
+<body class="page-case">
+
+<div class="wrap">
+
   <nav class="ed-nav" aria-label="Main">
     <a class="name" href="index.html">Natthapath Damrongsri</a>
     <a class="back" href="index.html#work">← All work</a>
   </nav>
 
-  <section class="ed-title-page">
-    <span class="label">Enterprise SaaS / Customer Data Platform</span>
-    <h1>Customer Data Platform — Segment &amp; Condition Builder</h1>
-    <p class="intro">The hardest query logic in the system had to feel like the easiest screen — so marketers could nest conditions three levels deep and still trust the audience it resolved to.</p>
-  </section>
-
-  <div class="ed-stats">
-    <div class="cell"><div class="k">Outcome</div><div class="v">Dev- &amp; QA-ready specs</div></div>
-    <div class="cell"><div class="k">Timeline</div><div class="v">3 months · 2024</div></div>
-    <div class="cell"><div class="k">Role</div><div class="v">UX/UI Designer</div></div>
-  </div>
-
-  <figure class="ed-cover">
-    <img src="assets/projects/cdp/cover.png" alt="Customer Data Platform — overview of the segment and condition builder workspace.">
-  </figure>
-
-  <section class="ed-setup" data-reveal-section>
-    <p class="lead">The hard part wasn't showing more data. It was turning layered logic into a workspace marketers could read, configure and trust.</p>
-    <p>A marketer could build a segment, nest AND/OR groups two or three levels deep, and still miss that the logic quietly resolved to zero people. The interface already existed. It worked. But "works" and "works confidently" are different things.</p>
-  </section>
-
-  <section class="ed-spread" data-reveal-section>
-    <div>
-      <span class="num">01</span>
-      <h2>A workspace for layered audience logic</h2>
-      <p>Visible condition groups, clear operator blocks, and an estimated-reach panel — so the user understood the segment as it was being assembled.</p>
-      <p class="ed-note">— readable first, complete second</p>
+  <header class="doc-head">
+    <div class="doc-id">
+      <span>Enterprise SaaS · Customer Data Platform</span>
+      <span class="dim">the foundation, shown working</span>
+      <span class="dim">2024</span>
     </div>
-    <figure class="ed-fig">
-      <img src="assets/projects/cdp/fig-1-1.png" alt="CDP segment builder workspace — condition group and estimated-reach panel.">
-    </figure>
-  </section>
-
-  <section class="ed-spread tight" data-reveal-section>
-    <figure class="ed-fig">
-      <img src="assets/projects/cdp/fig-2-2.png" alt="CDP advanced search selector — categorized auto-complete with metadata in each result row.">
-    </figure>
-    <div>
-      <span class="num">02</span>
-      <h2>Search that shows what you're choosing</h2>
-      <p>A categorized auto-complete selector with metadata visible in each result row — so users could verify a condition before adding it to the segment.</p>
-      <p class="ed-note">— verify before you commit</p>
+    <h1 class="t-h">Customer Data Platform — Making an Existing CDP Legible</h1>
+    <p class="t-intro">The product already existed, and it worked. I joined to make it legible — a component foundation, clearer structure, guided setup, and data &amp; campaign workflows that Dev, PM, and QA could keep building without me in the room. Instead of screenshots of that foundation, this page <strong>re-sets its key plates in working HTML</strong> — inspect them directly.</p>
+    <div class="meta-line">
+      <div><b>Outcome</b>Shipped — dev built from specs</div>
+      <div><b>Timeline</b>3 months · 2024</div>
+      <div><b>Role</b>UX/UI Designer — analysis, IA, design system, handoff</div>
+      <div><b>Platform</b>Web app · 1440px desktop</div>
     </div>
-  </section>
+    <div class="hon"><b>Honesty note</b><span>Specimens are re-set from the working Figma file. Token values are representative and the platform's typeface differs — the structure and relationships are what shipped.</span></div>
+  </header>
 
-  <section class="ed-reflection" data-reveal-section>
-    <p>"The riskiest moment in this tool is invisible — an empty campaign that goes out to nobody."</p>
-    <span class="k">What I'd do differently</span>
-  </section>
-
-  <nav class="case-nav" aria-label="More work" data-reveal-section>
-    <a class="cn-prev" href="index.html#work"><span class="cn-label">Index</span><span class="cn-title">All work</span></a>
-    <a class="cn-next" href="3bb-member.html"><span class="cn-label">Next case</span><span class="cn-title">3BB Member →</span></a>
+  <nav class="spine" aria-label="Story spine">
+    <span class="spine-label">The whole case, in six lines</span>
+    <ol>
+      <li>The product worked. It just wasn't legible.</li>
+      <li>Build the shared language before the screens.</li>
+      <li>Structure the platform so it explains itself.</li>
+      <li>Design data workflows that survive real data.</li>
+      <li>Make marketing activation composable.</li>
+      <li>Specs should answer the questions devs actually ask.</li>
+    </ol>
   </nav>
-</main>
 
-<footer>
-  <div class="wrap-ed">
-    <p class="foot">Natthapath Damrongsri · 2026</p>
+  <span class="sect-label">Plates 01–03 · Tokens &amp; atoms</span>
+  <h2 class="statement">A shared language starts smaller than a screen.</h2>
+  <p class="tp">A CDP for marketing teams in Thai enterprise and SME businesses — 20+ product areas, zero rebuild budget, legacy schemas untouchable. Before touching feature screens I built the vocabulary every area would later speak: color in three ramps, type in six levels, buttons in five variants. When design, dev, PM, and QA name the same part the same way, <strong>every later conversation gets shorter</strong>.</p>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 01 — Color tokens</span><span class="pd">3 ramps · neutral 15 steps, orange &amp; blue 10 each</span></div>
+    <div class="plate-body">
+      <span class="ramp-name">White / neutral · 0 → 1000</span>
+      <div class="ramp">
+        <span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#FAF9F7"></span><span class="sw" style="background:#F1EFEC"></span><span class="sw" style="background:#E5E2DD"></span><span class="sw" style="background:#D5D1CA"></span><span class="sw" style="background:#C2BDB4"></span><span class="sw" style="background:#ABA69C"></span><span class="sw" style="background:#918C82"></span><span class="sw" style="background:#787368"></span><span class="sw" style="background:#5F5B52"></span><span class="sw" style="background:#48453E"></span><span class="sw" style="background:#33312B"></span><span class="sw" style="background:#23211D"></span><span class="sw" style="background:#191814"></span><span class="sw" style="background:#141311"></span>
+      </div>
+      <div class="ramp-ends"><span>0</span><span>1000</span></div>
+      <span class="ramp-name">Orange · 10 → 900 — platform primary</span>
+      <div class="ramp tall">
+        <span class="sw" style="background:#FDF4ED"></span><span class="sw" style="background:#FAE3D1"></span><span class="sw" style="background:#F5C9A8"></span><span class="sw" style="background:#EFAD7C"></span><span class="sw" style="background:#E98F52"></span><span class="sw pri" style="background:#E4762F"></span><span class="sw" style="background:#C25E1F"></span><span class="sw" style="background:#9C4A18"></span><span class="sw" style="background:#753711"></span><span class="sw" style="background:#4F250B"></span>
+      </div>
+      <span class="ramp-name">Blue · 10 → 900 — secondary / accent</span>
+      <div class="ramp tall">
+        <span class="sw" style="background:#EEF3FA"></span><span class="sw" style="background:#D8E3F2"></span><span class="sw" style="background:#B7CCE6"></span><span class="sw" style="background:#92B2D8"></span><span class="sw" style="background:#6E97C9"></span><span class="sw" style="background:#4C7DBA"></span><span class="sw pri" style="background:#2F63A7"></span><span class="sw" style="background:#24507F"></span><span class="sw" style="background:#193C5F"></span><span class="sw" style="background:#102941"></span>
+      </div>
+    </div>
   </div>
-</footer>
 
-<script src="scroll.js"></script>
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 02 — Type scale</span><span class="pd">6 levels × L / M / S — 18 styles total</span></div>
+    <div class="plate-body">
+      <div class="trow"><span class="tn">Display</span><span class="ts t-display">Customer 360</span><span class="tz">L · hero</span></div>
+      <div class="trow"><span class="tn">Headline</span><span class="ts t-headline">Segment ready to send</span><span class="tz">page titles</span></div>
+      <div class="trow"><span class="tn">Title</span><span class="ts t-title">Import — mapping issues</span><span class="tz">sections</span></div>
+      <div class="trow"><span class="tn">Label</span><span class="ts t-label">Hard_ID · Soft_ID</span><span class="tz">fields</span></div>
+      <div class="trow"><span class="tn">Body</span><span class="ts t-body">A segment is a group of individuals who share specific characteristics.</span><span class="tz">content</span></div>
+      <div class="trow"><span class="tn">Caption</span><span class="ts t-caption">Last import: 12,408 rows · 3 cell errors located</span><span class="tz">helper</span></div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 03 — Button system</span><span class="pd">5 variants · each with default / hover / active / disabled</span></div>
+    <div class="plate-body">
+      <div class="bgrid">
+        <div class="bcell"><b>Filled — primary CTA</b><span class="btn b-filled">Create segment</span></div>
+        <div class="bcell"><b>Outlined — secondary</b><span class="btn b-outlined">Save as template</span></div>
+        <div class="bcell"><b>Ghost — subtle</b><span class="btn b-ghost">Preview</span></div>
+        <div class="bcell"><b>Link — inline</b><span class="btn b-link">Convert to advanced</span></div>
+        <div class="bcell"><b>Disabled</b><span class="btn b-disabled">Confirm import</span></div>
+      </div>
+      <div class="bstates">
+        <span class="btn b-filled">Default</span>
+        <span class="btn b-hover">Hover</span>
+        <span class="btn b-active">Active</span>
+        <span class="btn b-disabled">Disabled</span>
+      </div>
+    </div>
+  </div>
+
+  <span class="sect-label">Plates 04–05 · Molecules</span>
+  <h2 class="statement">The patterns every area borrowed.</h2>
+  <p class="tp">Navigation, wayfinding, and progress — designed once, reused from Import to Journey Builder. The reorganized IA read as a mental model, not a menu: Data Manager, PDPA, Campaign, Analytics, Settings. And the four-step tracker below carries the platform's key UX decision — the <strong>Identity Data setup gate</strong>: hard_id and soft_id had to be configured before Import and Export unlocked, with gated empty states redirecting users to setup.</p>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 04 — Wayfinding set</span><span class="pd">breadcrumbs · tabs · pagination</span></div>
+    <div class="plate-body">
+      <div class="crumbline">Project › Data Manager › Import › <b>Mapping</b></div>
+      <div class="tabs"><span class="tab on">Basic Information</span><span class="tab">Segmentation</span><span class="tab">Extra Attribute</span><span class="tab">Events</span><span class="tab">Consents</span></div>
+      <div class="pgn"><span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">12</span><span class="pg">›</span></div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 05 — Progress tracker</span><span class="pd">the component that carries the setup gate</span></div>
+    <div class="plate-body">
+      <div class="tracker">
+        <div class="tk done"><i>✓</i><b>Project details</b><span>done</span></div>
+        <div class="tk done"><i>✓</i><b>Review Structure Control</b><span>done</span></div>
+        <div class="tk"><i>3</i><b>Setup Email</b><span>configure</span></div>
+        <div class="tk"><i>4</i><b>Setup Consent</b><span>pending</span></div>
+      </div>
+      <div class="trade"><span class="k">Tradeoff</span><span class="v">Gating adds friction on day one. Un-gated imports produce unmatched customer records that are far more expensive to fix later.</span></div>
+    </div>
+  </div>
+
+  <span class="sect-label">Plates 06–07 · Organisms</span>
+  <h2 class="statement">The complex parts became components too.</h2>
+  <p class="tp">Journey automation and RFM scoring are where a design system usually gives up and lets every screen be bespoke. Here they were componentized — <strong>12 node types</strong> with one strict completeness rule, and an RFM set covering config tables, the donut, and seven customer groups across a nine-state flow.</p>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 06 — Journey Builder nodes</span><span class="pd">trigger · action · operator · campaign</span></div>
+    <div class="plate-body">
+      <div class="nodes">
+        <span class="ngl">Trigger</span>
+        <span class="node t">Event</span><span class="node t">Now</span><span class="node t">On Email</span><span class="node t">Repeat</span><span class="node t">Schedule</span>
+        <span class="ngl">Action</span>
+        <span class="node a">Add Event</span><span class="node a">Add Consent</span><span class="node a">Set Attribute</span><span class="node a">Add Tag</span>
+        <span class="ngl">Operator · Campaign</span>
+        <span class="node">Condition</span><span class="node">Wait</span><span class="node c">Email Campaign</span>
+      </div>
+      <div class="noderule"><b>The rule</b><span>A node must be fully configured before it can be confirmed. Looser rules would demo better — and fail quietly in production.</span></div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 07 — RFM set</span><span class="pd">scoring → donut → 7 customer groups · 9-state config flow</span></div>
+    <div class="plate-body">
+      <div class="rfm">
+        <div class="donut" role="img" aria-label="RFM donut chart — share of customers per group"></div>
+        <ul class="legend">
+          <li><i style="background:#E4762F"></i>Champions</li>
+          <li><i style="background:#C25E1F"></i>Loyal Customers</li>
+          <li><i style="background:#EFAD7C"></i>Potential Loyalist</li>
+          <li><i style="background:#B4432C"></i>At Risk</li>
+          <li><i style="background:#5B7FA6"></i>Need Attention</li>
+          <li><i style="background:#2F63A7"></i>Cannot Lose Them</li>
+          <li><i style="background:#ABA69C"></i>Lost</li>
+        </ul>
+      </div>
+      <div class="tagrow" aria-label="Status tag set">
+        <span class="tag">Active</span><span class="tag warn">Outdated</span><span class="tag warn">Expired</span><span class="tag">Closed</span>
+      </div>
+    </div>
+  </div>
+
+  <span class="sect-label">The system at work</span>
+  <h2 class="statement">Plates don't ship. Screens built from plates do.</h2>
+  <p class="tp">The same sets, photographed in the wild — assembled into the segmentation workspace, the advanced search selector, and the handoff specs that Dev, PM, and QA continued from. Data workflows followed one rule: <strong>show the state of the data, not just the data</strong> — the Import flow alone covered 55 frames of upload, mapping, cell-level errors, and reusable templates.</p>
+  <div class="figs three">
+    <figure class="shot">
+      <img src="assets/cdp/fig-1-1.png" alt="CDP segment builder workspace — condition group and estimated-reach panel.">
+      <figcaption class="figcap"><b>Fig. 1</b> — Search-advanced set + tags + buttons, assembled into the segment workspace.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/cdp/fig-2-2.png" alt="CDP advanced search selector — categorized auto-complete with metadata in each result row.">
+      <figcaption class="figcap"><b>Fig. 2</b> — Dropdown, table, and filter sets in the condition selector.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/cdp/fig-2-3.png" alt="CDP handoff specs — component layouts, interaction states, and edge cases mapped for developers.">
+      <figcaption class="figcap"><b>Fig. 3</b> — The same components, specified: states and input adapters per data variable.</figcaption>
+    </figure>
+  </div>
+
+  <table class="used">
+    <thead><tr><th>Component set</th><th>Where it landed</th></tr></thead>
+    <tbody>
+      <tr><td>Search-advanced</td><td>Segmentation · Customer Single View event search · analytic templates</td></tr>
+      <tr><td>Structure-control forms</td><td>Customer, Event, Catalog, and Voucher schema builders</td></tr>
+      <tr><td>Import / export rows</td><td>Upload → mapping → error → confirm flows (55 + 54 frames)</td></tr>
+      <tr><td>Journey nodes</td><td>Journey Builder canvas, light and dark themes</td></tr>
+      <tr><td>Consent set</td><td>PDPA tracking-event config · Consent Banner builder</td></tr>
+      <tr><td>Progress tracker</td><td>Project onboarding · the Identity Data setup gate</td></tr>
+    </tbody>
+  </table>
+  <span class="hand" aria-hidden="true">every undocumented edge case becomes a QA ticket</span>
+
+  <div class="refl">
+    <div><b>What I'd do differently</b><p>The riskiest moment in this platform is invisible — a campaign that goes out to nobody. I'd add a validation layer that warns when segment logic resolves to zero people.</p></div>
+    <div><b>And next time</b><p>Instrument how the tools actually get used — I designed for 2–3 levels of nesting and a four-step setup without usage data confirming either. The system makes revising cheap; measurement would say what to revise.</p></div>
+  </div>
+
+  <nav class="case-nav" aria-label="More work">
+    <a class="prev" href="index.html#work"><span class="k">Index</span><span class="t">All work</span></a>
+    <a class="next" href="3bb-member.html"><span class="k">Next case</span><span class="t">3BB Member →</span></a>
+  </nav>
+
+  <footer>
+    <p class="foot">Natthapath Damrongsri · 2026</p>
+  </footer>
+
+</div>
+
 </body>
 </html>
