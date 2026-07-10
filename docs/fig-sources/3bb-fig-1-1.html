@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bb:#E86A1F; --bb-ink:#B34E12; --ink:#1C1B1A; --sub:#5C5A55; --faint:#8B8880;
+  --hair:#E3E0DA; --paper:#FFFFFF; --canvas:#F1EFEA; --err:#B4432C;
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1200px;height:812px;background:var(--canvas);display:flex;align-items:center;justify-content:center;gap:44px;font-family:var(--sans);color:var(--ink);}
+.unit{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.phone{width:336px;height:688px;background:var(--paper);border:1.5px solid #2A2926;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 40px rgba(28,27,26,.10);}
+.tag{font:500 10px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--sub);}
+.tag em{font-style:normal;color:var(--bb-ink);}
+
+/* shared chrome */
+.sbar{display:flex;justify-content:space-between;padding:12px 20px 8px;font:500 11px/1 var(--sans);color:var(--ink);}
+.sbar .dots{letter-spacing:2px;color:var(--sub);font-size:9px;}
+.bnav{margin-top:auto;display:flex;border-top:1px solid var(--hair);padding:10px 6px 14px;}
+.bnav span{flex:1;text-align:center;font:500 9.5px/1 var(--sans);color:var(--faint);padding-top:16px;position:relative;}
+.bnav span::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:14px;height:11px;border:1.2px solid currentColor;border-radius:3px;}
+.bnav span.on{color:var(--bb-ink);}
+
+/* screen 1 — home */
+.appbar{background:var(--bb);color:#fff;padding:14px 18px 16px;}
+.appbar .brand{display:flex;justify-content:space-between;align-items:center;font:600 15px/1 var(--sans);}
+.appbar .brand i{font-style:normal;font:400 16px/1 var(--sans);opacity:.9;}
+.appbar .hello{font:400 11.5px/1 var(--sans);opacity:.85;margin-top:10px;}
+.stbanner{margin:14px 16px 0;border:1px solid var(--hair);border-left:3px solid var(--bb);border-radius:10px;padding:11px 13px;}
+.stbanner b{display:block;font:600 11.5px/1.4 var(--sans);color:var(--bb-ink);margin-bottom:3px;}
+.stbanner p{font:400 10.5px/1.5 var(--sans);color:var(--sub);}
+.card{margin:12px 16px 0;border:1px solid var(--hair);border-radius:12px;padding:14px;}
+.card .k{font:500 9px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);}
+.card .plan{font:600 15px/1.3 var(--sans);margin-top:7px;}
+.card .meta{font:400 11px/1.6 var(--sans);color:var(--sub);margin-top:4px;}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+.card .bill{font:400 10.5px/1.4 var(--sans);color:var(--sub);}
+.card .bill b{display:block;font:600 13px/1.3 var(--sans);color:var(--ink);}
+.btn{background:var(--bb);color:#fff;font:600 11px/1 var(--sans);padding:10px 14px;border-radius:8px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 16px 0;}
+.grid4 .g{border:1px solid var(--hair);border-radius:10px;padding:12px 4px 10px;text-align:center;font:500 9.5px/1.3 var(--sans);color:var(--sub);}
+.grid4 .g::before{content:"";display:block;width:18px;height:18px;margin:0 auto 7px;border:1.4px solid var(--bb);border-radius:5px;}
+
+/* screen 2 — package detail */
+.hd2{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid var(--hair);}
+.hd2 .back{font:400 15px/1 var(--sans);color:var(--sub);}
+.hd2 b{font:600 14px/1 var(--sans);}
+.plancard{margin:14px 16px 0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;}
+.plancard .ph{background:#FBF4EE;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;}
+.plancard .ph b{font:600 14px/1.3 var(--sans);}
+.chip{font:600 8.5px/1 var(--mono);letter-spacing:.1em;color:#3E7A2E;background:#EAF3E4;border-radius:99px;padding:5px 9px;}
+.spec{padding:4px 14px 6px;}
+.spec .r{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F1EEE8;font:400 11.5px/1.4 var(--sans);color:var(--sub);}
+.spec .r:last-child{border-bottom:none;}
+.spec .r b{font-weight:600;color:var(--ink);}
+.sect{font:500 9px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:16px 18px 0;}
+.addon{margin:8px 16px 0;border:1px solid var(--hair);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font:400 11.5px/1.4 var(--sans);color:var(--sub);}
+.addon b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.btn2{margin:16px 16px 0;border:1.4px solid var(--bb);color:var(--bb-ink);font:600 11.5px/1 var(--sans);padding:12px;border-radius:9px;text-align:center;}
+
+/* screen 3 — login error */
+.login{padding:34px 24px 0;display:flex;flex-direction:column;flex:1;}
+.logo{font:600 17px/1 var(--sans);color:var(--bb-ink);}
+.login h2{font:600 15px/1.35 var(--sans);margin-top:22px;}
+.login .sub{font:400 11px/1.5 var(--sans);color:var(--sub);margin-top:5px;}
+.field{margin-top:14px;}
+.field label{display:block;font:500 9px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
+.field .in{border:1px solid var(--hair);border-radius:9px;padding:12px 13px;font:400 12.5px/1 var(--sans);color:var(--ink);}
+.field.err .in{border-color:var(--err);box-shadow:0 0 0 1px var(--err);}
+.ecard{margin-top:14px;border:1px solid rgba(180,67,44,.4);background:#FBF1EE;border-radius:10px;padding:12px 13px;}
+.ecard b{display:block;font:600 11.5px/1.4 var(--sans);color:var(--err);margin-bottom:3px;}
+.ecard p{font:400 10.5px/1.55 var(--sans);color:var(--sub);}
+.acts{display:flex;flex-direction:column;gap:9px;margin-top:16px;}
+.acts .go{background:var(--bb);color:#fff;text-align:center;font:600 11.5px/1 var(--sans);padding:12px;border-radius:9px;}
+.acts .alt{text-align:center;font:500 11px/1 var(--sans);color:var(--sub);padding:8px;}
+</style>
+</head>
+<body>
+
+  <div class="unit">
+    <div class="phone">
+      <div class="appbar">
+        <div class="sbar" style="color:#fff;padding:0 0 10px;"><span>9:41</span><span class="dots" style="color:rgba(255,255,255,.75);">•••• ▾ ▮</span></div>
+        <div class="brand">3BB Member <i>◔</i></div>
+        <div class="hello">Good morning, Natthapath</div>
+      </div>
+      <div class="stbanner">
+        <b>Service active — still on 3BB</b>
+        <p>Packages, billing, and support keep working as before. Nothing changes until this account migrates.</p>
+      </div>
+      <div class="card">
+        <span class="k">My package</span>
+        <div class="plan">Fiber 1000/500 Mbps</div>
+        <div class="meta">Home broadband · ฿590/mo</div>
+        <div class="row">
+          <div class="bill">Next bill<b>15 Aug 2026</b></div>
+          <span class="btn">Pay bill</span>
+        </div>
+      </div>
+      <div class="grid4">
+        <span class="g">My package</span><span class="g">Bills</span><span class="g">Usage</span><span class="g">Support</span>
+      </div>
+      <div class="card" style="background:#FBF6F1;border-color:#F0E3D6;">
+        <span class="k" style="color:var(--bb-ink);">Announcement</span>
+        <div class="meta" style="margin-top:7px;color:var(--sub);">3BB is becoming part of AIS. We'll notify you here before anything about this account changes.</div>
+      </div>
+      <div class="bnav"><span class="on">Home</span><span>Packages</span><span>Bills</span><span>Profile</span></div>
+    </div>
+    <span class="tag">Home · <em>state 1 — still on 3BB</em></span>
+  </div>
+
+  <div class="unit">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="dots">•••• ▾ ▮</span></div>
+      <div class="hd2"><span class="back">←</span><b>My Package</b></div>
+      <div class="plancard">
+        <div class="ph"><b>Fiber 1000/500 Mbps</b><span class="chip">ACTIVE</span></div>
+        <div class="spec">
+          <div class="r"><span>Download / upload</span><b>1000 / 500 Mbps</b></div>
+          <div class="r"><span>Monthly fee</span><b>฿590 / mo</b></div>
+          <div class="r"><span>Contract until</span><b>Mar 2027</b></div>
+          <div class="r"><span>Next bill</span><b>15 Aug 2026</b></div>
+        </div>
+      </div>
+      <div class="sect">Add-ons</div>
+      <div class="addon"><span><b>Mesh Wi-Fi node</b>1 unit · included</span><span style="color:var(--faint);">›</span></div>
+      <div class="addon"><span><b>Fixed IP address</b>Not active</span><span style="color:var(--faint);">›</span></div>
+      <div class="btn2">Change package</div>
+      <div class="bnav"><span>Home</span><span class="on">Packages</span><span>Bills</span><span>Profile</span></div>
+    </div>
+    <span class="tag">Package detail · status hierarchy</span>
+  </div>
+
+  <div class="unit">
+    <div class="phone">
+      <div class="sbar"><span>9:41</span><span class="dots">•••• ▾ ▮</span></div>
+      <div class="login">
+        <span class="logo">3BB Member</span>
+        <h2>Log in</h2>
+        <p class="sub">Use the mobile number linked to your 3BB account.</p>
+        <div class="field">
+          <label>Mobile number</label>
+          <div class="in">081 234 5678</div>
+        </div>
+        <div class="field err">
+          <label>Password</label>
+          <div class="in" style="color:var(--faint);">••••••••</div>
+        </div>
+        <div class="ecard">
+          <b>This account has moved to AIS</b>
+          <p>Services for this number are now managed in myAIS, so it can no longer log in here. Your 3BB history stays available to view.</p>
+        </div>
+        <div class="acts">
+          <span class="go">Go to myAIS →</span>
+          <span class="alt">Try a different number</span>
+        </div>
+        <span style="margin-top:auto;padding:0 0 26px;text-align:center;font:400 10.5px/1 var(--sans);color:var(--faint);">Need help? Call 1530 · 3BB Support</span>
+      </div>
+    </div>
+    <span class="tag">Login · error — <em>cause + next action</em></span>
+  </div>
+
+</body>
+</html>

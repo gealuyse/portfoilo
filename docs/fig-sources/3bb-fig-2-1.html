@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bb:#E86A1F; --bb-ink:#B34E12; --ink:#1C1B1A; --sub:#5C5A55; --faint:#8B8880;
+  --hair:#E3E0DA; --paper:#FFFFFF; --canvas:#F1EFEA;
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{width:1200px;height:566px;background:var(--canvas);font-family:var(--sans);color:var(--ink);padding:52px 56px 56px;display:flex;flex-direction:column;}
+
+.legend{display:flex;gap:30px;justify-content:flex-end;margin-bottom:40px;}
+.legend span{display:flex;align-items:center;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sub);}
+.legend i{width:22px;height:15px;border-radius:3px;}
+.legend .ex i{background:#E9E6E0;border:1px solid var(--hair);}
+.legend .sel i{background:var(--paper);border:2px solid var(--bb);}
+
+.map{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 32px;align-content:start;}
+.area{display:flex;flex-direction:column;}
+.area h3{font:500 11px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--hair);padding-bottom:10px;margin-bottom:18px;}
+.thumbs{display:flex;flex-direction:column;gap:16px;}
+
+.th{border-radius:9px;padding:14px 15px 15px;position:relative;}
+.th .nm{font:600 13.5px/1.3 var(--sans);display:block;}
+.th .wf{margin-top:10px;display:flex;flex-direction:column;gap:6px;}
+.th .wf i{display:block;height:6px;border-radius:2px;background:currentColor;opacity:.16;}
+.th .wf i.w60{width:60%;} .th .wf i.w80{width:80%;} .th .wf i.w45{width:45%;}
+
+.th.ex{background:#E9E6E0;border:1px solid var(--hair);color:var(--sub);}
+.th.ex .nm{color:var(--sub);font-weight:500;}
+
+.th.sel{background:var(--paper);border:2px solid var(--bb);color:var(--ink);box-shadow:0 6px 16px rgba(232,106,31,.10);}
+.th.sel .nm{color:var(--ink);}
+.th.sel .wf i{background:var(--bb);opacity:.35;}
+.th.sel .var{display:inline-block;margin-top:11px;font:500 9.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--bb-ink);background:#FBF0E7;border-radius:99px;padding:5px 8px;}
+</style>
+</head>
+<body>
+
+  <div class="legend">
+    <span class="ex"><i></i>Existing product — context, untouched</span>
+    <span class="sel"><i></i>Selected for this work · migration variant added</span>
+  </div>
+
+  <div class="map">
+
+    <div class="area">
+      <h3>Account</h3>
+      <div class="thumbs">
+        <div class="th sel">
+          <span class="nm">Login</span>
+          <div class="wf"><i class="w80"></i><i class="w60"></i><i class="w45"></i></div>
+          <span class="var">error states + state-check routing</span>
+        </div>
+        <div class="th sel">
+          <span class="nm">Registration</span>
+          <div class="wf"><i class="w80"></i><i class="w60"></i></div>
+          <span class="var">condition states — who can register</span>
+        </div>
+        <div class="th ex">
+          <span class="nm">Profile &amp; settings</span>
+          <div class="wf"><i class="w60"></i><i class="w45"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="area">
+      <h3>Services</h3>
+      <div class="thumbs">
+        <div class="th sel">
+          <span class="nm">Package &amp; service detail</span>
+          <div class="wf"><i class="w80"></i><i class="w60"></i><i class="w45"></i></div>
+          <span class="var">status per customer group</span>
+        </div>
+        <div class="th ex">
+          <span class="nm">Usage &amp; speed</span>
+          <div class="wf"><i class="w80"></i><i class="w45"></i></div>
+        </div>
+        <div class="th ex">
+          <span class="nm">Add-on store</span>
+          <div class="wf"><i class="w60"></i><i class="w45"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="area">
+      <h3>Billing</h3>
+      <div class="thumbs">
+        <div class="th sel">
+          <span class="nm">Billing &amp; payment</span>
+          <div class="wf"><i class="w80"></i><i class="w60"></i><i class="w45"></i></div>
+          <span class="var">ownership follows service state</span>
+        </div>
+        <div class="th ex">
+          <span class="nm">Bill history</span>
+          <div class="wf"><i class="w60"></i><i class="w45"></i></div>
+        </div>
+        <div class="th ex">
+          <span class="nm">e-Tax documents</span>
+          <div class="wf"><i class="w60"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="area">
+      <h3>Support</h3>
+      <div class="thumbs">
+        <div class="th ex">
+          <span class="nm">Help center</span>
+          <div class="wf"><i class="w80"></i><i class="w60"></i></div>
+        </div>
+        <div class="th ex">
+          <span class="nm">Report an issue</span>
+          <div class="wf"><i class="w60"></i><i class="w45"></i></div>
+        </div>
+        <div class="th ex">
+          <span class="nm">Notifications</span>
+          <div class="wf"><i class="w60"></i></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

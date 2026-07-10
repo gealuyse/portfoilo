@@ -27,6 +27,10 @@
 | counter-service-pos.html — glance แทน spine, Fig 1 (wide-screen) ขึ้นเป็น preview ต้นหน้า, "costs" → "risks", stat row เก็บ | ✅ DONE 2026-07-10 |
 | `.glance` + `.figs.one` ย้ายเข้า shared style.css (chrome-level, ใช้ทุกหน้า case) — ลบ local ออกจาก cdp.html | ✅ DONE 2026-07-10 |
 | `_case-template.html` — อัปเดต template: spine → glance (พร้อม claim rules ใน comment), เพิ่ม solution-preview block (optional), label เป็น "Decision NN · verb phrase" | ✅ DONE 2026-07-10 |
-| ผู้ใช้เปิดดูทั้ง 3 หน้าจริงในเบราว์เซอร์ ตัดสินว่าวิธีเล่าใหม่ผ่านไหม | ❌ รอ |
+| ผู้ใช้เปิดดูทั้ง 3 หน้าจริงในเบราว์เซอร์ ตัดสินว่าวิธีเล่าใหม่ผ่านไหม | ✅ ผู้ใช้ตรวจแล้ว "โอเคเลย" 2026-07-10 |
+| cdp "The situation" — `.inv` (CSS columns:2 คอลัมน์เหลื่อม/เส้นไม่ตรง) เปลี่ยนเป็นตาราง `.sit` (Rule in memory / Where the cost landed, local ใน cdp.html), copy ยุบเหลือข้อละประโยค, ย่อหน้าปิดย่อลง, ลบ `.inv` ออกจาก style.css + อัปเดต comment ใน template | ✅ DONE 2026-07-10 |
+| cdp Plate 07 (RFM) — เติมเป็น specimen: ตาราง 7 กลุ่ม × Recency/Frequency/Monetary (ค่าเป็นคำ HIGH/MID/LOW ไล่น้ำหนักสี ink→faint), บรรทัดนิยาม 3 แกน, ชุดสีใหม่เป็นบันไดเดียว (ส้มเข้ม→อ่อน = คุณค่า, แดง warn = ความเสี่ยง, เทา = lost — เลิกใช้น้ำเงินสุ่ม), label "Score status" + แถบ THE RULE | ✅ DONE 2026-07-10 |
+| plate ติดกันดูเป็นก้อน — ตาม codex review: `.page-case .plate + .plate{margin-top:var(--story-lg)}` (mobile: --story-md) ใน style.css; ไม่รวม plate, ไม่ใส่ประโยคเชื่อม — ยกเว้นจุดเดียว: 3bb P01→02 ใส่ประโยคเชื่อม "Those three states became the routing rule..." แล้ว (ผู้ใช้อนุมัติ) | ✅ DONE 2026-07-10 |
+| รูป figure 3bb — recreate `fig-1-1.png` (3 จอ: home / package / login-error) + `fig-2-1.png` (scope map แทนรูป banking slide ที่ผิด) เป็น HTML render แบบเดียวกับ cdp fig-1-1, caption เปลี่ยนเป็น "Recreated", layout เปลี่ยนเป็น `.figs one`, honesty note ครอบคลุม figures | ✅ DONE 2026-07-10 — pos ไม่ต้องทำ (ผู้ใช้ยืนยัน) |
 
 **หมายเหตุค้างตัดสิน:** hand notes (ตัวเขียน Caveat เช่น "every undocumented edge case becomes a QA ticket", "friction paid once — not the support queue") เป็น claim เชิงวาทศิลป์ — ตัดสินใจเก็บไว้เพราะเป็น marginalia ไม่ใช่ evidence แต่ผู้ใช้ override ได้

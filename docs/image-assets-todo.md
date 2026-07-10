@@ -12,8 +12,8 @@
 | ☐ | `assets/projects/cdp/fig-2-1.png` | P3 search selector + metadata rows | #2 | 1600×900 | 🟡 |
 | ☐ | `assets/projects/cdp/fig-2-3.png` | P4 handoff spec sheet | #2 | 1600×900 | 🟡 |
 | ☐ | `assets/projects/cdp/cover.png` | cover (มี 16:9 แล้ว) | optional | 1600×900 | 🟢 |
-| ☐ | `assets/projects/3bb-member/fig-1-1.png` | P2 updated flows (home/package/login-error) | **#2 + #4** บอร์ดจิ๋ว→3 จอใหญ่ | 1600×900 | 🔴 |
-| ☐ | `assets/projects/3bb-member/fig-2-1.png` | P1 contribution-scope diagram | **รูปผิด (banking slide)** + #2 | 1600×900 | 🔴 |
+| ✅ | `assets/3bb-member/fig-1-1.png` | 3 จอใหญ่ home/package/login-error | **ทำแล้ว 2026-07-10** — recreate เป็น HTML render (1491×860) แบบเดียวกับ cdp fig-1-1, caption ในหน้าเปลี่ยนเป็น "Recreated" | — | ✔ |
+| ✅ | `assets/3bb-member/fig-2-1.png` | scope map (existing vs selected) | **ทำแล้ว 2026-07-10** — แทนรูป banking slide ที่ผิด, HTML render (1491×548), caption "Recreated" | — | ✔ |
 | ☐ | `assets/projects/3bb-member/cover.png` | cover (มี 16:9 แล้ว) | optional | 1600×900 | 🟢 |
 | ☐ | `assets/projects/counter-service-pos/screen_proof.png` | P1 wide proposal | #2 | 1920×1080 | 🔴 |
 | ☐ | `assets/projects/counter-service-pos/fig-2-1.png` | P2 legacy 800×600 compact | **#2 + #4** | 1600×900 | 🟡 |

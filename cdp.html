@@ -26,6 +26,14 @@
    scale, buttons, nodes), so they stay local by design — PLAN.md §2 P4. */
 :root{--o4:#E4762F;--o5:#C25E1F;--b6:#2F63A7;}
 
+/* situation inventory — the four rules that lived in memory, set as
+   a ledger (same family as pos Plate 01 locked/adjustable cards) */
+.sit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);margin:var(--s5) 0 var(--s7);}
+@media(max-width:600px){.sit{grid-template-columns:1fr;}}
+.sit>div{background:var(--paper);padding:16px 18px 17px;}
+.sit h3{font:500 10px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
+.sit p{font:400 var(--f3)/var(--lh-base) var(--sans);color:var(--sub);}
+
 /* plate 01 — color ramps */
 .ramp-name{font:500 9.5px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);display:block;margin:14px 0 6px;}
 .ramp-name:first-child{margin-top:0;}
@@ -93,16 +101,32 @@
 .noderule b{font:500 9px/1.7 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--slate);white-space:nowrap;}
 .noderule span{font:400 12px/1.6 var(--sans);color:var(--sub);}
 
-/* plate 07 — RFM (the donut keeps the product's circular geometry) */
-.rfm{display:flex;gap:26px;flex-wrap:wrap;align-items:center;}
-.donut{width:132px;height:132px;flex:none;border-radius:50%;position:relative;
-  background:conic-gradient(var(--o4) 0 22%, var(--o5) 22% 38%, #EFAD7C 38% 52%, var(--warn) 52% 62%, #5B7FA6 62% 74%, var(--b6) 74% 84%, #ABA69C 84% 100%);}
-.donut::after{content:'RFM';position:absolute;inset:34px;border-radius:50%;background:var(--paper);font:500 11px/64px var(--mono);letter-spacing:.14em;text-align:center;color:var(--sub);}
-.legend{list-style:none;columns:2;column-gap:28px;min-width:min(280px,100%);flex:1;}
-@media(max-width:600px){.legend{columns:1;}}
-.legend li{font:400 11.5px/1.5 var(--sans);color:var(--sub);padding:4px 0;display:flex;gap:8px;align-items:baseline;break-inside:avoid;}
-.legend i{width:9px;height:9px;flex:none;transform:translateY(1px);}
+/* plate 07 — RFM (the donut keeps the product's circular geometry).
+   Group colors are one ladder, not a category palette: orange depth =
+   active value, warn-red depth = risk severity, gray = gone. */
+.rfm{display:flex;gap:32px;flex-wrap:wrap;align-items:center;}
+.donut{width:150px;height:150px;flex:none;border-radius:50%;position:relative;
+  background:conic-gradient(#9C4A18 0 22%, #C25E1F 22% 38%, #EFAD7C 38% 52%, #CE8A66 52% 64%, #B4432C 64% 74%, #7E2A1A 74% 84%, #ABA69C 84% 100%);}
+.donut::after{content:'RFM';position:absolute;inset:39px;border-radius:50%;background:var(--paper);font:500 11px/72px var(--mono);letter-spacing:.14em;text-align:center;color:var(--sub);}
+.rfmt{flex:1;min-width:min(320px,100%);max-width:620px;border-collapse:collapse;}
+.rfmt th{font:500 9px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:left;padding:0 10px 6px 0;border-bottom:1px solid var(--ink);}
+.rfmt th:not(:first-child),.rfmt td:not(:first-child){text-align:center;width:68px;}
+.rfmt td{font:400 12px/1.5 var(--sans);color:var(--sub);padding:7px 10px 7px 0;border-bottom:1px solid var(--panel);}
+.rfmt td:first-child{display:flex;gap:8px;align-items:baseline;color:var(--ink);font-weight:500;}
+.rfmt td i{width:9px;height:9px;flex:none;transform:translateY(1px);}
+.rfmt td:not(:first-child){font:400 9.5px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;}
+.rfmt td.hi{color:var(--ink);font-weight:500;}
+.rfmt td.md{color:var(--sub);}
+.rfmt td.lo{color:var(--faint);}
+@media (max-width:480px){
+  .rfmt th:not(:first-child),.rfmt td:not(:first-child){width:52px;padding-left:4px;padding-right:4px;}
+  .rfmt td:not(:first-child){font-size:9px;letter-spacing:.06em;}
+}
+.rfm-key{font:400 11px/1.6 var(--sans);color:var(--faint);margin-top:12px;}
+.rfm-key b{font:500 10px/1 var(--mono);letter-spacing:.08em;color:var(--slate);}
+.rfm-key span{white-space:nowrap;}
 .tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--panel);}
+.tagrow .tagk{font:500 9px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);align-self:center;margin-right:4px;}
 .tag{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--hair);color:var(--sub);background:var(--panel);}
 .tag.warn{color:var(--warn);border-color:rgba(180,67,44,.4);background:rgba(180,67,44,.06);}
 
@@ -173,7 +197,7 @@
   <p class="tp">The segment workspace, assembled from the system this page walks through — the buttons, tags, and search patterns specified below.</p>
   <div class="figs one">
     <figure class="shot">
-      <img src="assets/cdp/fig-1-1.png" width="1491" height="1055" loading="lazy" alt="CDP segment builder workspace — condition group and estimated-reach panel, recreated to illustrate the structure it's built from.">
+      <img src="assets/cdp/fig-1-1.png" width="1491" height="700" loading="lazy" alt="CDP segment builder workspace — condition group and estimated-reach panel, recreated to illustrate the structure it's built from.">
       <figcaption class="figcap"><b>Recreated</b> — the segment workspace as specified for build: Plate 03 buttons, tags, and the search-advanced set, assembled. Not a literal capture.</figcaption>
     </figure>
   </div>
@@ -181,13 +205,13 @@
   <span class="sect-label">The situation</span>
   <h2 class="statement">The pieces existed. The rules connecting them didn't.</h2>
   <p class="tp">A CDP for marketing teams in Thai enterprise and SME businesses — segments, imports, journeys, RFM scoring, PDPA consent, <strong>20+ areas, zero rebuild budget, legacy schemas untouchable</strong>. Its rules lived in people's memory, not on screen:</p>
-  <ul class="inv">
-    <li><b>Setup dependencies</b> — what had to be configured before a workflow opened. Import didn't know Identity Data had to come first, so nothing stopped data from entering before the rules that match it to a customer existed.</li>
-    <li><b>Data states</b> — upload, mapping, error, and confirmation looked like the same screen, so nothing caught a mistake at the moment it happened.</li>
-    <li><b>Campaign logic</b> — journey triggers and RFM groups got rebuilt bespoke per feature, so a new campaign type meant a new one-off screen instead of a reused rule.</li>
-    <li><b>Handoff names</b> — Dev, PM, and QA each described the same screen differently, and every gap between those descriptions cost a round of back-and-forth before dev could build it right.</li>
-  </ul>
-  <p class="tp">The absence of a system doesn't look like a problem on any single screen — each screen looks fine on its own. The cost lives between screens: the same design question answered five slightly different ways, no visible rule saying which answer is the intended one, nothing for QA to test against. <strong>A rule that isn't visible doesn't disappear — it moves downstream, and gets more expensive the longer it stays hidden.</strong> Every plate below is one of those rules, made visible.</p>
+  <div class="sit">
+    <div><h3>Setup dependencies</h3><p>Nothing on screen said Identity Data came before Import — data could enter before the rules that match it to a customer existed.</p></div>
+    <div><h3>Data states</h3><p>Upload, mapping, error, and confirmation looked like the same screen — nothing caught a mistake at the moment it happened.</p></div>
+    <div><h3>Campaign logic</h3><p>Journey triggers and RFM groups were rebuilt bespoke per feature — a new campaign type meant a new one-off screen.</p></div>
+    <div><h3>Handoff names</h3><p>Dev, PM, and QA each described the same screen differently — every gap cost a round of back-and-forth.</p></div>
+  </div>
+  <p class="tp">No single screen looked broken. The cost lived between screens — the same design question answered five slightly different ways, no visible rule saying which answer was intended. <strong>A rule that isn't visible doesn't disappear — it moves downstream, and gets more expensive the longer it stays hidden.</strong> Every plate below is one of those rules, made visible.</p>
 
   <span class="sect-label beat">Decision 01 · Create shared language</span>
   <h2 class="statement">A shared language starts smaller than a screen.</h2>
@@ -297,19 +321,25 @@
     <div class="plate-body">
       <div class="rfm">
         <div class="donut" role="img" aria-label="RFM donut chart — share of customers per group"></div>
-        <ul class="legend">
-          <li><i style="background:#E4762F"></i>Champions</li>
-          <li><i style="background:#C25E1F"></i>Loyal Customers</li>
-          <li><i style="background:#EFAD7C"></i>Potential Loyalist</li>
-          <li><i style="background:#B4432C"></i>At Risk</li>
-          <li><i style="background:#5B7FA6"></i>Need Attention</li>
-          <li><i style="background:#2F63A7"></i>Cannot Lose Them</li>
-          <li><i style="background:#ABA69C"></i>Lost</li>
-        </ul>
+        <table class="rfmt" aria-label="RFM groups and their recency/frequency/monetary profile">
+          <thead><tr><th>Group</th><th>Recency</th><th>Frequency</th><th>Monetary</th></tr></thead>
+          <tbody>
+            <tr><td><i style="background:#9C4A18"></i>Champions</td><td class="hi">High</td><td class="hi">High</td><td class="hi">High</td></tr>
+            <tr><td><i style="background:#C25E1F"></i>Loyal Customers</td><td class="md">Mid</td><td class="hi">High</td><td class="hi">High</td></tr>
+            <tr><td><i style="background:#EFAD7C"></i>Potential Loyalist</td><td class="hi">High</td><td class="md">Mid</td><td class="md">Mid</td></tr>
+            <tr><td><i style="background:#CE8A66"></i>Need Attention</td><td class="md">Mid</td><td class="md">Mid</td><td class="md">Mid</td></tr>
+            <tr><td><i style="background:#B4432C"></i>At Risk</td><td class="lo">Low</td><td class="md">Mid</td><td class="hi">High</td></tr>
+            <tr><td><i style="background:#7E2A1A"></i>Cannot Lose Them</td><td class="lo">Low</td><td class="hi">High</td><td class="hi">High</td></tr>
+            <tr><td><i style="background:#ABA69C"></i>Lost</td><td class="lo">Low</td><td class="lo">Low</td><td class="lo">Low</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="rfm-key"><span>Recency — how recently they last bought</span> · <span>Frequency — how often they buy</span> · <span>Monetary — how much they spend</span></p>
       <div class="tagrow" aria-label="Status tag set">
+        <span class="tagk">Score status</span>
         <span class="tag">Active</span><span class="tag warn">Outdated</span><span class="tag warn">Expired</span><span class="tag">Closed</span>
       </div>
+      <div class="noderule"><b>The rule</b><span>A score has an age — the status tags make an outdated score visible before a campaign builds a segment on it.</span></div>
     </div>
   </div>
 

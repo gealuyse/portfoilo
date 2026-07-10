@@ -249,6 +249,7 @@ a.proj-row:hover .pr-link{text-decoration-color:var(--ink);}
 
 /* ---------- plates: evidence, re-set live ---------- */
 .plate{border:var(--line);margin-top:var(--story-md);background:var(--paper);}
+.page-case .plate + .plate{margin-top:var(--story-lg);} /* adjacent exhibits breathe as separate pieces */
 .plate-head{display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:var(--line);background:var(--panel);}
 .plate-head .pn{font:500 var(--f1)/var(--lh-base) var(--mono);letter-spacing:var(--ls-mono);text-transform:uppercase;color:var(--slate);}
 .plate-head .pd{font:400 var(--f1)/var(--lh-base) var(--sans);color:var(--sub);}
@@ -265,10 +266,6 @@ a.proj-row:hover .pr-link{text-decoration-color:var(--ink);}
 .stat .num{font:300 var(--f6)/.95 var(--serif);letter-spacing:var(--ls-display);}
 .stat .num.warn{color:var(--warn);}
 .stat .lbl{font:400 var(--f2)/var(--lh-ui) var(--sans);color:var(--sub);}
-.inv{list-style:none;columns:2;column-gap:var(--s7);margin-top:var(--s4);}
-.inv li{font:400 var(--f3)/var(--lh-base) var(--sans);color:var(--sub);padding:var(--s1) 0;border-bottom:1px solid var(--panel);break-inside:avoid;}
-.inv li b{font-weight:500;color:var(--ink);}
-@media(max-width:600px){.inv{columns:1;}}
 
 /* the voice that started the work — cool slate card */
 .req-card{background:var(--card);border-left:2px solid var(--slate);padding:var(--s5) var(--s6);max-width:600px;margin-top:var(--s6);}
@@ -316,6 +313,7 @@ a.proj-row:hover .pr-link{text-decoration-color:var(--ink);}
   .meta-line,.meta-line.three{gap:var(--s3) var(--s5);}
   .page-case .sect-label{margin:var(--story-lg) 0 var(--s3);}
   .plate{margin-top:var(--story-sm);}
+  .page-case .plate + .plate{margin-top:var(--story-md);}
   .plate-body{padding:var(--s4) var(--s3);}
   .trade{margin-top:var(--s4);}
   .page-case footer{margin-top:var(--r3);}
