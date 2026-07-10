@@ -3,247 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3BB Member App and Website — One product, three customer realities</title>
-<meta name="description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
+<title>3BB Member — Case Study · Natthapath Damrongsri</title>
+<meta name="description" content="Updating selected 3BB Member migration flows inside an inherited design file, preparing current screens for development and QA.">
 <link rel="canonical" href="https://gealuyse.github.io/portfoilo/3bb-member.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3BB Member App and Website — One product, three customer realities">
-<meta property="og:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
+<meta property="og:title" content="3BB Member — Case Study">
+<meta property="og:description" content="Updating selected 3BB Member migration flows inside an inherited design file, preparing current screens for development and QA.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/3bb-member.html">
 <meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="3BB Member App and Website — One product, three customer realities">
-<meta name="twitter:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='21' font-family='Georgia,serif' font-size='15' text-anchor='middle' fill='%231C1B1A'>ND</text></svg>">
+<meta name="twitter:title" content="3BB Member — Case Study">
+<meta name="twitter:description" content="Updating selected 3BB Member migration flows inside an inherited design file, preparing current screens for development and QA.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='24' font-family='Georgia,serif' font-size='24' text-anchor='middle' fill='%231C1B1A'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,1,400&amp;family=Inter:wght@400;500&amp;family=Caveat:wght@500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Geist:wght@400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-/* 3BB-specific plate internals. The design system here was inherited,
-   not built — so the plates are the deliverable itself: the three
-   customer states, the routing rule, the messaging set, and state
-   coverage. Brand hues (representative) appear only inside plates.
-   content: values in this block re-set the inherited 3BB design
-   language, so they stay local by design — PLAN.md §2 P4. */
-:root{--bb:#E86A1F;--ais:#6B9E2E;--bb-ink:#B34E12;--ais-ink:#4F7A1E;} /* -ink = text-safe ≥4.5:1 */
-
-/* plate 01 — the three states */
-.states{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
-@media(max-width:700px){.states{grid-template-columns:1fr;}}
-.state{border:1px solid var(--hair);display:flex;flex-direction:column;}
-.state .st-chip{display:flex;justify-content:space-between;gap:10px;padding:9px 13px;border-bottom:1px solid var(--hair);font:500 9px/1.7 var(--mono);letter-spacing:.11em;text-transform:uppercase;}
-.state.bb .st-chip{color:var(--bb-ink);border-top:3px solid var(--bb);}
-.state.ais .st-chip{color:var(--ais-ink);border-top:3px solid var(--ais);}
-.state.wait .st-chip{color:var(--slate);border-top:3px solid var(--slate);}
-.state .st-body{padding:15px 14px 16px;display:flex;flex-direction:column;flex:1;}
-.state .st-body b{font:500 13.5px/1.4 var(--sans);display:block;margin-bottom:6px;}
-.state .st-body p{font:400 12px/1.65 var(--sans);color:var(--sub);}
-.state .st-act{margin-top:auto;padding-top:14px;}
-.st-btn{display:inline-block;font:500 11px/1 var(--sans);padding:9px 13px;}
-.state.bb .st-btn{background:var(--bb);color:#fff;}
-.state.ais .st-btn{background:var(--ais);color:#fff;}
-.state.wait .st-btn{border:1px solid var(--slate);color:var(--slate);}
-.state .st-dest{display:block;font:400 9.5px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:9px;}
-
-/* plate 02 — routing rule */
-.tree{font:400 12px/1.95 var(--mono);color:var(--sub);background:var(--panel);border:1px solid var(--hair);padding:18px 20px;overflow-x:auto;}
-.tree b{font-weight:500;color:var(--ink);}
-.tree .bb{color:var(--bb-ink);}
-.tree .ais{color:var(--ais-ink);}
-.tree .sl{color:var(--slate);}
-
-/* plate 03 — messaging set */
-.msgs{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:12px;}
-@media(max-width:700px){.msgs{grid-template-columns:1fr;}}
-.banner{border:1px solid var(--hair);border-left:3px solid var(--slate);padding:12px 14px;display:flex;gap:11px;align-items:baseline;}
-.banner b{font:500 12px/1.5 var(--sans);white-space:nowrap;}
-.banner span{font:400 11.5px/1.55 var(--sans);color:var(--sub);}
-.banner+.banner{margin-top:10px;}
-.banner.b-ais{border-left-color:var(--ais);}
-.banner.b-wait{border-left-color:var(--slate);background:var(--panel);}
-.dialog{border:1px solid var(--hair);}
-.dialog .dh{padding:9px 14px;border-bottom:1px solid var(--hair);font:500 9.5px/1.6 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--sub);}
-.dialog .db{padding:16px 16px 18px;}
-.dialog .db b{display:block;font:500 13px/1.45 var(--sans);margin-bottom:6px;}
-.dialog .db p{font:400 12px/1.6 var(--sans);color:var(--sub);max-width:38ch;}
-.dialog .da{display:flex;gap:12px;align-items:center;margin-top:14px;}
-.dialog .go{display:inline-block;background:var(--ais);color:#fff;font:500 11px/1 var(--sans);padding:9px 13px;}
-.dialog .later{font:500 11px/1 var(--sans);color:var(--sub);}
-
-/* plate 04 — coverage */
-.cov{width:100%;border-collapse:collapse;}
-.cov th{font:500 9px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:left;padding:0 12px 7px 0;border-bottom:1px solid var(--ink);}
-.cov td{font:400 12px/1.6 var(--sans);color:var(--sub);padding:9px 12px 9px 0;border-bottom:1px solid var(--panel);vertical-align:baseline;}
-.cov td:first-child{font-weight:500;color:var(--ink);white-space:nowrap;}
-@media(max-width:600px){.tree{font-size:11px;line-height:1.75;padding:14px 12px;}.cov th:nth-child(3),.cov td:nth-child(3){display:none;}.cov td:first-child{white-space:normal;}}
-</style>
+<script>if(matchMedia('(prefers-reduced-motion: no-preference)').matches)document.documentElement.classList.add('js-reveal');</script>
 </head>
-<body class="page-case">
+<body>
 
-<div class="wrap">
-
+<main class="wrap-ed">
   <nav class="ed-nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Natthapath Damrongsri — home">ND</a>
+    <a class="name" href="index.html">Natthapath Damrongsri</a>
     <a class="back" href="index.html#work">← All work</a>
   </nav>
 
-  <header class="doc-head">
-    <h1 class="t-h">
-      3BB Member App and Website
-      <span class="t-sub">One product, three customer realities</span>
-    </h1>
-    <p class="t-intro">I designed the migration states for 3BB Member, a live app and web product with over a million users. During the 3BB → AIS transition, customers could still be on 3BB, already migrated, or waiting. Each group needed the right status, explanation, and next action inside the product they already knew.</p>
-    <div class="meta-line">
-      <div><b>Outcome</b>Shipped — Play Store &amp; App Store</div>
-      <div><b>Scope</b>Selected app &amp; web functions</div>
-      <div><b>Role</b>UX/UI Designer</div>
-      <div><b>Team</b>CX · PM · Dev</div>
-    </div>
-    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">1M+</span><span class="lbl">members using the live app and web product</span></div><div class="stat"><span class="num">3</span><span class="lbl">customer service states designed</span></div><div class="stat"><span class="num">2</span><span class="lbl">stores shipped the migration work</span></div></div>
-    <div class="hon"><b>Honesty note</b><span>Plates and figures are rebuilt in HTML from the working files. They are simplified, use representative brand hues, and sit inside the inherited 3BB Member language. Quotes are paraphrased. The deliverable was the states, not a new design system.</span></div>
-  </header>
-
-  <section class="glance" aria-label="The case at a glance">
-    <div><b>Challenge</b><p>A live product with over a million users, while the company behind it migrated to AIS: one home screen suddenly had to be true for three different kinds of customer at once.</p></div>
-    <div><b>Solution</b><p>One routing rule, three fully designed states — status, explanation, and next action per group — built in the app's inherited language so nothing felt like a second product.</p></div>
-    <div><b>Outcome</b><p>Shipped to Play Store and App Store. Shipping is a delivery fact, not proof the states worked — no migration-state usage data was measured.</p></div>
+  <section class="ed-title-page">
+    <span class="label">Mobile App / Migration UX</span>
+    <h1>3BB Member</h1>
+    <p class="intro">Millions of users already relied on flows they'd never had to think about, inside a design file where no one had marked which screen was current. The job was finding what was real before deciding what to change.</p>
   </section>
 
-  <span class="sect-label">Decision 01 · Route by service state</span>
-  <h2 class="statement">One product, three customer realities.</h2>
-  <p class="tp">3BB Member was live — internet services, packages, billing, account settings, <strong>over a million users on app and web</strong> — while the company itself transitioned to AIS. The work arrived as a CX requirement:</p>
-  <div class="req-card">
-    <span class="req-tag">Requirement · received from CX</span>
-    <p class="req-quote">"After migration, each customer can be in a different service state — the app has to show the right status, the right options, and the right next step, for every one of them."</p>
-    <span class="req-src">Service &amp; migration requirement, paraphrased — how work arrived on this project</span>
+  <div class="ed-stats">
+    <div class="cell"><div class="k">Outcome</div><div class="v">Live — Play Store &amp; App Store</div></div>
+    <div class="cell"><div class="k">Timeline</div><div class="v">2024 – Present</div></div>
+    <div class="cell"><div class="k">Role</div><div class="v">UX/UI Designer</div></div>
   </div>
 
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 01 — The three customer states</span><span class="pd">status + explanation + next action, per group</span></div>
-    <div class="plate-body">
-      <div class="states">
-        <div class="state bb">
-          <span class="st-chip"><span>State 1 · Still on 3BB</span><span>continue</span></span>
-          <div class="st-body">
-            <b>Your services are active with 3BB</b>
-            <p>Packages, billing, and support keep working exactly as before. Nothing changes until this account migrates.</p>
-            <div class="st-act"><span class="st-btn">Manage my services</span><span class="st-dest">destination · 3BB Member — full service</span></div>
-          </div>
-        </div>
-        <div class="state ais">
-          <span class="st-chip"><span>State 2 · Migrated to AIS</span><span>redirect</span></span>
-          <div class="st-body">
-            <b>This account has moved to AIS</b>
-            <p>Services now run on AIS. Manage packages and billing in myAIS — this app can no longer make changes for you.</p>
-            <div class="st-act"><span class="st-btn">Go to myAIS →</span><span class="st-dest">destination · myAIS / AIS website</span></div>
-          </div>
-        </div>
-        <div class="state wait">
-          <span class="st-chip"><span>State 3 · Waiting for migration</span><span>hold</span></span>
-          <div class="st-body">
-            <b>Your migration is scheduled</b>
-            <p>Services stay on 3BB until the switch completes. We'll notify you here when it's done and what changes after.</p>
-            <div class="st-act"><span class="st-btn">View migration status</span><span class="st-dest">destination · waiting state, in-app</span></div>
-          </div>
-        </div>
-      </div>
-      <p class="plate-note">Three different truths on the same home screen. The design bar: each one unmistakable at a glance.</p>
+  <figure class="ed-cover">
+    <img src="assets/projects/3bb-member/cover.png" alt="3BB Member — migration cover, 3BB to AIS, version 4.0.35.">
+  </figure>
+
+  <section class="ed-setup" data-reveal-section>
+    <p class="lead">The first problem wasn't design. It was figuring out which screen was the real one.</p>
+    <p>3BB Member already had an app — millions of users, established flows people used every day without thinking. I worked inside a shared design file holding years of flows, versions, and archived pages stacked on top of each other. Not every screen needed updating. Most didn't. But no one had clearly marked which was current.</p>
+    <p>Established flows were off-limits — members already knew the app, and disrupting routine tasks wasn't an option. Delivery was also phased: screens had to hold together mid-migration, not just in a final-state mockup.</p>
+  </section>
+
+  <section class="ed-spread" data-reveal-section>
+    <div>
+      <span class="num">01</span>
+      <h2>Map current vs. legacy before touching anything</h2>
+      <p>I separated active states from inherited content, then updated only where migration logic, service state, or implementation requirements actually changed the user's path.</p>
+      <p><span class="anno-anchor">Less visually dramatic.</span> More stable, more shippable.</p>
+      <span class="anno-mark"><span class="anno-note">right answer to a hard constraint — still uncomfortable to ship</span></span>
     </div>
-  </div>
-
-  <p class="tp">Those three states became the routing rule: stay in 3BB Member, redirect to myAIS, or hold in a waiting state.</p>
-
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 02 — The routing rule, re-set</span><span class="pd">why one destination could not fit everyone</span></div>
-    <div class="plate-body">
-      <pre class="tree" aria-label="Service-state routing logic">service_state = check(customer)
-├─ <span class="bb">still_3bb</span>       → <b>stay</b>    · 3BB Member, full service
-├─ <span class="ais">migrated_ais</span>   → <b>route</b>   · myAIS takes over
-└─ <span class="sl">waiting</span>        → <b>hold</b>    · status + what changes next</pre>
-      <div class="trade"><span class="k">Tradeoff</span><span class="v">Three routes mean three sets of screens, copy, and edge cases to maintain — but one generic message would have been wrong for two of the three groups.</span></div>
-    </div>
-  </div>
-
-  <span class="sect-label">Decision 02 · Design the states, not just the rule</span>
-  <h2 class="statement">Every state the rule creates gets designed.</h2>
-  <p class="tp">A business rule becomes a flow only when its states exist on screen. I mapped what the user needed to see at each step, then designed the flow, the screen states, and the interaction logic around it — <strong>in the app's inherited design language</strong>, so nothing felt like a second product.</p>
-
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 03 — Status &amp; messaging set</span><span class="pd">banners, redirect dialog — re-set in the inherited language</span></div>
-    <div class="plate-body">
-      <div class="msgs">
-        <div>
-          <div class="banner"><b>Service active</b><span>Your 3BB package is running normally — next bill 15 Aug.</span></div>
-          <div class="banner b-ais"><b>Account migrated</b><span>Manage services in myAIS from now on.</span></div>
-          <div class="banner b-wait"><b>Migration scheduled</b><span>No action needed — we'll notify you when it completes.</span></div>
-        </div>
-        <div class="dialog" aria-label="Redirect dialog, re-set">
-          <div class="dh">Dialog · shown once after state change</div>
-          <div class="db">
-            <b>Your services have moved to AIS</b>
-            <p>Packages and billing for this account are now managed in myAIS. Your 3BB Member history stays available to view.</p>
-            <div class="da"><span class="go">Go to myAIS →</span><span class="later">Not now</span></div>
-          </div>
-        </div>
-      </div>
-      <p class="plate-note">The dialog answers the three questions every interruption must answer: what happened, what it means for me, where I go next.</p>
-    </div>
-  </div>
-
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 04 — State coverage</span><span class="pd">the functions, and the states each one got</span></div>
-    <div class="plate-body">
-      <table class="cov">
-        <thead><tr><th>Function</th><th>The hard state</th><th>Migration variant</th></tr></thead>
-        <tbody>
-          <tr><td>Login</td><td>error states — clear copy, cause, next action</td><td>state check routes to the right home</td></tr>
-          <tr><td>Registration</td><td>condition states — who can register, and why not</td><td>migrated accounts directed to AIS</td></tr>
-          <tr><td>Billing</td><td>option states — what can be paid, where</td><td>billing ownership follows the service state</td></tr>
-          <tr><td>Package &amp; service detail</td><td>status hierarchy — active, changing, ended</td><td>right status per customer group</td></tr>
-        </tbody>
-      </table>
-      <span class="hand" aria-hidden="true">the rule was the easy part — the states were the work</span>
-    </div>
-  </div>
-
-  <span class="sect-label">The states at work</span>
-  <h2 class="statement">Built to feel like it was always part of the app.</h2>
-  <p class="tp">Where an existing pattern solved the problem, I reused it. Where it didn't quite fit a new service flow, I <strong>extended it in the same visual and interaction language</strong> — nothing asked users to relearn, and the components already existed in the codebase.</p>
-  <div class="figs one">
-    <figure class="shot">
-      <img src="assets/3bb-member/fig-1-1.png" width="1200" height="812" loading="lazy" alt="3BB Member — recreated home, package detail, and migrated-account login error screens, showing the migration states in the app's inherited language.">
-      <figcaption class="figcap"><b>Recreated</b> — home, package detail, and the migrated-account login error: the three-state rule above, translated to screens. Not a literal capture.</figcaption>
+    <figure class="ed-fig">
+      <img src="assets/projects/3bb-member/fig-2-1.png" alt="3BB Member — contribution scope: inherited context distinguished from screens selected for update.">
     </figure>
-    <figure class="shot">
-      <img src="assets/3bb-member/fig-2-1.png" width="1200" height="566" loading="lazy" alt="3BB Member — recreated scope map: existing product areas muted, the four functions selected for migration work highlighted with their variants.">
-      <figcaption class="figcap"><b>Recreated</b> — existing product vs. selected for this work: the scope split from Plate 04, redrawn as a map. Not the original working document.</figcaption>
+  </section>
+
+  <section class="ed-spread tight" data-reveal-section>
+    <figure class="ed-fig">
+      <img src="assets/projects/3bb-member/fig-1-1.png" alt="3BB Member — home, package detail, and login error state prepared as development-ready screens.">
     </figure>
-  </div>
-  <div class="dec">
-    <span class="k">How it stayed feasible</span>
-    <p>I proposed flows, walked CX, PM, and Dev through them together, and iterated until everyone agreed on the same flow and the same implementation logic — feasibility questions answered <strong>while the direction could still move</strong>, not after handoff.</p>
-  </div>
+    <div>
+      <span class="num">02</span>
+      <h2>Treat errors as first-class screens</h2>
+      <p>Login errors, registration conditions, billing options — these <span class="anno-anchor">aren't edge cases</span>. Each state got clear copy, hierarchy, and a next action that QA and dev could implement consistently.</p>
+      <span class="anno-mark"><span class="anno-note">edge cases are where users lose confidence or rebuild it</span></span>
+      <p>More screens to maintain. Fewer implementation gaps to argue about.</p>
+    </div>
+  </section>
 
-  <div class="refl">
-    <div><b>What worked</b><p>The functions that shipped cleanest were the ones where CX, PM, Dev, and I aligned on the flow and its edge cases before a screen was finished.</p></div>
-    <div><b>What I'd do earlier</b><p>Bring Dev into CX conversations by default, not as a follow-up step. The earlier feasibility entered the discussion, the fewer flows needed reworking once handoff started.</p></div>
-  </div>
+  <section class="ed-reflection" data-reveal-section>
+    <span class="k">What I'd do differently</span>
+    <p>Map the inherited-vs-contribution boundary on day one.</p>
+    <p class="body">I found it eventually — but the time spent figuring out which screen was current could have been saved with an explicit audit upfront. That clarity was worth more to the team than any single screen I delivered.</p>
+  </section>
 
-  <nav class="case-nav" aria-label="More work">
-    <a class="prev" href="cdp.html"><span class="k">Previous case</span><span class="t">← Customer Data Platform</span></a>
-    <a class="next" href="counter-service-pos.html"><span class="k">Next case</span><span class="t">Counter Service POS →</span></a>
+  <nav class="case-nav" aria-label="More work" data-reveal-section>
+    <a class="cn-prev" href="cdp.html"><span class="cn-label">Previous case</span><span class="cn-title">← Customer Data Platform</span></a>
+    <a class="cn-next" href="counter-service-pos.html"><span class="cn-label">Next case</span><span class="cn-title">Counter Service POS →</span></a>
   </nav>
-
-  <p class="case-contact">Working on something like this? <a href="mailto:natthapath.d@gmail.com">natthapath.d@gmail.com</a><span class="dot">·</span><a href="https://www.linkedin.com/in/natthapath-damrongsri-63b698299/" rel="me">LinkedIn</a></p>
-
-</div>
+</main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap-ed">
     <p class="foot">Natthapath Damrongsri · 2026</p>
   </div>
 </footer>
 
+<script src="scroll.js"></script>
 </body>
 </html>

@@ -9,12 +9,3 @@ desktop.ini
 # Jekyll build output (in case Pages is ever built locally)
 _site/
 .jekyll-cache/
-
-# local working files — not site content
-.claude/
-qa-artifacts/
-real/
-check-tokens.sh
-
-.vercel
-.env*
