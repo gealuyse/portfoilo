@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  CASE STUDY TEMPLATE — SPECIMEN LAYOUT
+  Copy this file to start a new case page. Do not link this file
+  from anywhere; it is a boilerplate, not a page.
+
+  THE MECHANISM: the work re-set live in HTML, inspectable.
+  Instead of describing artifacts (or waiting for screenshots), each
+  case rebuilds its key evidence as working "plates" — CSS renditions
+  the reader can inspect — then traces them into the real figures.
+
+  THE GRAMMAR (rules every case page follows):
+  · Page skeleton: ed-nav → doc-head (doc-id, h1, intro, meta-line,
+    honesty note) → spine → sections → reflection pair → case-nav
+  · HEADLINE CONTRACT v3: the home card headline is the project name.
+    It must match this page's h1 project-name line word for word. The
+    case h1 is a two-deck the other way round from v2: the project
+    name is the large serif line, .t-sub (small sans, below it)
+    carries the situation line. doc-id is gone — the situation line in
+    .t-sub is now the only "deeper hook" context on the page.
+    <title> and og:title = "⟨PROJECT⟩ — ⟨SITUATION LINE⟩".
+  · The spine is the whole case in N serif lines (4–6). If the spine
+    doesn't read as a story on its own, the sections won't either.
+  · A section = .sect-label + .statement (a claim, ≤ ~10 words) +
+    .tp prose + evidence (plates and/or figures). Every claim gets
+    evidence; every decision gets a .trade row.
+  · PLATES carry evidence generated from the content's own structure.
+    Adapt them honestly per case: if the system was inherited, the
+    plates are the deliverable (states, rules, coverage), not tokens.
+  · Product/brand colors are allowed ONLY inside plates — the page
+    frame stays paper and ink. Define brand hues as :root vars in the
+    page's own <style> block.
+  · The HONESTY NOTE (.hon) is mandatory whenever artifacts are
+    re-set: say what is representative, simplified, or paraphrased.
+  · The last blocks are always .refl — two tiles: "What I'd do
+    differently" + one more honest reflection.
+
+  WHERE CSS LIVES:
+  · Shared grammar (doc-head, spine, sect-label, statement, tp, plate,
+    trade, hand, stats, req-card, figs/shot/figcap, dec, refl,
+    case-nav, case-contact) → style.css, already done. Do not redefine
+    it here.
+  · Page-specific plate internals (ramps, state cards, mockups…) →
+    this page's <style> block, so one case's artifacts never leak
+    into another.
+  · DESIGN TOKENS (PLAN.md §2): chrome takes every value from :root in
+    style.css (8-step type scale: --f1...--f6 + --d3/--d1, plus
+    --s*/--r*/--lh-*/--ls-*). Plate internals that
+    re-set the PRODUCT keep local values on purpose — mark the block
+    with a "content:" comment. Never invent a new chrome px value.
+
+  RECURRING FRAGMENTS (all in style.css):
+  · .trade         — tradeoff row (k/v), one per decision
+  · .hand          — handwritten margin note (Caveat), use sparingly
+  · .stats/.stat   — big-number tiles (.num.warn for the constraint)
+  · .req-card      — the voice that started the work (quote, slate)
+  · .figs (.three) — 2- or 3-up figure grid; .shot + .figcap inside
+  · .dec           — labeled closing argument row (150px key column)
+  · .refl          — the two-tile reflection pair
+  · .meta-line     — 4-col meta grid under the intro (.three for 3)
+  · .inv           — compact 2-col inventory list
+
+  CHECKLIST BEFORE PUBLISHING:
+  · Replace every ⟨PLACEHOLDER⟩ and remove unused blocks
+  · <title>, meta description, canonical, og:* match the new story
+  · Fonts link includes IBM Plex Mono (the grammar uses --mono)
+  · Honesty note reflects what was actually re-set vs. real
+  · Figures exported clean — captions in .figcap, never baked in
+  · case-nav prev/next closes the loop with the other case pages
+  · case-contact line stays after case-nav (email + LinkedIn)
+  · Every <img> carries width/height (intrinsic px) + loading="lazy"
+  · twitter:* metas mirror og:title / og:description
+  · Add/refresh the matching project card in index.html#work
+  · Home card match: home .pr-headline = this page's h1 project-name
+    line, word for word. The situation line lives in .t-sub and metadata.
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⟨PROJECT⟩ — ⟨SITUATION LINE⟩</title>
+<meta name="description" content="⟨One-sentence description matching the intro.⟩">
+<link rel="canonical" href="https://gealuyse.github.io/portfoilo/⟨slug⟩.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="⟨PROJECT⟩ — ⟨SITUATION LINE⟩">
+<meta property="og:description" content="⟨Same as meta description.⟩">
+<meta property="og:url" content="https://gealuyse.github.io/portfoilo/⟨slug⟩.html">
+<meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="⟨PROJECT⟩ — ⟨SITUATION LINE⟩">
+<meta name="twitter:description" content="⟨Same as og:description.⟩">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='21' font-family='Georgia,serif' font-size='15' text-anchor='middle' fill='%231C1B1A'>ND</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,1,400&amp;family=Inter:wght@400;500&amp;family=Caveat:wght@500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ⟨CASE⟩-specific plate internals ONLY. Brand hues stay inside plates.
+:root{--brand:#⟨HEX⟩;}
+.myplate-thing{…}
+*/
+</style>
+</head>
+<body class="page-case">
+
+<div class="wrap">
+
+  <nav class="ed-nav" aria-label="Main">
+    <a class="brand" href="index.html" aria-label="Natthapath Damrongsri — home">ND</a>
+    <a class="back" href="index.html#work">← All work</a>
+  </nav>
+
+  <!-- doc-head: id line (sector · mechanism tag · year — don't repeat the
+       kicker's project name here), h1 = kicker (project) + situation line
+       (the deeper case hook), intro = the hook + what this page
+       does, meta, honesty note -->
+  <header class="doc-head">
+    <h1 class="t-h">
+      ⟨PROJECT⟩
+      <span class="t-sub">⟨SITUATION LINE — the deeper case hook⟩</span>
+    </h1>
+    <p class="t-intro">⟨The hook: what was hard, what the work had to do — and what this page re-sets live. Bold the <strong>load-bearing phrase</strong>.⟩</p>
+    <div class="meta-line"><!-- add class="three" for 3 columns -->
+      <div><b>Outcome</b>⟨Shipped / approved spec / …⟩</div>
+      <div><b>Timeline</b>⟨N months · year⟩</div>
+      <div><b>Role</b>⟨Role — focus areas⟩</div>
+      <div><b>Platform</b>⟨Web / app / terminal · sizes⟩</div>
+    </div>
+    <div class="hon"><b>Honesty note</b><span>⟨What is re-set vs. real: representative values, simplified mockups, paraphrased quotes — name it plainly.⟩</span></div>
+  </header>
+
+  <!-- at a glance: challenge / solution / outcome. Claim rules:
+       no unverifiable team/user behavior, no universal predictions
+       (state the mechanism), outcome = delivery fact stated plainly
+       ("shipped" is not proof the design worked) -->
+  <section class="glance" aria-label="The case at a glance">
+    <div><b>Challenge</b><p>⟨The condition that made this hard — scale, constraint, or conflict. Mechanism, not drama.⟩</p></div>
+    <div><b>Solution</b><p>⟨What was designed, at the rule level — the approach, not a feature list.⟩</p></div>
+    <div><b>Outcome</b><p>⟨Delivery fact + what is not claimed: "no usage data yet" said plainly beats implying results.⟩</p></div>
+  </section>
+
+  <!-- optional: solution preview — show the answer early. One figure,
+       caption leads with "Recreated" if it's a re-set, not a capture -->
+  <!--
+  <span class="sect-label">The work, first</span>
+  <h2 class="statement">⟨Where the work lands.⟩</h2>
+  <p class="tp">⟨One sentence tying the figure to the system below.⟩</p>
+  <div class="figs one">
+    <figure class="shot">
+      <img src="assets/⟨case⟩/⟨fig⟩.png" width="⟨w⟩" height="⟨h⟩" loading="lazy" alt="⟨alt⟩">
+      <figcaption class="figcap"><b>Recreated</b> — ⟨what it shows⟩. Not a literal capture.</figcaption>
+    </figure>
+  </div>
+  -->
+
+  <!-- SECTION: sect-label + statement + prose, then evidence.
+       Label = the decision, not the artifact ("Decision 01 · ⟨verb phrase⟩",
+       not "Plates 01–02 · group name") -->
+  <span class="sect-label">⟨Decision 01 · verb phrase⟩</span>
+  <h2 class="statement">⟨The claim this section proves.⟩</h2>
+  <p class="tp">⟨Context and the decision, tightly. Every claim here must be backed by the plate below.⟩</p>
+
+  <!-- optional: the voice that started the work
+  <div class="req-card">
+    <span class="req-tag">Requirement · received from ⟨CX/PM/…⟩</span>
+    <p class="req-quote">"⟨The ask, paraphrased.⟩"</p>
+    <span class="req-src">⟨Source line — how work arrived⟩</span>
+  </div> -->
+
+  <div class="plate">
+    <div class="plate-head"><span class="pn">Plate 01 — ⟨Artifact name⟩</span><span class="pd">⟨what it covers, in one clause⟩</span></div>
+    <div class="plate-body">
+      <!-- page-specific artifact markup, styled in this page's <style> -->
+      <p class="plate-note">⟨One line: what the reader should notice in this plate.⟩</p>
+    </div>
+  </div>
+  <div class="trade"><span class="k">Tradeoff</span><span class="v">⟨What this decision cost, honestly.⟩</span></div>
+
+  <!-- SECTION: the work at work — real figures close the argument -->
+  <span class="sect-label">The ⟨system/states/levers⟩ at work</span>
+  <h2 class="statement">⟨Closing claim — plates don't ship, screens do.⟩</h2>
+  <p class="tp">⟨How the plates landed in the real screens.⟩</p>
+  <div class="figs"><!-- add class="three" for 3-up -->
+    <figure class="shot">
+      <img src="assets/⟨slug⟩/fig-1.png" width="⟨W⟩" height="⟨H⟩" loading="lazy" alt="⟨What the figure shows.⟩">
+      <figcaption class="figcap"><b>Fig. 1</b> — ⟨What to look at, and why it matters.⟩</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/⟨slug⟩/fig-2.png" width="⟨W⟩" height="⟨H⟩" loading="lazy" alt="⟨What the figure shows.⟩">
+      <figcaption class="figcap"><b>Fig. 2</b> — ⟨Caption.⟩</figcaption>
+    </figure>
+  </div>
+  <span class="hand" aria-hidden="true">⟨short insight in your own voice — use at most twice per page⟩</span>
+
+  <div class="refl">
+    <div><b>What I'd do differently</b><p>⟨The honest one: the risk or gap you'd address first next time.⟩</p></div>
+    <div><b>And next time</b><p>⟨The second reflection — usually about measuring instead of assuming.⟩</p></div>
+  </div>
+
+  <!-- prev/next must close the loop across all case pages -->
+  <nav class="case-nav" aria-label="More work">
+    <a class="prev" href="⟨prev-case⟩.html"><span class="k">Previous case</span><span class="t">← ⟨Prev case name⟩</span></a>
+    <a class="next" href="⟨next-case⟩.html"><span class="k">Next case</span><span class="t">⟨Next case name⟩ →</span></a>
+  </nav>
+
+  <p class="case-contact">Working on something like this? <a href="mailto:natthapath.d@gmail.com">natthapath.d@gmail.com</a><span class="dot">·</span><a href="https://www.linkedin.com/in/natthapath-damrongsri-63b698299/" rel="me">LinkedIn</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="foot">Natthapath Damrongsri · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

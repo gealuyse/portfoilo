@@ -3,29 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Counter Service POS · Natthapath Damrongsri</title>
+<title>Counter Service POS — A redesign that had to feel like no change at all</title>
 <meta name="description" content="Counter Service POS — three levers, zero moves. Clearer hierarchy through spacing, grouping, and contrast, without moving anything a cashier's hands already know.">
 <link rel="canonical" href="https://gealuyse.github.io/portfoilo/counter-service-pos.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Counter Service POS">
+<meta property="og:title" content="Counter Service POS — A redesign that had to feel like no change at all">
 <meta property="og:description" content="Three levers, zero moves — clearer hierarchy through spacing, grouping, and contrast, without moving anything a cashier's hands already know.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/counter-service-pos.html">
 <meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='24' font-family='Georgia,serif' font-size='24' text-anchor='middle' fill='%231C1B1A'>N</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Counter Service POS — A redesign that had to feel like no change at all">
+<meta name="twitter:description" content="Three levers, zero moves — clearer hierarchy through spacing, grouping, and contrast, without moving anything a cashier's hands already know.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='21' font-family='Georgia,serif' font-size='15' text-anchor='middle' fill='%231C1B1A'>ND</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,0,500;6..72,1,300;6..72,1,400&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,1,400&amp;family=Inter:wght@400;500&amp;family=Caveat:wght@500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
 /* POS-specific plate internals. Nothing new was built and nothing
    moved — the only levers were spacing, grouping, and contrast. So the
    center plate renders the same panel twice with identical geometry.
    Neutrals only: the whole argument works without brand color, which
-   is itself the point. */
+   is itself the point.
+   content: values in this block ARE the demonstration (tight vs calm
+   spacing is the argument), so they stay local — PLAN.md §2 P4. */
 
 /* plate 01 — locked vs adjustable */
 .ledger{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);}
-@media(max-width:640px){.ledger{grid-template-columns:1fr;}}
+@media(max-width:600px){.ledger{grid-template-columns:1fr;}}
 .ledger>div{background:var(--paper);padding:16px 18px;}
 .ledger .lk{background:var(--panel);}
 .ledger h3{font:500 10px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
@@ -38,7 +43,7 @@
 
 /* plate 02 — same geometry, twice */
 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
-@media(max-width:760px){.pair{grid-template-columns:1fr;}}
+@media(max-width:700px){.pair{grid-template-columns:1fr;}}
 .pv{border:1px solid var(--hair);}
 .pv .pv-tag{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid var(--hair);font:500 9px/1.7 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--sub);}
 .pv .pv-tag .warm{color:var(--warn);}
@@ -73,7 +78,7 @@
 .zone.keys-z{background:var(--panel);}
 .prof .pl{display:block;font:500 9.5px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-top:8px;}
 .prof .ps{display:block;font:400 11px/1.5 var(--sans);color:var(--faint);margin-top:2px;max-width:30ch;}
-@media(max-width:640px){.prof .frame{height:130px;}}
+@media(max-width:600px){.prof .frame{height:130px;}}
 </style>
 </head>
 <body class="page-case">
@@ -81,39 +86,44 @@
 <div class="wrap">
 
   <nav class="ed-nav" aria-label="Main">
-    <a class="name" href="index.html">Natthapath Damrongsri</a>
+    <a class="brand" href="index.html" aria-label="Natthapath Damrongsri — home">ND</a>
     <a class="back" href="index.html#work">← All work</a>
   </nav>
 
   <header class="doc-head">
-    <div class="doc-id">
-      <span>Operational UX · POS</span>
-      <span class="dim">the levers, demonstrated</span>
-      <span class="dim">Approved spec · 2023</span>
-    </div>
-    <h1 class="t-h">Counter Service POS — three levers, zero moves</h1>
-    <p class="t-intro">Cashiers process hundreds of transactions per shift on muscle memory — the positions their hands already know. The screen had to get clearer without making any of that wrong. Only three levers were available: <strong>spacing, grouping, and contrast</strong>. This page pulls them in front of you.</p>
+    <h1 class="t-h">
+      Counter Service POS
+      <span class="t-sub">A redesign that had to feel like no change at all</span>
+    </h1>
+    <p class="t-intro">I redesigned Counter Service POS screens under a strict constraint: the controls could not move. Cashiers process transactions through muscle memory, so the screen had to become clearer without making trained behavior wrong. Only three levers were available: <strong>spacing, grouping, and contrast</strong>.</p>
     <div class="meta-line three">
       <div><b>Outcome</b>Approved spec · 800×600 and 1920×1080</div>
       <div><b>Timeline</b>2023</div>
       <div><b>Role</b>UX/UI Designer</div>
     </div>
-    <div class="hon"><b>Honesty note</b><span>The panel mockups below are simplified re-sets in HTML, not the actual POS screens — built to demonstrate the levers, with proportions and rules from the approved spec. The real screens are in the figures further down.</span></div>
+    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">2</span><span class="lbl">screen profiles: 800×600 and 1920×1080</span></div><div class="stat"><span class="num">0</span><span class="lbl">controls moved, preserving cashier muscle memory</span></div><div class="stat"><span class="num">3</span><span class="lbl">levers: spacing, grouping, contrast</span></div></div>
+    <div class="hon"><b>Honesty note</b><span>The panel mockups below are simplified HTML rebuilds, not the actual POS screens. They demonstrate the levers with proportions and rules from the approved spec. The real screens are in the figures further down.</span></div>
   </header>
 
-  <nav class="spine" aria-label="Story spine">
-    <span class="spine-label">The whole case, in four lines</span>
-    <ol>
-      <li>Everything was locked except spacing, hierarchy, and contrast.</li>
-      <li>Improve hierarchy without moving the controls.</li>
-      <li>Build layout rules for two screen realities.</li>
-      <li>This project needs proof.</li>
-    </ol>
-  </nav>
+  <section class="glance" aria-label="The case at a glance">
+    <div><b>Challenge</b><p>Cashiers run this screen on muscle memory. Everything that would normally be redesigned — positions, flow, sizes, brand — was locked.</p></div>
+    <div><b>Solution</b><p>Three levers only: spacing, grouping, contrast. Same geometry, clearer hierarchy — nothing a trained hand knows becomes wrong.</p></div>
+    <div><b>Outcome</b><p>Approved spec for both 800×600 and 1920×1080 terminals. Never measured in the field — the reflection below says exactly what test that would take.</p></div>
+  </section>
+
+  <span class="sect-label">The spec, first</span>
+  <h2 class="statement">Where the levers land.</h2>
+  <p class="tp">The wide-screen proposal from the approved spec — order panel, product grid, payment actions, grouped without moving anything. The rest of this page is why it looks this way.</p>
+  <div class="figs one">
+    <figure class="shot">
+      <img src="assets/counter-service-pos/screen_proof.png" width="1920" height="1080" loading="lazy" alt="Counter Service POS wide-screen proposal — order panel, product grid, payment actions, grouped controls.">
+      <figcaption class="figcap"><b>Fig. 1</b> — The wide-screen proposal: order panel, product grid, payment actions — grouped, not moved.</figcaption>
+    </figure>
+  </div>
 
   <span class="sect-label">Plate 01 · The constraint</span>
   <h2 class="statement">Everything was locked except spacing, hierarchy, and contrast.</h2>
-  <p class="tp">The flow was fixed. The buttons were fixed. The brand was fixed — and cashiers had muscle memory built around all of it. Any change that forces relearning costs the operator real money in slower transactions. The asymmetry of this table <strong>is</strong> the brief:</p>
+  <p class="tp">The flow was fixed. The buttons were fixed. The brand was fixed — and cashiers had muscle memory built around all of it. Any change that forces relearning risks slower transactions — real money for the operator. The asymmetry of this table <strong>is</strong> the brief:</p>
 
   <div class="plate">
     <div class="plate-head"><span class="pn">Plate 01 — Locked vs. adjustable</span><span class="pd">the inventory that shaped every decision</span></div>
@@ -152,7 +162,7 @@
       <div class="pair">
         <div class="pv">
           <div class="pv-tag"><span>A · As found</span><span class="warm">everything equal, nothing grouped</span></div>
-          <div class="pos tight" aria-label="Simplified panel, before: uniform boxes, tight gaps, no grouping">
+          <div class="pos tight" role="img" aria-label="Simplified panel, before: uniform boxes, tight gaps, no grouping">
             <div class="ord">
               <div class="orow"><span>Water bill — MWA</span><span>485.00</span></div>
               <div class="orow"><span>Electricity — MEA</span><span>1,240.50</span></div>
@@ -169,7 +179,7 @@
         </div>
         <div class="pv">
           <div class="pv-tag"><span>B · Proposed</span><span>same geometry, readable zones</span></div>
-          <div class="pos calm" aria-label="Simplified panel, after: same positions, zones separated, contrast placed">
+          <div class="pos calm" role="img" aria-label="Simplified panel, after: same positions, zones separated, contrast placed">
             <div class="ord">
               <div class="orow"><span>Water bill — MWA</span><span>485.00</span></div>
               <div class="orow"><span>Electricity — MEA</span><span>1,240.50</span></div>
@@ -192,7 +202,7 @@
 
   <span class="sect-label">Plate 03 · The hardware</span>
   <h2 class="statement">Build layout rules for two screen realities.</h2>
-  <p class="tp">The same system had to hold on legacy 800×600 terminals and 1920×1080 displays — both live in the field. Two layout profiles, one set of rules: the compact profile prioritizes essential metadata; the wide profile gains room <strong>without simply enlarging everything</strong>.</p>
+  <p class="tp">The same system had to work across legacy 800×600 terminals and 1920×1080 displays — both live in the field. Two layout profiles, one set of rules: the compact profile prioritizes essential metadata; the wide profile gains room <strong>without simply enlarging everything</strong>.</p>
 
   <div class="plate">
     <div class="plate-head"><span class="pn">Plate 03 — Two screen profiles</span><span class="pd">zone maps to scale · 4:3 and 16:9</span></div>
@@ -221,14 +231,11 @@
   </div>
 
   <span class="sect-label">The levers at work</span>
-  <h2 class="statement">The real screens, specified.</h2>
-  <div class="figs">
+  <h2 class="statement">The legacy profile, specified.</h2>
+  <p class="tp">The same three levers, holding on the smallest hardware in the field — the 800×600 profile from the approved spec.</p>
+  <div class="figs one">
     <figure class="shot">
-      <img src="assets/counter-service-pos/screen_proof.png" alt="Counter Service POS wide-screen proposal — order panel, product grid, payment actions, grouped controls.">
-      <figcaption class="figcap"><b>Fig. 1</b> — The wide-screen proposal: order panel, product grid, payment actions — grouped, not moved.</figcaption>
-    </figure>
-    <figure class="shot">
-      <img src="assets/counter-service-pos/fig-2-1.png" alt="Counter Service POS legacy 800×600 — compact profile with essential metadata and tighter rows.">
+      <img src="assets/counter-service-pos/fig-2-1.png" width="800" height="600" loading="lazy" alt="Counter Service POS legacy 800×600 — compact profile with essential metadata and tighter rows.">
       <figcaption class="figcap"><b>Fig. 2</b> — The legacy 800×600 profile: essential metadata, tighter rows, nothing relearned.</figcaption>
     </figure>
   </div>
@@ -243,11 +250,15 @@
     <a class="next" href="index.html#work"><span class="k">Index</span><span class="t">All work →</span></a>
   </nav>
 
-  <footer>
-    <p class="foot">Natthapath Damrongsri · 2026</p>
-  </footer>
+  <p class="case-contact">Working on something like this? <a href="mailto:natthapath.d@gmail.com">natthapath.d@gmail.com</a><span class="dot">·</span><a href="https://www.linkedin.com/in/natthapath-damrongsri-63b698299/" rel="me">LinkedIn</a></p>
 
 </div>
+
+<footer>
+  <div class="wrap">
+    <p class="foot">Natthapath Damrongsri · 2026</p>
+  </div>
+</footer>
 
 </body>
 </html>

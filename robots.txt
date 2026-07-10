@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gealuyse.github.io/portfoilo/sitemap.xml

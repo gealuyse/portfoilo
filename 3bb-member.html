@@ -3,33 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3BB Member App and Website · Natthapath Damrongsri</title>
-<meta name="description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for customers still on 3BB, migrated to AIS, or waiting.">
+<title>3BB Member App and Website — One product, three customer realities</title>
+<meta name="description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
 <link rel="canonical" href="https://gealuyse.github.io/portfoilo/3bb-member.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3BB Member App and Website">
+<meta property="og:title" content="3BB Member App and Website — One product, three customer realities">
 <meta property="og:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/3bb-member.html">
 <meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='24' font-family='Georgia,serif' font-size='24' text-anchor='middle' fill='%231C1B1A'>N</text></svg>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3BB Member App and Website — One product, three customer realities">
+<meta name="twitter:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='21' font-family='Georgia,serif' font-size='15' text-anchor='middle' fill='%231C1B1A'>ND</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,0,500;6..72,1,300;6..72,1,400&amp;family=Inter:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,300;6..72,0,400;6..72,1,400&amp;family=Inter:wght@400;500&amp;family=Caveat:wght@500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
 /* 3BB-specific plate internals. The design system here was inherited,
    not built — so the plates are the deliverable itself: the three
    customer states, the routing rule, the messaging set, and state
-   coverage. Brand hues (representative) appear only inside plates. */
-:root{--bb:#E86A1F;--ais:#6B9E2E;}
+   coverage. Brand hues (representative) appear only inside plates.
+   content: values in this block re-set the inherited 3BB design
+   language, so they stay local by design — PLAN.md §2 P4. */
+:root{--bb:#E86A1F;--ais:#6B9E2E;--bb-ink:#B34E12;--ais-ink:#4F7A1E;} /* -ink = text-safe ≥4.5:1 */
 
 /* plate 01 — the three states */
 .states{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
-@media(max-width:760px){.states{grid-template-columns:1fr;}}
+@media(max-width:700px){.states{grid-template-columns:1fr;}}
 .state{border:1px solid var(--hair);display:flex;flex-direction:column;}
 .state .st-chip{display:flex;justify-content:space-between;gap:10px;padding:9px 13px;border-bottom:1px solid var(--hair);font:500 9px/1.7 var(--mono);letter-spacing:.11em;text-transform:uppercase;}
-.state.bb .st-chip{color:var(--bb);border-top:3px solid var(--bb);}
-.state.ais .st-chip{color:var(--ais);border-top:3px solid var(--ais);}
+.state.bb .st-chip{color:var(--bb-ink);border-top:3px solid var(--bb);}
+.state.ais .st-chip{color:var(--ais-ink);border-top:3px solid var(--ais);}
 .state.wait .st-chip{color:var(--slate);border-top:3px solid var(--slate);}
 .state .st-body{padding:15px 14px 16px;display:flex;flex-direction:column;flex:1;}
 .state .st-body b{font:500 13.5px/1.4 var(--sans);display:block;margin-bottom:6px;}
@@ -44,8 +49,8 @@
 /* plate 02 — routing rule */
 .tree{font:400 12px/1.95 var(--mono);color:var(--sub);background:var(--panel);border:1px solid var(--hair);padding:18px 20px;overflow-x:auto;}
 .tree b{font-weight:500;color:var(--ink);}
-.tree .bb{color:var(--bb);}
-.tree .ais{color:var(--ais);}
+.tree .bb{color:var(--bb-ink);}
+.tree .ais{color:var(--ais-ink);}
 .tree .sl{color:var(--slate);}
 
 /* plate 03 — messaging set */
@@ -71,7 +76,7 @@
 .cov th{font:500 9px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:left;padding:0 12px 7px 0;border-bottom:1px solid var(--ink);}
 .cov td{font:400 12px/1.6 var(--sans);color:var(--sub);padding:9px 12px 9px 0;border-bottom:1px solid var(--panel);vertical-align:baseline;}
 .cov td:first-child{font-weight:500;color:var(--ink);white-space:nowrap;}
-@media(max-width:640px){.cov th:nth-child(3),.cov td:nth-child(3){display:none;}}
+@media(max-width:600px){.tree{font-size:11px;line-height:1.75;padding:14px 12px;}.cov th:nth-child(3),.cov td:nth-child(3){display:none;}.cov td:first-child{white-space:normal;}}
 </style>
 </head>
 <body class="page-case">
@@ -79,41 +84,35 @@
 <div class="wrap">
 
   <nav class="ed-nav" aria-label="Main">
-    <a class="name" href="index.html">Natthapath Damrongsri</a>
+    <a class="brand" href="index.html" aria-label="Natthapath Damrongsri — home">ND</a>
     <a class="back" href="index.html#work">← All work</a>
   </nav>
 
   <header class="doc-head">
-    <div class="doc-id">
-      <span>Mobile App &amp; Web · Product Functions</span>
-      <span class="dim">the migration, shown state by state</span>
-      <span class="dim">3BB → AIS · 2024</span>
-    </div>
-    <h1 class="t-h">3BB Member — one product, three customer realities</h1>
-    <p class="t-intro">During the 3BB → AIS transition, customers were not all in the same state at the same time: some still on 3BB services, some already migrated to AIS, some waiting. The app couldn't send everyone to the same destination or show everyone the same message — <strong>each group needed the right status, the right explanation, and the right next action</strong>. This page re-sets that logic live, plate by plate.</p>
+    <h1 class="t-h">
+      3BB Member App and Website
+      <span class="t-sub">One product, three customer realities</span>
+    </h1>
+    <p class="t-intro">I designed the migration states for 3BB Member, a live app and web product with over a million users. During the 3BB → AIS transition, customers could still be on 3BB, already migrated, or waiting. Each group needed the right status, explanation, and next action inside the product they already knew.</p>
     <div class="meta-line">
       <div><b>Outcome</b>Shipped — Play Store &amp; App Store</div>
       <div><b>Scope</b>Selected app &amp; web functions</div>
       <div><b>Role</b>UX/UI Designer</div>
       <div><b>Team</b>CX · PM · Dev</div>
     </div>
-    <div class="hon"><b>Honesty note</b><span>Plates are re-set in HTML from the working files — simplified, with representative brand hues, inside the inherited 3BB Member design language. Quotes are paraphrased. The design system itself was inherited, not built; the deliverable was the states.</span></div>
+    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">1M+</span><span class="lbl">members using the live app and web product</span></div><div class="stat"><span class="num">3</span><span class="lbl">customer service states designed</span></div><div class="stat"><span class="num">2</span><span class="lbl">stores shipped the migration work</span></div></div>
+    <div class="hon"><b>Honesty note</b><span>Plates are rebuilt in HTML from the working files. They are simplified, use representative brand hues, and sit inside the inherited 3BB Member language. Quotes are paraphrased. The deliverable was the states, not a new design system.</span></div>
   </header>
 
-  <nav class="spine" aria-label="Story spine">
-    <span class="spine-label">The whole case, in five lines</span>
-    <ol>
-      <li>A live product, millions of users — extend it, don't redesign it.</li>
-      <li>One product, three customer realities.</li>
-      <li>Every state the rule creates gets designed.</li>
-      <li>Extend the system's language — don't invent a new one.</li>
-      <li>Feasibility got decided in the room.</li>
-    </ol>
-  </nav>
+  <section class="glance" aria-label="The case at a glance">
+    <div><b>Challenge</b><p>A live product with over a million users, while the company behind it migrated to AIS: one home screen suddenly had to be true for three different kinds of customer at once.</p></div>
+    <div><b>Solution</b><p>One routing rule, three fully designed states — status, explanation, and next action per group — built in the app's inherited language so nothing felt like a second product.</p></div>
+    <div><b>Outcome</b><p>Shipped to Play Store and App Store. Shipping is a delivery fact, not proof the states worked — no migration-state usage data was measured.</p></div>
+  </section>
 
-  <span class="sect-label">Plates 01–02 · The rule</span>
+  <span class="sect-label">Decision 01 · Route by service state</span>
   <h2 class="statement">One product, three customer realities.</h2>
-  <p class="tp">3BB Member was live — internet services, packages, billing, account settings, <strong>millions of users on app and web</strong> — while the company itself transitioned to AIS. The work arrived as a CX requirement:</p>
+  <p class="tp">3BB Member was live — internet services, packages, billing, account settings, <strong>over a million users on app and web</strong> — while the company itself transitioned to AIS. The work arrived as a CX requirement:</p>
   <div class="req-card">
     <span class="req-tag">Requirement · received from CX</span>
     <p class="req-quote">"After migration, each customer can be in a different service state — the app has to show the right status, the right options, and the right next step, for every one of them."</p>
@@ -149,7 +148,7 @@
           </div>
         </div>
       </div>
-      <p class="plate-note">Three different truths on the same home screen. The design work was making each one unmistakable — and impossible to confuse with the other two.</p>
+      <p class="plate-note">Three different truths on the same home screen. The design bar: each one unmistakable at a glance.</p>
     </div>
   </div>
 
@@ -157,14 +156,14 @@
     <div class="plate-head"><span class="pn">Plate 02 — The routing rule, re-set</span><span class="pd">why one destination could not fit everyone</span></div>
     <div class="plate-body">
       <pre class="tree" aria-label="Service-state routing logic">service_state = check(customer)
-├─ <span class="bb">still_3bb</span>       → <b>stay</b>    · 3BB Member — full service continues
-├─ <span class="ais">migrated_ais</span>   → <b>route</b>   · myAIS / AIS website takes over
-└─ <span class="sl">waiting</span>        → <b>hold</b>    · status, timeline, what changes next</pre>
-      <div class="trade"><span class="k">Tradeoff</span><span class="v">Three routes means three sets of screens, copy, and edge cases to maintain — but one generic message would have been wrong for two of the three groups.</span></div>
+├─ <span class="bb">still_3bb</span>       → <b>stay</b>    · 3BB Member, full service
+├─ <span class="ais">migrated_ais</span>   → <b>route</b>   · myAIS takes over
+└─ <span class="sl">waiting</span>        → <b>hold</b>    · status + what changes next</pre>
+      <div class="trade"><span class="k">Tradeoff</span><span class="v">Three routes mean three sets of screens, copy, and edge cases to maintain — but one generic message would have been wrong for two of the three groups.</span></div>
     </div>
   </div>
 
-  <span class="sect-label">Plates 03–04 · The states</span>
+  <span class="sect-label">Decision 02 · Design the states, not just the rule</span>
   <h2 class="statement">Every state the rule creates gets designed.</h2>
   <p class="tp">A business rule becomes a flow only when its states exist on screen. I mapped what the user needed to see at each step, then designed the flow, the screen states, and the interaction logic around it — <strong>in the app's inherited design language</strong>, so nothing felt like a second product.</p>
 
@@ -186,7 +185,7 @@
           </div>
         </div>
       </div>
-      <p class="plate-note">The dialog answers the three questions every interruption must: what happened, what it means for me, where I go next.</p>
+      <p class="plate-note">The dialog answers the three questions every interruption must answer: what happened, what it means for me, where I go next.</p>
     </div>
   </div>
 
@@ -208,14 +207,14 @@
 
   <span class="sect-label">The states at work</span>
   <h2 class="statement">Built to feel like it was always part of the app.</h2>
-  <p class="tp">Where an existing pattern solved the problem, I reused it. Where it didn't quite fit a new service flow, I <strong>extended it in the same visual and interaction language</strong> — users relearned nothing, and Dev built against components that already existed in the codebase.</p>
+  <p class="tp">Where an existing pattern solved the problem, I reused it. Where it didn't quite fit a new service flow, I <strong>extended it in the same visual and interaction language</strong> — nothing asked users to relearn, and the components already existed in the codebase.</p>
   <div class="figs">
     <figure class="shot">
-      <img src="assets/3bb-member/fig-1-1.png" alt="3BB Member — home, package detail, and login error state designed as development-ready screens.">
+      <img src="assets/3bb-member/fig-1-1.png" width="1491" height="1055" loading="lazy" alt="3BB Member — home, package detail, and login error state designed as development-ready screens.">
       <figcaption class="figcap"><b>Fig. 1</b> — Home, package detail, and login error state: the rule above, translated into screens ready for build.</figcaption>
     </figure>
     <figure class="shot">
-      <img src="assets/3bb-member/fig-2-1.png" alt="3BB Member — scope map distinguishing existing product context from the functions and screens selected for this work.">
+      <img src="assets/3bb-member/fig-2-1.png" width="1491" height="1055" loading="lazy" alt="3BB Member — scope map distinguishing existing product context from the functions and screens selected for this work.">
       <figcaption class="figcap"><b>Fig. 2</b> — Existing vs. newly designed: the scope reference CX, PM, and Dev worked from during implementation.</figcaption>
     </figure>
   </div>
@@ -225,7 +224,7 @@
   </div>
 
   <div class="refl">
-    <div><b>What worked</b><p>The functions that shipped cleanest were the ones where CX, PM, Dev, and I aligned on the flow and its edge cases before a screen was finished. Nobody had to explain those twice.</p></div>
+    <div><b>What worked</b><p>The functions that shipped cleanest were the ones where CX, PM, Dev, and I aligned on the flow and its edge cases before a screen was finished.</p></div>
     <div><b>What I'd do earlier</b><p>Bring Dev into CX conversations by default, not as a follow-up step. The earlier feasibility entered the discussion, the fewer flows needed reworking once handoff started.</p></div>
   </div>
 
@@ -234,11 +233,15 @@
     <a class="next" href="counter-service-pos.html"><span class="k">Next case</span><span class="t">Counter Service POS →</span></a>
   </nav>
 
-  <footer>
-    <p class="foot">Natthapath Damrongsri · 2026</p>
-  </footer>
+  <p class="case-contact">Working on something like this? <a href="mailto:natthapath.d@gmail.com">natthapath.d@gmail.com</a><span class="dot">·</span><a href="https://www.linkedin.com/in/natthapath-damrongsri-63b698299/" rel="me">LinkedIn</a></p>
 
 </div>
+
+<footer>
+  <div class="wrap">
+    <p class="foot">Natthapath Damrongsri · 2026</p>
+  </div>
+</footer>
 
 </body>
 </html>
