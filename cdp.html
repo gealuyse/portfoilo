@@ -8,12 +8,13 @@
 <link rel="canonical" href="https://gealuyse.github.io/portfoilo/cdp.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Customer Data Platform — An existing product that had to become legible">
-<meta property="og:description" content="An existing product made legible — concrete pains, the rules that answered them, and a design system carried through to dev, with the evidence re-set live on the page.">
+<meta property="og:description" content="Joining a CDP mid-build to make it legible — for the team building it and the marketers it's for. The design system was the tool, not the point; the evidence is re-set live on the page.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/cdp.html">
-<meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
+<meta property="og:image" content="https://gealuyse.github.io/portfoilo/assets/cdp/og.jpg">
+<meta property="og:image:alt" content="Customer Data Platform case study by Natthapath Damrongsri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Customer Data Platform — An existing product that had to become legible">
-<meta name="twitter:description" content="An existing product made legible — concrete pains, the rules that answered them, and a design system carried through to dev, with the evidence re-set live on the page.">
+<meta name="twitter:description" content="Joining a CDP mid-build to make it legible — for the team building it and the marketers it's for. The design system was the tool, not the point; the evidence is re-set live on the page.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FCFBF9'/><text x='16' y='21' font-family='Georgia,serif' font-size='15' text-anchor='middle' fill='%231C1B1A'>ND</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -34,51 +35,22 @@
 .sit h3{font:500 10px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
 .sit p{font:400 var(--f3)/var(--lh-base) var(--sans);color:var(--sub);}
 
-/* plate 01 — color ramps */
-.ramp-name{font:500 9.5px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--faint);display:block;margin:14px 0 6px;}
-.ramp-name:first-child{margin-top:0;}
-.ramp{display:flex;gap:2px;}
-.sw{flex:1;height:32px;position:relative;border:1px solid rgba(28,27,26,.07);}
-.sw.pri::after{content:'▲ primary';position:absolute;left:50%;transform:translateX(-50%);top:36px;font:500 8px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap;}
-.ramp.tall{margin-bottom:18px;}
-.ramp-ends{display:flex;justify-content:space-between;font:400 9px/1 var(--mono);color:var(--faint);margin-top:4px;}
-
-/* plate 02 — type scale */
-.trow{display:flex;align-items:baseline;gap:20px;padding:11px 0;border-top:1px solid var(--panel);}
-.trow:first-child{border-top:none;}
-.trow .tn{font:500 9.5px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sub);width:96px;flex:none;}
-.trow .ts{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
-.trow .tz{font:400 9px/1.6 var(--mono);color:var(--faint);margin-left:auto;white-space:nowrap;}
-.t-display{font:300 42px/1.05 var(--sans);letter-spacing:-.02em;}
-.t-headline{font:400 29px/1.15 var(--sans);letter-spacing:-.015em;}
-.t-title{font:500 20px/1.25 var(--sans);letter-spacing:-.008em;}
-.t-label{font:500 12.5px/1.4 var(--sans);letter-spacing:.05em;text-transform:uppercase;}
-.t-body{font:400 15px/1.5 var(--sans);}
-.t-caption{font:400 11.5px/1.5 var(--sans);color:var(--sub);}
-
-/* plate 03 — buttons */
-.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 10px;}
-.bcell b{display:block;font:500 8.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
-.btn{display:inline-block;font:500 12px/1 var(--sans);padding:10px 16px;white-space:nowrap;}
+/* plate 01 — the foundation, compressed into one scan */
+.foundation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--hair);}
+.foundation-set{background:var(--paper);padding:16px;min-width:0;}
+.foundation-set h3{font:500 9px/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--slate);margin-bottom:12px;}
+.foundation-set p{font:400 11px/1.55 var(--sans);color:var(--faint);margin-top:10px;}
+.foundation-ramp{display:flex;gap:2px;}
+.foundation-ramp i{display:block;flex:1;height:32px;border:1px solid rgba(28,27,26,.07);}
+.foundation-type{display:grid;gap:8px;}
+.foundation-type span{display:flex;justify-content:space-between;gap:8px;align-items:baseline;border-bottom:1px solid var(--panel);padding-bottom:6px;font:400 13px/1.3 var(--sans);}
+.foundation-type small{font:400 8.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
+.foundation-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.btn{display:inline-block;font:500 11px/1 var(--sans);padding:9px 11px;white-space:nowrap;}
 .b-filled{background:var(--o4);color:#fff;}
 .b-outlined{border:1px solid var(--o4);color:var(--o5);}
 .b-ghost{color:var(--o5);background:rgba(228,118,47,.08);}
-.b-link{color:var(--o5);text-decoration:underline;text-underline-offset:3px;padding-left:0;}
-.b-disabled{background:var(--panel);color:var(--faint);}
-.bstates{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--panel);}
-.bstates .btn{font-size:11px;padding:8px 12px;}
-.b-hover{background:var(--o5);color:#fff;}
-.b-active{background:#9C4A18;color:#fff;}
-
-/* plate 04 — wayfinding */
-.crumbline{font:500 10.5px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
-.crumbline b{color:var(--ink);font-weight:500;}
-.tabs{display:flex;gap:2px;margin-top:14px;border-bottom:1px solid var(--hair);overflow-x:auto;}
-.tab{font:500 11.5px/1 var(--sans);color:var(--sub);padding:9px 14px;white-space:nowrap;}
-.tab.on{color:var(--ink);border-bottom:2px solid var(--o4);margin-bottom:-1px;}
-.pgn{display:flex;gap:4px;margin-top:16px;font:400 11px/1 var(--mono);color:var(--sub);}
-.pg{border:1px solid var(--hair);padding:6px 9px;}
-.pg.on{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+@media(max-width:700px){.foundation{grid-template-columns:1fr;}}
 
 /* plate 05 — progress tracker */
 .tracker{display:flex;margin-top:2px;border:1px solid var(--hair);overflow-x:auto;}
@@ -139,16 +111,10 @@
 /* phones: type-scale rows stack (no more truncated specimens) and the
    landing table's first column may wrap — nothing crosses the gutter */
 @media(max-width:600px){
-  .tabs{flex-wrap:wrap;overflow-x:visible;border-bottom:none;row-gap:2px;}
-  .tab{border-bottom:1px solid var(--hair);}
-  .tab.on{border-bottom:2px solid var(--o4);margin-bottom:0;}
   .tracker{flex-direction:column;overflow-x:visible;}
   .tk{display:flex;gap:10px;align-items:baseline;min-width:0;border-right:none;border-bottom:1px solid var(--hair);}
   .tk:last-child{border-bottom:none;}
   .tk i{flex:none;margin-bottom:0;}
-  .trow{flex-wrap:wrap;row-gap:8px;}
-  .trow .ts{order:1;flex:1 0 100%;white-space:normal;}
-  .t-display{font-size:36px;}
   .used td:first-child{white-space:normal;}
 }
 
@@ -175,115 +141,84 @@
       Customer Data Platform
       <span class="t-sub">An existing product that had to become legible</span>
     </h1>
-    <p class="t-intro">I joined a customer data platform mid-build: the screens existed, but no system coordinated how anything looked or behaved. Over four months I audited what was there, designed the system it was missing, and specified the screens built on it — down to their error and edge states — before handoff.</p>
+    <p class="t-intro">I joined a customer data platform mid-build. The screens and product logic already existed, but the shared rules behind them did not. Over four months I audited the product, built a common design foundation, and used it to specify data, consent, campaign, and setup workflows through handoff.</p>
     <div class="meta-line">
-      <div><b>Outcome</b>In development — design system + screens handed to dev</div>
+      <div><b>Delivery</b>In development — design system + screens handed to dev</div>
       <div><b>Timeline</b>4 months · 2024</div>
-      <div><b>Role</b>UX/UI Designer — analysis, IA, design system, handoff</div>
+      <div><b>Role</b>UX/UI Designer — audit, IA, design system, handoff</div>
       <div><b>Platform</b>Web app · 1440px desktop</div>
     </div>
-    <div class="stats scope" aria-label="Scope and stakes"><div class="stat"><span class="k">Scope</span><span class="lbl">20+ product areas — data, campaigns, consent, analytics — specified in one component language</span></div><div class="stat"><span class="k">The stakes</span><span class="lbl">Import could run before identity setup — customer data could enter before the rules that match it existed</span></div><div class="stat"><span class="k">Delivered</span><span class="lbl">4 months: audit → system → screens → handoff to development</span></div></div>
+    <div class="stats scope" aria-label="Scope and stakes"><div class="stat"><span class="k">Scope</span><span class="lbl">Data setup, import/export, search, consent, journeys, segmentation, and supporting system patterns</span></div><div class="stat"><span class="k">The stakes</span><span class="lbl">Import could run before identity setup — customer data could enter before the rules that match it existed</span></div><div class="stat"><span class="k">Delivered</span><span class="lbl">Audit → shared design foundation → feature screens and states → handoff</span></div></div>
     <div class="hon"><b>Honesty note</b><span>Specimens are HTML rebuilds from the working Figma file — structure faithful, values representative. The product is still in development; nothing here has reached a real customer yet.</span></div>
   </header>
 
   <section class="glance" aria-label="The case at a glance">
     <div><b>Challenge</b><p>The product was well into its build with no shared system: every screen answered the same design questions its own way, and the rules holding it together lived in people's memory, not on screen.</p></div>
-    <div><b>Solution</b><p>Name the parts before touching any screen — one language for color, type, and behavior — then rebuild the riskiest flows on top of it, with every state designed before handoff.</p></div>
-    <div><b>Outcome</b><p>In development — design system and screen specs handed to the dev team. No launch or usage numbers yet: this page shows the work, not its results.</p></div>
+    <div><b>Approach</b><p>Define the shared visual and behavioral rules first, then apply them to the highest-risk workflows and specify their normal, empty, error, and gated states before handoff.</p></div>
+    <div><b>Current status</b><p>In development — design system and screen specifications handed to the dev team. No launch or usage data yet; this case shows the design work, not measured product impact.</p></div>
   </section>
+
+  <div class="dec">
+    <span class="k">My contribution</span>
+    <p>I audited the existing interface, defined the shared visual and behavioral rules, then applied them to selected product areas and documented the states needed for development and QA.</p>
+  </div>
 
   <span class="sect-label">The work, first</span>
   <h2 class="statement">Where the work lands.</h2>
-  <p class="tp">The segment workspace, assembled from the system this page walks through — the buttons, tags, and search patterns specified below.</p>
+  <p class="tp">One resulting screen: the segment workspace, assembled from the shared actions, tags, search patterns, and validation rules described below.</p>
   <div class="figs one">
     <figure class="shot">
-      <img src="assets/cdp/fig-1-1.png" width="1491" height="700" loading="lazy" alt="CDP segment builder workspace — condition group and estimated-reach panel, recreated to illustrate the structure it's built from.">
-      <figcaption class="figcap"><b>Recreated</b> — the segment workspace as specified for build: Plate 03 buttons, tags, and the search-advanced set, assembled. Not a literal capture.</figcaption>
+      <img src="assets/cdp/fig-1-1.webp" width="1491" height="700" loading="lazy" alt="CDP segment builder workspace — condition group and estimated-reach panel, recreated to illustrate the structure it's built from.">
+      <figcaption class="figcap"><b>Recreated</b> — the segment workspace as specified for build: the foundation, tags, and search-advanced set assembled. Not a literal capture.</figcaption>
     </figure>
   </div>
 
   <span class="sect-label">The situation</span>
   <h2 class="statement">The pieces existed. The rules connecting them didn't.</h2>
-  <p class="tp">A CDP for marketing teams in Thai enterprise and SME businesses — segments, imports, journeys, RFM scoring, PDPA consent, <strong>20+ areas, zero rebuild budget, legacy schemas untouchable</strong>. Its rules lived in people's memory, not on screen:</p>
+  <p class="tp">A CDP spanning segments, imports, journeys, RFM scoring, and PDPA consent — built on legacy schemas with no full-rebuild path. The individual features existed; the shared rules between them were harder to see:</p>
   <div class="sit">
     <div><h3>Setup dependencies</h3><p>Nothing on screen said Identity Data came before Import — data could enter before the rules that match it to a customer existed.</p></div>
-    <div><h3>Data states</h3><p>Upload, mapping, error, and confirmation looked like the same screen — nothing caught a mistake at the moment it happened.</p></div>
-    <div><h3>Campaign logic</h3><p>Journey triggers and RFM groups were rebuilt bespoke per feature — a new campaign type meant a new one-off screen.</p></div>
-    <div><h3>Handoff names</h3><p>Dev, PM, and QA each described the same screen differently — every gap cost a round of back-and-forth.</p></div>
+    <div><h3>Data states</h3><p>Upload, mapping, validation, error, and confirmation states were not separated clearly enough to show what had happened or what to do next.</p></div>
+    <div><h3>Campaign logic</h3><p>Similar campaign logic was represented differently across features, making each new flow another one-off design problem.</p></div>
+    <div><h3>Handoff names</h3><p>Names and states were not documented consistently, so the same behavior had to be clarified repeatedly across design, development, and QA.</p></div>
   </div>
-  <p class="tp">No single screen looked broken. The cost lived between screens — the same design question answered five slightly different ways, no visible rule saying which answer was intended. <strong>A rule that isn't visible doesn't disappear — it moves downstream, and gets more expensive the longer it stays hidden.</strong> Every plate below is one of those rules, made visible.</p>
+  <p class="tp">No single screen had to fail for the product to feel fragmented. The cost lived between screens: the same design question answered several slightly different ways, with no visible rule saying which answer was intended. The work below turns those hidden rules into reusable product decisions.</p>
 
   <span class="sect-label beat">Decision 01 · Create shared language</span>
   <h2 class="statement">A shared language starts smaller than a screen.</h2>
-  <p class="tp">With no shared vocabulary, each screen invented its own colors, sizes, and buttons — drift that would only compound as more areas got built. So the first rule: <strong>no feature screen gets redesigned until the parts have names</strong>. Color in three ramps, type in six levels, buttons in five variants — small enough to memorize, complete enough to build any screen in the product. Once design, dev, PM, and QA had one name for each part, every plate after this one could assume the vocabulary instead of re-explaining it.</p>
+  <p class="tp">Without a shared vocabulary, screens used different colors, sizes, and action patterns for similar behavior. I started with the smallest reusable decisions — color, type, and actions — so design, Product, Dev, and QA could refer to the same parts as feature work continued.</p>
 
   <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 01 — Color tokens</span><span class="pd">3 ramps · neutral 15 steps, orange &amp; blue 10 each</span></div>
+    <div class="plate-head"><span class="pn">Plate 01 — Foundation set</span><span class="pd">color · type · actions</span></div>
     <div class="plate-body">
-      <span class="ramp-name">White / neutral · 0 → 1000</span>
-      <div class="ramp">
-        <span class="sw" style="background:#FFFFFF"></span><span class="sw" style="background:#FAF9F7"></span><span class="sw" style="background:#F1EFEC"></span><span class="sw" style="background:#E5E2DD"></span><span class="sw" style="background:#D5D1CA"></span><span class="sw" style="background:#C2BDB4"></span><span class="sw" style="background:#ABA69C"></span><span class="sw" style="background:#918C82"></span><span class="sw" style="background:#787368"></span><span class="sw" style="background:#5F5B52"></span><span class="sw" style="background:#48453E"></span><span class="sw" style="background:#33312B"></span><span class="sw" style="background:#23211D"></span><span class="sw" style="background:#191814"></span><span class="sw" style="background:#141311"></span>
-      </div>
-      <div class="ramp-ends"><span>0</span><span>1000</span></div>
-      <span class="ramp-name">Orange · 10 → 900 — platform primary</span>
-      <div class="ramp tall">
-        <span class="sw" style="background:#FDF4ED"></span><span class="sw" style="background:#FAE3D1"></span><span class="sw" style="background:#F5C9A8"></span><span class="sw" style="background:#EFAD7C"></span><span class="sw" style="background:#E98F52"></span><span class="sw pri" style="background:#E4762F"></span><span class="sw" style="background:#C25E1F"></span><span class="sw" style="background:#9C4A18"></span><span class="sw" style="background:#753711"></span><span class="sw" style="background:#4F250B"></span>
-      </div>
-      <span class="ramp-name">Blue · 10 → 900 — secondary / accent</span>
-      <div class="ramp tall">
-        <span class="sw" style="background:#EEF3FA"></span><span class="sw" style="background:#D8E3F2"></span><span class="sw" style="background:#B7CCE6"></span><span class="sw" style="background:#92B2D8"></span><span class="sw" style="background:#6E97C9"></span><span class="sw" style="background:#4C7DBA"></span><span class="sw pri" style="background:#2F63A7"></span><span class="sw" style="background:#24507F"></span><span class="sw" style="background:#193C5F"></span><span class="sw" style="background:#102941"></span>
+      <div class="foundation">
+        <div class="foundation-set">
+          <h3>Color · 3 ramps</h3>
+          <div class="foundation-ramp"><i style="background:#F1EFEC"></i><i style="background:#ABA69C"></i><i style="background:#33312B"></i><i style="background:#E4762F"></i><i style="background:#9C4A18"></i><i style="background:#2F63A7"></i></div>
+          <p>Neutral structure, orange primary, blue secondary.</p>
+        </div>
+        <div class="foundation-set">
+          <h3>Type · 6 levels</h3>
+          <div class="foundation-type"><span>Customer 360 <small>Display</small></span><span>Import issues <small>Title</small></span><span>Segment ready <small>Body</small></span></div>
+          <p>One hierarchy reused across product areas.</p>
+        </div>
+        <div class="foundation-set">
+          <h3>Actions · 5 variants</h3>
+          <div class="foundation-actions"><span class="btn b-filled">Create segment</span><span class="btn b-outlined">Save template</span><span class="btn b-ghost">Preview</span></div>
+          <p>Primary, secondary, subtle, inline, and disabled states.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 02 — Type scale</span><span class="pd">6 levels × L / M / S — 18 styles total</span></div>
-    <div class="plate-body">
-      <div class="trow"><span class="tn">Display</span><span class="ts t-display">Customer 360</span><span class="tz">L · hero</span></div>
-      <div class="trow"><span class="tn">Headline</span><span class="ts t-headline">Segment ready to send</span><span class="tz">page titles</span></div>
-      <div class="trow"><span class="tn">Title</span><span class="ts t-title">Import — mapping issues</span><span class="tz">sections</span></div>
-      <div class="trow"><span class="tn">Label</span><span class="ts t-label">Hard_ID · Soft_ID</span><span class="tz">fields</span></div>
-      <div class="trow"><span class="tn">Body</span><span class="ts t-body">A segment is a group of individuals who share specific characteristics.</span><span class="tz">content</span></div>
-      <div class="trow"><span class="tn">Caption</span><span class="ts t-caption">Last import: 12,408 rows · 3 cell errors located</span><span class="tz">helper</span></div>
-    </div>
-  </div>
-
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 03 — Button system</span><span class="pd">5 variants · each with default / hover / active / disabled</span></div>
-    <div class="plate-body">
-      <div class="bgrid">
-        <div class="bcell"><b>Filled — primary CTA</b><span class="btn b-filled">Create segment</span></div>
-        <div class="bcell"><b>Outlined — secondary</b><span class="btn b-outlined">Save as template</span></div>
-        <div class="bcell"><b>Ghost — subtle</b><span class="btn b-ghost">Preview</span></div>
-        <div class="bcell"><b>Link — inline</b><span class="btn b-link">Convert to advanced</span></div>
-        <div class="bcell"><b>Disabled</b><span class="btn b-disabled">Confirm import</span></div>
-      </div>
-      <div class="bstates">
-        <span class="btn b-filled">Default</span>
-        <span class="btn b-hover">Hover</span>
-        <span class="btn b-active">Active</span>
-        <span class="btn b-disabled">Disabled</span>
-      </div>
-    </div>
-  </div>
-
-  <span class="hand" aria-hidden="true">named once, argued about never again</span>
+  <span class="hand" aria-hidden="true">named once, reused across screens</span>
 
   <span class="sect-label beat">Decision 02 · Make dependencies visible</span>
-  <h2 class="statement">The patterns every area borrowed.</h2>
-  <p class="tp">Two problems shared one shape: twenty-plus areas each needed wayfinding and progress, and the costliest path in the product was importing data before hard_id and soft_id were configured — data entering without the rules that match it to a customer. Two rules answered both. Navigation reads as the marketer's mental model, not a menu: Data Manager, PDPA, Campaign, Analytics, Settings. And one tracker pattern serves two duties — onboarding, and the <strong>Identity Data setup gate</strong>: Import and Export stay locked until identity is configured, with gated empty states redirecting users to setup.</p>
+  <h2 class="statement">Dependencies became visible product states.</h2>
+  <p class="tp">The highest-risk dependency was allowing Import before <strong>Identity Data</strong> was configured. I used one progress pattern across onboarding and the setup gate: Import and Export remain unavailable until identity rules exist, and empty states point users back to the required setup.</p>
 
   <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 04 — Wayfinding set</span><span class="pd">breadcrumbs · tabs · pagination</span></div>
-    <div class="plate-body">
-      <div class="crumbline">Project › Data Manager › Import › <b>Mapping</b></div>
-      <div class="tabs"><span class="tab on">Basic Information</span><span class="tab">Segmentation</span><span class="tab">Extra Attribute</span><span class="tab">Events</span><span class="tab">Consents</span></div>
-      <div class="pgn"><span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">12</span><span class="pg">›</span></div>
-    </div>
-  </div>
-
-  <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 05 — Progress tracker</span><span class="pd">one pattern, two duties — onboarding and the setup gate</span></div>
+    <div class="plate-head"><span class="pn">Plate 02 — Progress tracker</span><span class="pd">one pattern, two duties — onboarding and the setup gate</span></div>
     <div class="plate-body">
       <div class="tracker">
         <div class="tk done"><i>✓</i><b>Project details</b><span>done</span></div>
@@ -291,18 +226,18 @@
         <div class="tk"><i>3</i><b>Setup Email</b><span>configure</span></div>
         <div class="tk"><i>4</i><b>Setup Consent</b><span>pending</span></div>
       </div>
-      <div class="trade"><span class="k">Tradeoff</span><span class="v">Gating adds friction on day one. An un-gated import can bring in data with no way to match it to a customer — far more expensive to fix later.</span></div>
+      <div class="trade"><span class="k">Tradeoff</span><span class="v">Gating adds friction at the start. It also prevents users from entering data before the product has the rules needed to match it to a customer.</span></div>
     </div>
   </div>
 
-  <span class="hand" aria-hidden="true">friction paid once, at the gate — not the support queue</span>
+  <span class="hand" aria-hidden="true">the dependency appears before the data enters</span>
 
   <span class="sect-label beat">Decision 03 · Turn campaign logic into reusable rules</span>
   <h2 class="statement">The complex parts became components too.</h2>
-  <p class="tp">Journey automation and RFM (recency–frequency–monetary) scoring are where a design system usually gives up and lets every screen go bespoke — which is exactly how those screens become unreadable again. The rule held instead: even the complex parts are components. <strong>12 node types</strong> across trigger, action, operator, and campaign, bound by one strict completeness rule — written to be testable, not implied — plus an RFM set covering the scoring donut, seven customer groups, and the status-tag states.</p>
+  <p class="tp">Journey automation and RFM (recency–frequency–monetary) scoring contain their own logic, states, and validation. I treated them as reusable product patterns rather than one-off screens: journey nodes shared one completeness rule, while RFM reused the same scoring, group, and status language across views.</p>
 
   <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 06 — Journey Builder nodes</span><span class="pd">trigger · action · operator · campaign</span></div>
+    <div class="plate-head"><span class="pn">Plate 03 — Journey Builder nodes</span><span class="pd">trigger · action · operator · campaign</span></div>
     <div class="plate-body">
       <div class="nodes">
         <span class="ngl">Trigger</span>
@@ -312,12 +247,12 @@
         <span class="ngl">Operator · Campaign</span>
         <span class="node">Condition</span><span class="node">Wait</span><span class="node c">Email Campaign</span>
       </div>
-      <div class="noderule"><b>The rule</b><span>A node must be fully configured before it can be confirmed. Looser rules would demo better — and fail quietly in production.</span></div>
+      <div class="noderule"><b>The rule</b><span>A node must be fully configured before it can be confirmed. The rule prioritizes an explicit state over a faster but incomplete setup.</span></div>
     </div>
   </div>
 
   <div class="plate">
-    <div class="plate-head"><span class="pn">Plate 07 — RFM set</span><span class="pd">scoring donut · 7 customer groups · status tags</span></div>
+    <div class="plate-head"><span class="pn">Plate 04 — RFM set</span><span class="pd">scoring model · customer groups · status tags</span></div>
     <div class="plate-body">
       <div class="rfm">
         <div class="donut" role="img" aria-label="RFM donut chart — share of customers per group"></div>
@@ -345,24 +280,24 @@
 
   <span class="sect-label">The system at work · the screen it became</span>
   <h2 class="statement">Plates aren't the product. Screens built from plates are.</h2>
-  <p class="tp">The segment workspace at the top of this page is one screen from this system. The table below is the rest of the inventory: every other set, and the screen it's built into. Every data workflow follows one rule — <strong>show the state of the data, not just the data</strong>: the Import flow alone specified 55 frames of upload, mapping, cell-level errors, and reusable templates — every state designed before handoff.</p>
+  <p class="tp">The segment workspace at the top is one example. The same foundation also shaped search, structure control, import/export, journeys, consent, and onboarding. Across data workflows, the rule stayed consistent: <strong>show the state of the data, not only the data</strong> — including upload, mapping, validation, error, and confirmation states.</p>
 
   <table class="used">
     <thead><tr><th>Component set</th><th>Product screens it's built into</th></tr></thead>
     <tbody>
       <tr><td>Search-advanced</td><td>Segmentation · Customer Single View event search · analytics templates</td></tr>
       <tr><td>Structure-control forms</td><td>Customer, Event, Catalog, and Voucher schema builders</td></tr>
-      <tr><td>Import / export rows</td><td>Upload → mapping → error → confirm flows (55 + 54 frames)</td></tr>
-      <tr><td>Journey nodes</td><td>Journey Builder canvas, light and dark themes</td></tr>
+      <tr><td>Import / export rows</td><td>Upload → mapping → validation → error → confirmation</td></tr>
+      <tr><td>Journey nodes</td><td>Journey Builder canvas and configuration states</td></tr>
       <tr><td>Consent set</td><td>PDPA (Thailand's data-privacy law) tracking-event config · Consent Banner builder</td></tr>
       <tr><td>Progress tracker</td><td>Project onboarding · the Identity Data setup gate</td></tr>
     </tbody>
   </table>
-  <span class="hand" aria-hidden="true">every undocumented edge case becomes a QA ticket</span>
+  <span class="hand" aria-hidden="true">undocumented edge cases become implementation questions</span>
 
   <div class="refl">
-    <div><b>The risk that remains</b><p>The system validates configuration, not outcome. A campaign whose segment logic resolves to zero people would pass every gate and go out to nobody — a silent failure no component would catch. I'd add a reach-validation layer that warns before send.</p></div>
-    <div><b>What I'd verify next time</b><p>The four-step gate and 2–3 levels of nesting were judgment calls, made without usage data to confirm either — the product hasn't launched, so that data doesn't exist yet. The system makes revising cheap — but cheap to revise is not the same as right. Instrumentation after launch would say which judgment to revisit first.</p></div>
+    <div><b>The risk that remains</b><p>The system validates configuration, not campaign outcome. A segment could still resolve to zero people without an explicit warning. I would add a reach check before launch so the user sees the consequence before sending.</p></div>
+    <div><b>What I'd verify next time</b><p>The setup sequence and allowed nesting depth were design judgments made without usage data because the product had not launched. After release, I would instrument setup completion, error recovery, and nesting behavior to see which rule needs revision first.</p></div>
   </div>
 
   <nav class="case-nav" aria-label="More work">

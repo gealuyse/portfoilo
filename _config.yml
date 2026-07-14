@@ -5,3 +5,12 @@
 exclude:
   - docs/
   - README.md
+  - PLAN.md
+  - note.md
+  - cdp-editorial.html
+  - _case-template.html
+  - design_handoff_homepage_reveal/
+  - check-tokens.sh
+  - qa-artifacts/
+  - real/
+

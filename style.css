@@ -88,11 +88,13 @@ img{display:block;}
 
 /* ---------- hero (real copy, compact close) ---------- */
 .hero{padding:var(--story-xxl) 0 var(--story-xl);}
-.role-label{font:500 var(--f3)/var(--lh-ui) var(--sans);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--sub);margin-bottom:var(--s8);}
+.hero-name{font:400 var(--f5)/var(--lh-heading) var(--serif);letter-spacing:var(--ls-heading);margin-bottom:var(--s2);}
+.role-label{font:500 var(--f2)/var(--lh-ui) var(--sans);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--sub);margin-bottom:var(--s8);}
 .thesis{font:300 var(--d1)/var(--lh-display) var(--serif);letter-spacing:var(--ls-display);max-width:19ch;}
 .hero-para{font:400 var(--f4)/var(--lh-prose) var(--sans);margin-top:var(--s7);max-width:620px;color:var(--sub);}
+.hero-actions{display:flex;align-items:center;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s8);}
 .h-open{
-  display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s8);
+  display:inline-flex;align-items:center;gap:var(--s2);
   font:500 var(--f2)/1 var(--sans);color:var(--ok);
   border:1px solid rgba(76,122,87,.45);background:transparent;
   padding:var(--s3) var(--s4);
@@ -100,6 +102,8 @@ img{display:block;}
 }
 .h-open::before{content:"●";font-size:var(--f1);}
 .h-open:hover{background:rgba(76,122,87,.1);border-color:var(--ok);}
+.h-resume{font:500 var(--f2)/var(--lh-ui) var(--sans);text-decoration:underline;text-decoration-color:var(--hair);text-underline-offset:4px;}
+.h-resume:hover{text-decoration-color:var(--ink);}
 
 /* ---------- shared section structure ---------- */
 .sect{padding:var(--story-xl) 0 0;}
@@ -184,6 +188,10 @@ a.proj-row:hover .pr-link{text-decoration-color:var(--ink);}
 .contact-links a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;}
 .contact-links a:hover{text-decoration-thickness:2px;}
 .contact-links .dot{color:var(--sub);padding:0 var(--s3);}
+@media(max-width:360px){
+  .contact-links{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);}
+  .contact-links .dot{display:none;}
+}
 
 @media(max-width:860px){
   .hero{padding:var(--story-lg) 0 var(--story-md);}

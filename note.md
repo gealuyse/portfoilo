@@ -1,3 +1,21 @@
+# Note — 2026-07-10 (Portfolio review, case consolidation, claim validation, and asset migration)
+
+## What happened today
+
+**1. Homepage visual hierarchy & branding updates.** Added owner's full name ("Natthapath Damrongsri" in a new `.hero-name` block) directly in the first viewport of `index.html`. Repositioned the Résumé CTA ("View résumé ↗") to sit alongside the "Get in touch" mailto button in a grouped flex layout (`.hero-actions`). Adjusted the main role label typography size and added mobile responsive styles to wrap the footer contact links on screens <= 360px.
+
+**2. CDP case study consolidation & formatting.** Reduced the vertical length of `cdp.html` significantly by refactoring Decision 01. Merged three separate plates (Color ramps, Type scale, Buttons) into a single visual specimen (`Plate 01 — Foundation set`), displaying them in a 3-column grid layout (`.foundation`) on desktop that stacks on mobile. Completely removed the Wayfinding set plate (formerly Plate 04) to keep the layout concise and focused on high-value items (Identity setup progress tracker, Journey nodes, RFM).
+
+**3. Claim validation & contribution alignment.** Swapped all instances of the "Outcome" label to "Delivery" or "Status" across `cdp.html`, `3bb-member.html`, and `counter-service-pos.html` to maintain factual integrity (as none have live production metrics). Added a dedicated "My contribution" section to `3bb-member.html` and `counter-service-pos.html` to clearly declare ownership over specific UX/UI tasks (mapping, state coverage, flows, specs) rather than full product metrics.
+
+**4. Asset optimization & responsive images.** Replaced heavy PNG figures on the case study pages with optimized WebP versions (covers, screen previews, and UI figures). Configured `srcset` for project covers on the homepage (`index.html`) using 720w and 1440w responsive assets. Created dedicated open graph social preview images (`og.jpg` with `og:image:alt` tags) for each case study folder instead of sharing one global `og.png`.
+
+**5. Clean deployment configuration.** Updated `_config.yml` to exclude scratch files, plan documents, and design reveal folders (`PLAN.md`, `note.md`, `cdp-editorial.html`, `_case-template.html`, and `design_handoff_homepage_reveal/`) from Jekyll builds, avoiding leaking internal files.
+
+**6. Sub-agent sandbox workaround.** Attempted to delegate different page refactoring to Sub-agents A–E. However, Windows sandbox restrictions and shell timeouts prevented the sub-agents from reading or writing files. Fallback was successfully executed, applying all plan patches directly and synchronously via the lead Codex agent.
+
+---
+
 # Note — 2026-07-09 (continued — CDP accuracy pass, headline contract v3, PLAN.md retired)
 
 ## What happened today

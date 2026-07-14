@@ -1,0 +1,15 @@
+.env.local
+.git
+.gitignore
+.claude
+_config.yml
+check-tokens.sh
+docs/
+qa-artifacts/
+real/
+design_handoff_homepage_reveal/
+_case-template.html
+cdp-editorial.html
+README.md
+PLAN.md
+note.md

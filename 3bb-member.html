@@ -10,7 +10,8 @@
 <meta property="og:title" content="3BB Member App and Website — One product, three customer realities">
 <meta property="og:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/3bb-member.html">
-<meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
+<meta property="og:image" content="https://gealuyse.github.io/portfoilo/assets/3bb-member/og.jpg">
+<meta property="og:image:alt" content="3BB Member migration case study by Natthapath Damrongsri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="3BB Member App and Website — One product, three customer realities">
 <meta name="twitter:description" content="One product, three customer realities — designing 3BB Member's migration states: the right status, explanation, and next action for every customer group.">
@@ -93,26 +94,31 @@
       3BB Member App and Website
       <span class="t-sub">One product, three customer realities</span>
     </h1>
-    <p class="t-intro">I designed the migration states for 3BB Member, a live app and web product with over a million users. During the 3BB → AIS transition, customers could still be on 3BB, already migrated, or waiting. Each group needed the right status, explanation, and next action inside the product they already knew.</p>
+    <p class="t-intro">I designed selected app and web functions for 3BB Member during the 3BB → AIS transition. The product was already live, and its working file contained active, legacy, and migration-era flows. This case focuses on the service-state model used to give each customer the right status, explanation, and next action.</p>
     <div class="meta-line">
-      <div><b>Outcome</b>Shipped — Play Store &amp; App Store</div>
-      <div><b>Scope</b>Selected app &amp; web functions</div>
-      <div><b>Role</b>UX/UI Designer</div>
-      <div><b>Team</b>CX · PM · Dev</div>
+      <div><b>Delivery</b>Live product — selected work shipped</div>
+      <div><b>Timeline</b>2024 – Present</div>
+      <div><b>Role</b>UX/UI Designer — flows, states, UI, handoff</div>
+      <div><b>Platform</b>Mobile app · Web</div>
     </div>
-    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">1M+</span><span class="lbl">members using the live app and web product</span></div><div class="stat"><span class="num">3</span><span class="lbl">customer service states designed</span></div><div class="stat"><span class="num">2</span><span class="lbl">stores shipped the migration work</span></div></div>
-    <div class="hon"><b>Honesty note</b><span>Plates and figures are rebuilt in HTML from the working files. They are simplified, use representative brand hues, and sit inside the inherited 3BB Member language. Quotes are paraphrased. The deliverable was the states, not a new design system.</span></div>
+    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">1M+</span><span class="lbl">existing members in the live product context</span></div><div class="stat"><span class="num">3</span><span class="lbl">service states featured in this case</span></div><div class="stat"><span class="num">2</span><span class="lbl">platforms: app and web, using the inherited product language</span></div></div>
+    <div class="hon"><b>Honesty note</b><span>Plates and figures are simplified HTML rebuilds from working files; interface copy and brand hues are representative. I worked inside the inherited 3BB Member design system. This case focuses on migration-state decisions, not every function I designed.</span></div>
   </header>
 
   <section class="glance" aria-label="The case at a glance">
-    <div><b>Challenge</b><p>A live product with over a million users, while the company behind it migrated to AIS: one home screen suddenly had to be true for three different kinds of customer at once.</p></div>
-    <div><b>Solution</b><p>One routing rule, three fully designed states — status, explanation, and next action per group — built in the app's inherited language so nothing felt like a second product.</p></div>
-    <div><b>Outcome</b><p>Shipped to Play Store and App Store. Shipping is a delivery fact, not proof the states worked — no migration-state usage data was measured.</p></div>
+    <div><b>Challenge</b><p>A live product, an inherited file containing several eras of work, and a migration that made the same screen mean different things for different customer groups.</p></div>
+    <div><b>Approach</b><p>I separated current behavior from legacy context, then translated the migration rule into complete states and reused familiar product patterns for each route.</p></div>
+    <div><b>Current status</b><p>Selected work shipped in the live app and web product. No migration-state usage data was available for this case study.</p></div>
   </section>
 
-  <span class="sect-label">Decision 01 · Route by service state</span>
+  <div class="dec">
+    <span class="k">My contribution</span>
+    <p>I clarified the current flow, mapped service-state routing and coverage, designed the interface states, and documented the implementation logic with CX, PM, Dev, and QA.</p>
+  </div>
+
+  <span class="sect-label">Decision 01 · Find the current flow, then route by service state</span>
   <h2 class="statement">One product, three customer realities.</h2>
-  <p class="tp">3BB Member was live — internet services, packages, billing, account settings, <strong>over a million users on app and web</strong> — while the company itself transitioned to AIS. The work arrived as a CX requirement:</p>
+  <p class="tp">The working file contained active screens, older versions, and migration-era alternatives. I first separated current behavior from legacy context, then marked where migration actually changed the user's route. The requirement from CX became a three-state model:</p>
   <div class="req-card">
     <span class="req-tag">Requirement · received from CX</span>
     <p class="req-quote">"After migration, each customer can be in a different service state — the app has to show the right status, the right options, and the right next step, for every one of them."</p>
@@ -209,25 +215,20 @@
 
   <span class="sect-label">The states at work</span>
   <h2 class="statement">Built to feel like it was always part of the app.</h2>
-  <p class="tp">Where an existing pattern solved the problem, I reused it. Where it didn't quite fit a new service flow, I <strong>extended it in the same visual and interaction language</strong> — nothing asked users to relearn, and the components already existed in the codebase.</p>
+  <p class="tp">Where an existing pattern solved the problem, I reused it. Where a new service flow needed more, I <strong>extended the same visual and interaction language</strong> so the migration states still felt part of the product.</p>
   <div class="figs one">
     <figure class="shot">
-      <img src="assets/3bb-member/fig-1-1.png" width="1200" height="812" loading="lazy" alt="3BB Member — recreated home, package detail, and migrated-account login error screens, showing the migration states in the app's inherited language.">
+      <img src="assets/3bb-member/fig-1-1.webp" width="1200" height="812" loading="lazy" alt="3BB Member — recreated home, package detail, and migrated-account login error screens, showing the migration states in the app's inherited language.">
       <figcaption class="figcap"><b>Recreated</b> — home, package detail, and the migrated-account login error: the three-state rule above, translated to screens. Not a literal capture.</figcaption>
     </figure>
     <figure class="shot">
-      <img src="assets/3bb-member/fig-2-1.png" width="1200" height="566" loading="lazy" alt="3BB Member — recreated scope map: existing product areas muted, the four functions selected for migration work highlighted with their variants.">
+      <img src="assets/3bb-member/fig-2-1.webp" width="1200" height="566" loading="lazy" alt="3BB Member — recreated scope map: existing product areas muted, the four functions selected for migration work highlighted with their variants.">
       <figcaption class="figcap"><b>Recreated</b> — existing product vs. selected for this work: the scope split from Plate 04, redrawn as a map. Not the original working document.</figcaption>
     </figure>
   </div>
-  <div class="dec">
-    <span class="k">How it stayed feasible</span>
-    <p>I proposed flows, walked CX, PM, and Dev through them together, and iterated until everyone agreed on the same flow and the same implementation logic — feasibility questions answered <strong>while the direction could still move</strong>, not after handoff.</p>
-  </div>
-
   <div class="refl">
-    <div><b>What worked</b><p>The functions that shipped cleanest were the ones where CX, PM, Dev, and I aligned on the flow and its edge cases before a screen was finished.</p></div>
-    <div><b>What I'd do earlier</b><p>Bring Dev into CX conversations by default, not as a follow-up step. The earlier feasibility entered the discussion, the fewer flows needed reworking once handoff started.</p></div>
+    <div><b>What worked</b><p>The handoff was clearest when CX, PM, Dev, and I aligned on the service rule and edge cases before polishing the screen.</p></div>
+    <div><b>What I'd do earlier</b><p>Bring Dev into CX discussions from the start and map the inherited-versus-current boundary on day one. Earlier feasibility and a clearer source of truth would reduce rework later.</p></div>
   </div>
 
   <nav class="case-nav" aria-label="More work">

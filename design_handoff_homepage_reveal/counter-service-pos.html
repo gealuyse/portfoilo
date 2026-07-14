@@ -10,7 +10,8 @@
 <meta property="og:title" content="Counter Service POS — A redesign that had to feel like no change at all">
 <meta property="og:description" content="Three levers, zero moves — clearer hierarchy through spacing, grouping, and contrast, without moving anything a cashier's hands already know.">
 <meta property="og:url" content="https://gealuyse.github.io/portfoilo/counter-service-pos.html">
-<meta property="og:image" content="https://gealuyse.github.io/portfoilo/og.png">
+<meta property="og:image" content="https://gealuyse.github.io/portfoilo/assets/counter-service-pos/og.jpg">
+<meta property="og:image:alt" content="Counter Service POS case study by Natthapath Damrongsri">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Counter Service POS — A redesign that had to feel like no change at all">
 <meta name="twitter:description" content="Three levers, zero moves — clearer hierarchy through spacing, grouping, and contrast, without moving anything a cashier's hands already know.">
@@ -95,35 +96,41 @@
       Counter Service POS
       <span class="t-sub">A redesign that had to feel like no change at all</span>
     </h1>
-    <p class="t-intro">I redesigned Counter Service POS screens under a strict constraint: the controls could not move. Cashiers process transactions through muscle memory, so the screen had to become clearer without making trained behavior wrong. Only three levers were available: <strong>spacing, grouping, and contrast</strong>.</p>
-    <div class="meta-line three">
-      <div><b>Outcome</b>Approved spec · 800×600 and 1920×1080</div>
+    <p class="t-intro">I revised the hierarchy of Counter Service POS screens under a strict constraint: control positions and transaction flow had to remain familiar. The work used three levers — <strong>spacing, grouping, and contrast</strong> — across 800×600 and 1920×1080 layouts.</p>
+    <div class="meta-line">
+      <div><b>Delivery</b>Design spec · review completed</div>
       <div><b>Timeline</b>2023</div>
-      <div><b>Role</b>UX/UI Designer</div>
+      <div><b>Role</b>UX/UI Designer — hierarchy, layout rules, specification</div>
+      <div><b>Platform</b>POS terminal · 800×600 and 1920×1080</div>
     </div>
-    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">2</span><span class="lbl">screen profiles: 800×600 and 1920×1080</span></div><div class="stat"><span class="num">0</span><span class="lbl">controls moved, preserving cashier muscle memory</span></div><div class="stat"><span class="num">3</span><span class="lbl">levers: spacing, grouping, contrast</span></div></div>
-    <div class="hon"><b>Honesty note</b><span>The panel mockups below are simplified HTML rebuilds, not the actual POS screens. They demonstrate the levers with proportions and rules from the approved spec. The real screens are in the figures further down.</span></div>
+    <div class="stats" aria-label="Project scale"><div class="stat"><span class="num">2</span><span class="lbl">screen profiles: 800×600 and 1920×1080</span></div><div class="stat"><span class="num">0</span><span class="lbl">control positions changed in the proposal</span></div><div class="stat"><span class="num">3</span><span class="lbl">levers: spacing, grouping, contrast</span></div></div>
+    <div class="hon"><b>Honesty note</b><span>The panel mockups below are simplified HTML demonstrations, not the original POS screens. The figures show the reviewed proposals. The work was not measured in live operations.</span></div>
   </header>
 
   <section class="glance" aria-label="The case at a glance">
     <div><b>Challenge</b><p>Cashiers run this screen on muscle memory. Everything that would normally be redesigned — positions, flow, sizes, brand — was locked.</p></div>
-    <div><b>Solution</b><p>Three levers only: spacing, grouping, contrast. Same geometry, clearer hierarchy — nothing a trained hand knows becomes wrong.</p></div>
-    <div><b>Outcome</b><p>Approved spec for both 800×600 and 1920×1080 terminals. Never measured in the field — the reflection below says exactly what test that would take.</p></div>
+    <div><b>Approach</b><p>I preserved control positions and used spacing, grouping, and contrast to separate transaction areas, distinguish risk, and make the primary action easier to identify.</p></div>
+    <div><b>Current status</b><p>Design spec reviewed for 800×600 and 1920×1080 terminals. The proposal was not validated in live operations.</p></div>
   </section>
 
-  <span class="sect-label">The spec, first</span>
+  <div class="dec">
+    <span class="k">My contribution</span>
+    <p>I translated the fixed flow into compact and expanded layout profiles, defined which visual properties could change, and documented those rules in the reviewed screen proposals.</p>
+  </div>
+
+  <span class="sect-label">The work, first</span>
   <h2 class="statement">Where the levers land.</h2>
-  <p class="tp">The wide-screen proposal from the approved spec — order panel, product grid, payment actions, grouped without moving anything. The rest of this page is why it looks this way.</p>
+  <p class="tp">The wide-screen proposal from the reviewed spec — order panel, product grid, and payment actions grouped without changing their positions. The rest of this page explains the rules behind it.</p>
   <div class="figs one">
     <figure class="shot">
-      <img src="assets/counter-service-pos/screen_proof.png" width="1920" height="1080" loading="lazy" alt="Counter Service POS wide-screen proposal — order panel, product grid, payment actions, grouped controls.">
+      <img src="assets/counter-service-pos/screen_proof.webp" width="1920" height="1080" loading="lazy" alt="Counter Service POS wide-screen proposal — order panel, product grid, payment actions, grouped controls.">
       <figcaption class="figcap"><b>Fig. 1</b> — The wide-screen proposal: order panel, product grid, payment actions — grouped, not moved.</figcaption>
     </figure>
   </div>
 
   <span class="sect-label">Plate 01 · The constraint</span>
   <h2 class="statement">Everything was locked except spacing, hierarchy, and contrast.</h2>
-  <p class="tp">The flow was fixed. The buttons were fixed. The brand was fixed — and cashiers had muscle memory built around all of it. Any change that forces relearning risks slower transactions — real money for the operator. The asymmetry of this table <strong>is</strong> the brief:</p>
+  <p class="tp">The flow, controls, and brand were fixed, and cashiers already knew the screen through repetition. Moving familiar controls would introduce relearning into a time-sensitive workflow. The brief therefore separated what could not change from the three properties still available:</p>
 
   <div class="plate">
     <div class="plate-head"><span class="pn">Plate 01 — Locked vs. adjustable</span><span class="pd">the inventory that shaped every decision</span></div>
@@ -134,9 +141,9 @@
           <ul>
             <li><b>Button positions</b> — every control stays where hands know it</li>
             <li><b>Flow order</b> — the transaction sequence is trained behavior</li>
-            <li><b>Control sizes</b> — targets tuned for speed over years</li>
+            <li><b>Control sizes</b> — retained from the existing interface</li>
             <li><b>Brand</b> — colors and identity fixed by the operator</li>
-            <li><b>Muscle memory</b> — the invisible system underneath all four</li>
+            <li><b>Muscle memory</b> — the reason for preserving the first four</li>
           </ul>
         </div>
         <div class="aj">
@@ -195,14 +202,14 @@
           <div class="pv-cap">Transaction zone bounded, destructive keys marked, one clear primary — and every control exactly where it was.</div>
         </div>
       </div>
-      <span class="hand" aria-hidden="true">this plate is the whole proposal — nothing moved, everything reads</span>
-      <div class="trade"><span class="k">Tradeoff</span><span class="v">The result is less dramatic than a full redesign. That was the point — a cashier should not have to relearn the screen to read it better. Familiarity is a feature; disrupt it at real cost.</span></div>
+      <span class="hand" aria-hidden="true">nothing moved; the hierarchy changed</span>
+      <div class="trade"><span class="k">Tradeoff</span><span class="v">The result is less dramatic than a full redesign. That was intentional: familiarity was part of the interaction model, not a visual preference.</span></div>
     </div>
   </div>
 
   <span class="sect-label">Plate 03 · The hardware</span>
   <h2 class="statement">Build layout rules for two screen realities.</h2>
-  <p class="tp">The same system had to work across legacy 800×600 terminals and 1920×1080 displays — both live in the field. Two layout profiles, one set of rules: the compact profile prioritizes essential metadata; the wide profile gains room <strong>without simply enlarging everything</strong>.</p>
+  <p class="tp">The specification had to account for both 800×600 terminals and 1920×1080 displays. Two layout profiles used the same rules: the compact profile prioritized essential metadata, while the wide profile gained room <strong>without simply enlarging everything</strong>.</p>
 
   <div class="plate">
     <div class="plate-head"><span class="pn">Plate 03 — Two screen profiles</span><span class="pd">zone maps to scale · 4:3 and 16:9</span></div>
@@ -214,7 +221,7 @@
             <div class="zone keys-z" style="flex:1;">Keys</div>
           </div>
           <span class="pl">800×600 — compact profile</span>
-          <span class="ps">Essential metadata only, tighter rows — nothing relearned.</span>
+          <span class="ps">Essential metadata only, tighter rows, control positions preserved.</span>
         </div>
         <div class="prof p169">
           <div class="frame" role="img" aria-label="1920 by 1080 zone map: order, detail, and keys zones">
@@ -232,17 +239,17 @@
 
   <span class="sect-label">The levers at work</span>
   <h2 class="statement">The legacy profile, specified.</h2>
-  <p class="tp">The same three levers, holding on the smallest hardware in the field — the 800×600 profile from the approved spec.</p>
+  <p class="tp">The same three levers applied to the 800×600 profile from the reviewed spec.</p>
   <div class="figs one">
     <figure class="shot">
-      <img src="assets/counter-service-pos/fig-2-1.png" width="800" height="600" loading="lazy" alt="Counter Service POS legacy 800×600 — compact profile with essential metadata and tighter rows.">
-      <figcaption class="figcap"><b>Fig. 2</b> — The legacy 800×600 profile: essential metadata, tighter rows, nothing relearned.</figcaption>
+      <img src="assets/counter-service-pos/fig-2-1.webp" width="800" height="600" loading="lazy" alt="Counter Service POS legacy 800×600 — compact profile with essential metadata and tighter rows.">
+      <figcaption class="figcap"><b>Fig. 2</b> — The 800×600 profile: essential metadata, tighter rows, control positions preserved.</figcaption>
     </figure>
   </div>
 
   <div class="refl">
-    <div><b>What I'd do differently</b><p>The entire design rests on one claim: better hierarchy and spacing speed up checkout without moving a single control. A claim that strong needs evidence, not confidence.</p></div>
-    <div><b>The test I'd run</b><p>If it reaches live testing, log keystroke timing on the terminals — real transaction data against the old layout, not estimates.</p></div>
+    <div><b>What I'd do differently</b><p>The proposal assumes clearer grouping helps cashiers identify the next action without disrupting familiar control positions. That assumption was not tested in live operations.</p></div>
+    <div><b>The test I'd run</b><p>If tested, compare task completion time, errors, and hesitation across representative transactions on both screen sizes.</p></div>
   </div>
 
   <nav class="case-nav" aria-label="More work">

@@ -1,13 +1,12 @@
 # Natthapath Damrongsri — Portfolio
 
-Static portfolio. Plain HTML + CSS, no build step, no framework. The only JavaScript is
-`scroll.js` (~28 lines, no dependencies) — it draws the hand annotations on scroll; strip
-it and the page is the same static document. Open `index.html` in a browser to view.
+Static portfolio. Plain HTML + CSS, no build step, no framework, and no production
+JavaScript. Open `index.html` in a browser to view.
 
 > Live: **https://gealuyse.github.io/portfoilo/** (once the first deploy finishes).
 
 ## Stack
-- HTML5 + one shared `style.css` — static; one tiny `scroll.js` for the annotation draw
+- HTML5 + one shared `style.css` — fully static
 - Fonts: Newsreader (serif headings) · Inter (UI/labels) · Caveat (handwritten notes)
 - Target: modern evergreen browsers (CSS uses box-decoration-break, data-URI SVG, `vector-effect`)
 
@@ -19,7 +18,7 @@ it and the page is the same static document. Open `index.html` in a browser to v
 | 3bb-member.html | Case study 02 — 3BB Member |
 | counter-service-pos.html | Case study 03 — Counter Service POS (short) |
 | style.css | All styles, shared across pages |
-| assets/projects/<slug>/ | cover.png + screen_proof.png used by the site |
+| assets/<slug>/ | Optimized covers, figures, and social images used by the site |
 | docs/portfolio-spec.md | **Single source of truth** — rules + page copy + history |
 | docs/archive/ | Superseded source docs + stale data (provenance) |
 | docs/ref/ | Reference images |
@@ -34,16 +33,11 @@ moved to `docs/archive/naaraan/` (`naaraan.html` + `assets/`) for provenance onl
 **not** re-add it to `index.html`, the nav, or the spec's active rules. Treat it like
 anything else in `docs/archive/`: superseded, not to be rebuilt.
 
-## Annotation system — definition (stable)
-Single ink tone (`#34404C`) handwritten margin note (Caveat). CSS-only, static.
-- The old TWO-COLOR blue/red system is DEPRECATED — do not reintroduce it.
-- A note = anchor (hand-drawn SVG underline, never `text-decoration`) + connector
-  line + one short sentence. One sentence, anchored to the work, says WHY not WHAT.
-- Component in `style.css` (block "HANDWRITTEN — reasoning mark"):
-  `.anno-anchor` inside a `position:relative` host + sibling `.anno-mark`
-  → `.anno-conn` (connector) + `.anno-note` (Caveat).
-- Only one mark is live today (the demo on `index.html`). Full rules + budget →
-  `docs/portfolio-spec.md`.
+## Annotation system
+Annotations are CSS-only and use the same Caveat handwriting family throughout.
+- Homepage project previews use `.pin-note` for short process quotes.
+- Case studies use `.hand` for restrained decision or tradeoff marginalia.
+- Keep notes short, static, and secondary to the evidence they accompany.
 
 ## Reference
 Everything — current rules, all page copy, and the project history — lives in one file:
@@ -51,7 +45,7 @@ Everything — current rules, all page copy, and the project history — lives i
 as provenance (superseded; the spec wins).
 
 ## Adding / editing a project
-1. Images → `assets/projects/<slug>/cover.png` + `screen_proof.png`
+1. Images → `assets/<slug>/` with optimized WebP display assets and a social image
 2. Page → copy an existing case study as a template, save as `<slug>.html`
 3. Card + link → add the project card in `index.html` (respect the locked order)
 4. Copy → add the page text to `docs/portfolio-spec.md` (Part 2)
@@ -65,8 +59,7 @@ as provenance (superseded; the spec wins).
 - URL: `https://gealuyse.github.io/portfoilo/`.
 
 ## For AI agents
-- Edit HTML/CSS directly — nothing to compile. The only JS is `scroll.js` (annotation
-  draw-on-scroll); leave it static-first — JS only toggles a class, CSS does the work.
+- Edit HTML/CSS directly — nothing to compile and no production JavaScript.
 - One reference: `docs/portfolio-spec.md`. If it conflicts with the code, the code
   wins (fix the doc). Treat everything in `docs/archive/` as superseded.
 - Keep the name "Natthapath Damrongsri" (older drafts use placeholder "G").
@@ -74,8 +67,7 @@ as provenance (superseded; the spec wins).
   GSAP / any JS motion · the "pencil-writing trace" (it never shipped).
 
 ## Status & open issues
-- [ ] Annotations barely started: only ONE mark exists site-wide (the `index.html`
-      demo). Add more per the per-page budget in the spec.
+- [x] CSS-only process notes are present on the homepage and case studies.
 - [x] Connected to GitHub (`gealuyse/portfoilo`); `git push` deploys. No custom domain.
 - [x] SEO: canonical / og:url / og:image set to `https://gealuyse.github.io/portfoilo/`; `og.png` added.
 - [x] Finalize About + Contact copy.

@@ -1,481 +1,1083 @@
-# Portfolio — Spec & Copy (single source of truth)
+# Portfolio — Technical & Art Direction Specification
 
-> The one reference for this site: current rules + page copy + history.
-> It replaces the separate brief / content / voice-spec / notes files
-> (now under `archive/` as provenance). If anything here conflicts with an
-> archived doc, **this wins**. If it conflicts with the actual code, the
-> **code wins** — fix this doc.
+> **Source of truth for how the website is built and how it should feel.**
+>
+> This file owns the technical architecture, visual language, layout system, typography, spacing, components, evidence treatment, responsive behavior, accessibility, and implementation standards. It does **not** own final page wording or project facts; those belong in `site-content.md`.
+>
+> When the two files appear to conflict:
+> - `site-content.md` controls **what is said and what may be claimed**.
+> - This file controls **how that content is structured, rendered, and experienced**.
+> - The implementation should be corrected to match the two source files. Existing code is not automatically authoritative.
 
-Contents:
-- **Part 1 — Current rules** (build to these)
-- **Part 2 — Page copy** (source of truth for wording)
-- **Part 3 — History & superseded decisions** (do not rebuild)
-
----
-
-# PART 1 — CURRENT RULES
-
-## Project order (locked)
-CDP (01) → 3BB (02) → POS (03)
-(Naaraan was dropped — see Part 3. Do not re-add it.)
-
-## Tech facts (verified against code)
-- Pure static HTML + one shared `style.css`. **No JavaScript anywhere.**
-- Fonts: Newsreader (serif) · Inter (UI/labels, uppercase kickers) · Caveat
-  (handwritten notes, `var(--script)`).
-- NOT used (dropped brief ideas): Fraunces / DM Sans fonts · GSAP · any JS motion.
-- Name on site: **Natthapath Damrongsri** (older drafts use placeholder "G").
-- Spacing: every gap uses scale tokens `--sp-1`…`--sp-10` (4px base —
-  8/12/16/20/24/32/48/64/96/128). Keep new spacing on these steps; don't hand-pick px.
-
-## Layout rhythm & grouping (Laws of UX)
-The reader must always know which part they're in without thinking. **Space does the work;
-lines are the exception.** Build to these:
-
-1. **Spacing first — separate parts with space, not lines.** Tier every gap so the structure
-   reads by proximity alone: section gap (`--sp-10`) **>** group/decision gap (`--sp-6`) **>**
-   row gap (`--sp-4/5`). If the read feels flat, *increase the gap before reaching for a rule.*
-   *(Law of Proximity.)*
-2. **A line never touches an image.** If a figure sits directly above or below, there is **no
-   rule** in that seam — ever. (This is why decisions, which each end in a figure, are spaced,
-   not divided; and why the fact strip under the cover has no top rule.)
-3. **Lines are for emphasis or the ending only.** A divider must earn its place. One job per
-   line; never trailing/doubled. A line is allowed **only** in these cases — anywhere else,
-   use space:
-   - **Image frame** — the 1px box around a cover / figure / preview thumbnail (it frames, it
-     doesn't divide).
-   - **Emphasis** — one pulled-out block (the reflection's left bar).
-   - **Ending** — the close of the page (`case-nav` top rule, `footer` top rule).
-   - **Global header** — the `site-nav` underline (one structural rule under the masthead).
-   - **List rows** — repeated peer rows in a scannable list (homepage `proj-index` work rows).
-     This is the *one* place a rule may sit near an image, because it's a list pattern, not a
-     content seam. Do not import it into case-study sections.
-4. **Inter-group gap > intra-group gap, always.** The space *between* parts must be clearly
-   larger than the space *inside* one, or the reader can't tell where a part ends. *(Proximity.)*
-5. **Don't invert hierarchy.** A parent heading must never look smaller/quieter than the
-   children under it. *(Von Restorff — the boundary has to stand out, via space + position.)*
-
-## Figures & evidence (rules)
-Case-study figures are *proof* for a fast-scanning reader. Build every figure to these:
-
-1. **No text baked into the image.** No `Fig x.x`, no title bar, no caption, no watermark
-   inside the PNG. The figure's label lives in HTML only (`.fig-lead` → "Part N"). Caption in
-   both = duplicate, and the baked one can't match the site's type or get fixed without a
-   re-export. *(Current assets violate this — see `image-assets-todo.md`.)*
-2. **One thing, legible at render width.** A figure shows a single focused screen/diagram that
-   reads without zooming. Never a tiny multi-screen board. If multiple screens are essential,
-   show **≤3 at large size**, not a grid of thumbnails.
-3. **Content must match its `fig-lead` and `alt`.** No swapped, placeholder, or wrong-domain
-   images (e.g. never a "banking app" frame on a telecom case). When in doubt, open the file
-   and check it depicts what the lead claims.
-4. **Aspect: `16:9` for everything** — covers and inline figures alike (uniform across the
-   site). Author UI screenshots *composed* to 16:9: pad / letterbox a non-16:9 screen (e.g.
-   the 800×600 legacy POS) within a 16:9 canvas. Do **not** rely on CSS `object-fit:cover` to
-   force the ratio on UI shots — it crops the interface. Covers may crop (they're photographic).
-5. **Filenames lowercase** (`fig-1-1.png`) to match what git tracks (`core.ignorecase` hides
-   case drift locally but breaks on Linux/Pages).
-
-## Annotation / margin-voice system (current)
-One handwritten voice. Single ink tone **`#34404C`**, Caveat. The old two-color
-blue/red ("Thinking Mark" / "Self-bite") system is **deprecated — do not reintroduce.**
-
-**Four principles**
-1. **Anchor at the work.** Point to a real spot, never a floating block. If the note
-   reads complete without seeing the work, it's a paragraph, not a margin note.
-2. **One sentence. No exceptions.** ~8–12 words. If it needs two, it's body copy.
-3. **Replace, don't add.** Each note cuts the paragraph it replaces. (Gloss is the
-   exception — purely additive.)
-4. **Why, not what.** Reasoning, not component names. Exception: a *gloss* may define
-   a hard word. Footnote: when the subject is the user (not your decision), drop the
-   edge — warmth, not wit.
-
-**Meta-principle:** the best annotation is often rewriting the sentence so none is
-needed. (That's why the landing carries almost no marks.)
-
-**Marks** (locked unless noted)
-
-| Mark | Glyph | Job |
-|---|---|---|
-| Reasoning | underline + solid connector | why a choice was made (load-bearing) |
-| Gloss | circle + dashed connector | a hard word made plain (additive) |
-| Cut | strikethrough | what was removed, and why |
-| Gap | caret `^` | what's missing / what I'd add |
-| Cause | connector arrow | this forced that (max 1/page) |
-| Weight | double underline / bold arrow | sharpest line on the page (max 1/page; execution undecided) |
-| Group | brace `{` | one region as a unit (glyph undecided) |
-
-**Two axes:** A — mark on the word (underline = reasoning phrase · circle = gloss word);
-B — line weight (solid = primary · dashed = secondary). Default: reasoning→solid, gloss→dashed.
-
-**Rejected on purpose:** checkmarks · asterisk-footnotes · standalone `?` · numbered
-circles · highlighter fill · multiple ink colors.
-
-**Per-page budget:** Landing ~1–2 · one per project card ·
-CDP 4–6 · 3BB 4–5 · POS 3.
-
-## The component (as built in `style.css`)
-Block "HANDWRITTEN — reasoning mark". Single ink tone `#34404C`, CSS-only, static
-(no draw-on-scroll animation).
-- Wrap the phrase: `<span class="anno-anchor">…</span>` — the underline is a
-  hand-drawn SVG background, **never `text-decoration`** (that reads as a link).
-- The host element is `position:relative` (e.g. `.easier`). Add a sibling `.anno-mark`
-  containing `.anno-conn` (connector SVG path, `stroke #34404C`; `.is-gloss` → dashed,
-  reserved/unused) and `.anno-note` (Caveat text).
-- Responsive <1080px: the note drops directly under the anchor, the connector hides,
-  and a small arrow shows via `.anno-mark::before`.
-- Only the *reasoning* mark is built. Gloss / cut / gap / cause / weight / group are
-  spec'd but not implemented.
-
-## Current state
-Only **one** annotation exists site-wide: the demo reasoning mark on `index.html`
-("stops being the user's problem" → *do it well and no one sees it happened*).
-Every 🔵/🔴 marker in Part 2 below is an annotation *candidate pool*, not built — add
-marks per the budget above, single ink tone, reasoning mark only.
+**Last rewritten:** 2026-07-14  
+**Design direction:** Personal Product System Portfolio  
+**Visual narrative:** Complexity → Structure → Clarity  
+**Project order:** CDP → 3BB Member → Counter Service POS
 
 ---
 
-# PART 2 — PAGE COPY (source of truth for wording)
+# PART 1 — PRODUCT AND EXPERIENCE PRINCIPLES
 
-Verbatim copy for every page — use it for WORDING. The inline 🔵 Thinking Mark /
-🔴 Self-bite labels below are **legacy** (the deprecated two-color system); treat the
-quoted sentences as candidate annotation text only. Styling and placement follow
-Part 1 (single ink tone, reasoning mark).
+## 1.1 The site is a product system, not a gallery
 
-## ═══════════════════════════════════════
-## ส่วนที่ 1: LANDING / HERO
-## ═══════════════════════════════════════
+The website should demonstrate the same qualities the portfolio claims:
 
-### Main Copy
+- Clear hierarchy under complex content
+- Reusable patterns instead of page-by-page invention
+- Evidence before explanation
+- Explicit status and contribution boundaries
+- Restraint where familiarity or readability matters
+- A coherent system that can be maintained after the current redesign
 
-**Name + Title**
-G
-Product Designer
+Every visual choice should help the reader answer one of these questions:
 
-**Headline**
-Making the complex, clear.
+1. Where am I?
+2. What problem was this designer working inside?
+3. What did he personally change?
+4. What evidence proves it?
+5. What is the current status?
 
-**Sub-copy**
-I design enterprise platforms, data systems, and operational tools.
-The kind that break when conditions stack — and shouldn't.
-
-**Metadata sidebar**
-FOCUS: Enterprise UX · Data Systems · Operational Tools
-BASED IN: Bangkok
-STATUS: Available
-
-**CTA**
-VIEW SELECTED WORK ●
-
-### Annotations
-
-🔴 **Self-bite** (ข้าง headline):
-> _"Making the complex, clear." sounds good — until you have to prove it._
-
-🔵 **Thinking Mark** (ข้าง sub-copy):
-> _enterprise tools — where "user-friendly" goes to die_
+If an element does not support navigation, comprehension, evidence, or identity, it should be removed.
 
 ---
 
-## ═══════════════════════════════════════
-## ส่วนที่ 2: WORK — PROJECT CARDS
-## ═══════════════════════════════════════
+## 1.2 Art direction
 
-### CARD 01 — CDP (Customer Data Platform)
+The visual language combines three influences:
 
-**01** · ENTERPRISE SAAS · 2024 · Handed off
+### Swiss / International Typographic Style
 
-**Title:** Customer Data Platform
+- Precise grid
+- Strong alignment
+- Clear typographic hierarchy
+- Functional labels
+- Minimal decoration
+- Repetition through systems rather than templates that feel generic
 
-**One-liner:**
-Marketers built condition logic that quietly resolved to zero people.
-Nothing warned them.
+### Editorial web design
 
-🔵 **Thinking Mark:**
-> _the hardest screen was the one that showed nothing_
+- Large serif thesis statements
+- Deliberate pacing
+- Captions and marginal reasoning
+- Long-form cases broken into readable chapters
+- Contrast between narrative text and evidence
 
----
+### Warm minimalism with blueprint discipline
 
-### CARD 02 — 3BB Member
+- Warm paper-like backgrounds rather than pure white
+- Dark ink rather than hard black
+- Deep blueprint accents used for structure and interaction
+- Hairline frames and technical labels
+- Quiet confidence rather than agency-style spectacle
 
-**02** · MOBILE APP · 2024 – Present · Live on Play Store & App Store
-
-**Title:** 3BB Member
-
-**One-liner:**
-The file had everything.
-Except an answer for which version was current.
-
-🔵 **Thinking Mark:**
-> _design problem zero: which version is real?_
-
----
-
-### CARD 03 — Counter Service POS
-
-**03** · OPERATIONAL UX · 2023 · Design spec
-
-**Title:** Counter Service POS
-
-**One-liner:**
-Every button was locked in place. Every flow was fixed.
-The only thing left to design was the space between them.
-
-🔴 **Self-bite:**
-> _800×600 in 2023 — yes, really_
+The site should feel designed, not decorated. Visual interest comes from composition, type scale, evidence, and rhythm.
 
 ---
 
-## ═══════════════════════════════════════
-## ส่วนที่ 3: PROJECT PAGE — 01 CDP (Hero Case Study)
-## ═══════════════════════════════════════
+## 1.3 Show, then explain
+
+Case pages should reveal evidence before asking the reader to commit to long-form narrative.
+
+Recommended order:
+
+1. Hero and factual status
+2. At a Glance
+3. The Work, First
+4. Situation and constraints
+5. Decision chapters with related evidence
+6. Current status and reflection
+7. Case navigation
+
+A fast-scanning reader should understand the contribution from the hero, At a Glance, evidence titles, and status alone. The full narrative should reward deeper reading rather than being required to decode the page.
 
 ---
 
-### THE SETUP
+## 1.4 Restraint rules
 
-Marketing teams used this customer data platform to build audience segments from attributes, events, consent rules, and campaign conditions. The hard part was not showing more data. It was turning layered logic into a workspace they could read, configure, and trust.
-
-The interface already existed. It worked. But "works" and "works confidently" are different things.
-
-A marketer could build a segment, nest AND/OR groups two or three levels deep, and still miss that the logic quietly resolved to zero people.
-
-That was the problem.
-
-### WHAT WAS LOCKED
-
-- Legacy data schemas and variable mappings — untouchable.
-- Backend logic constraints — what the system could actually query.
-- No complete rebuild. Limited dev resources. Improve the workspace inside the existing platform.
-
-### WHAT I ACTUALLY DID
-
-**Decision 1: A workspace for layered audience logic**
-
-Problem: Marketers had to combine attributes, events, consent rules, and AND/OR groups inside one workspace. The risk was not only choosing the wrong condition — it was building logic that looked valid while quietly resolving to the wrong audience.
-
-Decision: I structured the builder around visible condition groups, clear operator blocks, and an estimated-reach panel, so the user could understand the segment as it was being assembled.
-
-Trade-off: Showing logic clearly takes space. The interface had to stay readable before it tried to show everything.
-
-**Decision 2: Search that shows what you're choosing**
-
-Problem: The event and attribute catalog was large and growing. A plain dropdown meant scrolling through entries and trusting that a label meant what it seemed to mean.
-
-Decision: I designed a categorized auto-complete selector with metadata visible inside each result row, so users could verify a condition before adding it to the segment.
-
-Trade-off: A richer selector is heavier to specify and build. Every empty state, loading state, and overflow case needed explicit rules.
-
-**Decision 3: Specs that answer the questions devs actually ask**
-
-Problem: Dynamic inputs changed behavior based on selected conditions. Without explicit specs, developers had to guess — and every guess became a QA ticket.
-
-Decision: I mapped button states, focus rings, validation alerts, and input adapters per data variable into handoff specs the team could implement and QA against.
-
-Trade-off: More upfront design work before any code gets written. But fewer conversations that start with "what should this do when..."
-
-### EVIDENCE
-
-[Fig 1.1] Primary segment builder workspace: structured event and condition setup.
-[Fig 2.1] Advanced search selector: categorized auto-complete with metadata rows.
-[Fig 2.2] Nested query blocks: AND/OR logic groups with spacing parameters.
-[Fig 2.3] Handoff specs: component layouts, interaction states, edge cases.
-
-### WHAT I'D DO DIFFERENTLY
-
-The riskiest moment in this tool is invisible: a marketer builds conditions that resolve to zero people and launches an empty campaign without knowing. I'd add a validation layer — a check that warns before nothing goes out to nobody. I'd also watch how deep real users actually nest their groups. I designed for 2–3 levels. I don't know if that matches how people really work.
-
-### METADATA STRIP
-
-Role: UX/UI Designer (core feature design)
-Platform: Web application
-Timeline: 3 months · 2024
-Team: Tech lead · PM · Front-end engineers · QA
-Scope: Segment builder · Condition logic · Advanced search · Handoff docs
-Status: Handed off · Implementation supported
+- Do not use decorative motion to make static work appear more substantial.
+- Do not use extra cards, borders, or labels when spacing can create the relationship.
+- Do not force every project into the same number of chapters or figures.
+- Do not make an inherited-product case look like a blank-slate redesign.
+- Do not turn the handwritten annotation system into a competing visual identity.
+- Do not optimize every section for novelty. Repetition is useful when it builds orientation.
 
 ---
 
-## ═══════════════════════════════════════
-## ส่วนที่ 4: PROJECT PAGE — 02 3BB MEMBER
-## ═══════════════════════════════════════
+# PART 2 — SOURCE-OF-TRUTH AND FILE BOUNDARIES
+
+## 2.1 Ownership
+
+| Concern | Owning source |
+|---|---|
+| Final copy and project facts | `site-content.md` |
+| Positioning and claim language | `site-content.md` |
+| Page narrative order | `site-content.md` |
+| Layout, tokens, typography, components | `portfolio-spec.md` |
+| Accessibility and responsive behavior | `portfolio-spec.md` |
+| Actual implementation | HTML/CSS/assets generated from both files |
+| Old decisions and experiments | `archive/` only |
+
+Do not duplicate final project copy in this specification. Component examples must use neutral placeholder text rather than stale production wording.
+
+## 2.2 Change discipline
+
+When implementation changes:
+
+1. Confirm whether the change affects content, design system, or both.
+2. Update the owning source file first.
+3. Update the code.
+4. Run the relevant acceptance checklist.
+5. Archive superseded experiments instead of leaving contradictory instructions in active files.
 
 ---
 
-### THE SETUP
+# PART 3 — TECHNICAL ARCHITECTURE
 
-3BB Member already had an app. Millions of users on Play Store and App Store. Billing, packages, service access, account management — established flows that people used every day without thinking.
+## 3.1 Baseline
 
-🔵 **Thinking Mark:**
-> _the file was the archaeology site — every layer was a different era_
+- Static semantic HTML pages
+- One shared `style.css` for all current pages; keep page-specific composition inside the same system unless a future architectural decision explicitly changes this
+- No framework required
+- JavaScript is not required for the core experience
+- Add JavaScript only for a functional need that cannot be met accessibly with HTML and CSS
+- The site must remain readable and navigable if JavaScript fails
 
-🔴 **Self-bite:**
-> _design problem zero: which version is current?_
+## 3.2 Page set
 
----
+- `index.html`
+- `cdp.html`
+- `3bb-member.html`
+- `counter-service-pos.html`
 
-### WHAT WAS LOCKED
+Project order and case navigation must remain:
 
-- Established user journeys — members already knew the app. Unnecessary redesign could confuse routine tasks.
-- A large inherited file — previous versions, migration sets, archived sections all living together.
-- Migration-state complexity — same screen, different behavior depending on customer group.
-- Phased delivery — flows had to hold together mid-transition, not just in a final-state mockup.
+1. Customer Data Platform
+2. 3BB Member
+3. Counter Service POS
 
-🔵 **Thinking Mark:**
-> _"don't break what works" — a constraint that sounds simple until you have to find what works first_
+Do not reintroduce removed projects without updating both source files and navigation intentionally.
 
----
+## 3.3 Suggested file structure
 
-### WHAT I ACTUALLY DID
+```text
+/
+├── index.html
+├── cdp.html
+├── 3bb-member.html
+├── counter-service-pos.html
+├── style.css
+├── assets/
+│   ├── common/
+│   ├── cdp/
+│   ├── 3bb-member/
+│   └── counter-service-pos/
+├── docs/
+│   ├── site-content.md
+│   ├── portfolio-spec.md
+│   └── archive/
+└── README.md
+```
 
-**Decision 1: Map current vs. legacy before touching anything**
+## 3.4 HTML requirements
 
-The file contained years of accumulated work.
-Not every screen needed updating — most didn't.
-But no one had clearly marked which flow was intended
-and which was leftover.
+- One `<h1>` per page
+- Heading levels must follow document hierarchy; never choose a heading level for visual size
+- Use `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<figcaption>`, `<footer>`, `<dl>`, and lists where semantically appropriate
+- Each major section needs an ID only when it is a navigation target
+- Project facts should use a definition list or equally meaningful structure
+- Evidence must use `<figure>` and `<figcaption>` unless the evidence is a live HTML specimen with its own labeled region
+- Add a keyboard-accessible skip link
+- Decorative SVGs must be hidden from assistive technology
+- Meaningful diagrams require text alternatives or an adjacent explanation
 
-I separated active states from inherited content,
-then updated only where migration logic, service state,
-or implementation requirements actually changed the user's path.
+## 3.5 CSS architecture
 
-The tradeoff: less visually dramatic.
-More stable, more shippable.
+Use layers or clearly separated sections in `style.css`:
 
-🔵 **Thinking Mark:**
-> _restraint is a design decision — the hardest one_
+1. Reset and defaults
+2. Design tokens
+3. Base typography
+4. Layout primitives
+5. Shared components
+6. Page composition
+7. Utilities
+8. Responsive overrides
+9. Reduced-motion overrides
 
----
-
-**Decision 2: Treat errors and service changes as first-class screens**
-
-Login errors, registration conditions, billing options —
-these aren't edge cases. These are the moments
-where users feel the most uncertainty.
-
-I added and refined specific states: login error handling, mobile OTP registration, auto-pay setup, and bill-delivery channel selection. Each state got clear copy, hierarchy, and a next action that QA and dev could implement consistently.
-
-The tradeoff: more screens to maintain.
-Fewer implementation gaps to argue about.
-
-🔴 **Self-bite:**
-> _edge cases are where trust is built or lost_
-
----
-
-### EVIDENCE
-
-[Fig 1.1] Selected member flows — development-ready states for migration conditions
-[Fig 2.1] Contribution scope — inherited context vs. selected updates
-
----
-
-### WHAT I'D DO DIFFERENTLY
-
-Map the inherited-vs-contribution boundary on day one.
-
-I found it eventually. But the time spent figuring out
-which screen was current and which was legacy
-could have been saved with an explicit audit upfront.
-
-That clarity was worth more to the team
-than any single screen I delivered.
-
-🔴 **Self-bite:**
-> _next time: audit first, design second_
+Prefer component classes and custom properties over deeply nested selectors. Avoid styling that depends on the exact order of unrelated elements.
 
 ---
 
-### METADATA STRIP
+# PART 4 — DESIGN TOKENS
 
-Role: UX/UI Designer
-Platform: Mobile app · Web
-Year: 2024 – Present
-Status: Live — Play Store & App Store
-Scope: Selected flow updates · Migration states · Dev/QA handoff
-Team: Product · Business · Developers · QA
+## 4.1 Color system
+
+The palette should remain warm, editorial, and technical.
+
+### Core tokens
+
+```css
+:root {
+  --paper: #fcfbf9;
+  --paper-muted: #f5f2ed;
+  --surface: #ffffff;
+  --ink: #1c1b1a;
+  --ink-soft: #5f5b56;
+  --ink-faint: #8a857e;
+  --line: #d8d3cc;
+  --line-strong: #aaa39a;
+  --blueprint: #173f67;
+  --blueprint-soft: #dce8f2;
+  --annotation: #34404c;
+  --focus: #0b63ce;
+  --danger: #a33a31;
+  --success: #356b4a;
+}
+```
+
+These are direction tokens, not permission to add many colors. Most of the interface should use paper, ink, and line. Blueprint is an accent for interactive or structural emphasis, not a section background applied everywhere.
+
+### Contrast
+
+- Normal body text must meet WCAG AA contrast
+- Large display text must also remain readable on the paper background
+- `--ink-faint` is for secondary non-essential labels only, never core body copy
+- Links must not rely on color alone; use underline, weight, or another persistent indicator
+- Focus color must remain visible on both paper and image-adjacent surfaces
+
+## 4.2 Typography
+
+### Families
+
+- **Newsreader:** thesis statements, large editorial headings, selected pull lines
+- **Inter:** body copy, navigation, metadata, captions, controls, labels
+- **Caveat:** rare handwritten reasoning notes only
+- System monospace may be used sparingly for technical indexes or code-like metadata when it improves structure
+
+Do not add another primary type family.
+
+### Type roles
+
+```css
+:root {
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Inter", Arial, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --step--1: clamp(0.75rem, 0.72rem + 0.12vw, 0.82rem);
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.12rem + 0.52vw, 1.6rem);
+  --step-2: clamp(1.65rem, 1.35rem + 1.05vw, 2.35rem);
+  --step-3: clamp(2.2rem, 1.65rem + 2.1vw, 3.6rem);
+  --step-4: clamp(3rem, 2rem + 4vw, 5.75rem);
+}
+```
+
+These values may be tuned after browser review, but the role hierarchy must remain.
+
+### Usage
+
+- Hero H1: Newsreader, `--step-4`, tight but not compressed leading
+- Case thesis: Newsreader, `--step-3`
+- Section H2: Inter or Newsreader depending on function; parent hierarchy must remain unmistakable
+- Chapter H3: Inter, `--step-1` or `--step-2`
+- Body: Inter, `--step-0`, comfortable leading
+- Kicker / metadata: Inter uppercase, `--step--1`, increased tracking
+- Caption: Inter, `--step--1` to `--step-0`
+- Annotation: Caveat, sized to remain legible but clearly secondary
+
+### Readability
+
+- Narrative line length: approximately 58–72 characters
+- Captions: approximately 45–70 characters
+- Avoid full-width long paragraphs on desktop
+- Body line-height: approximately 1.55–1.75
+- Large serif headings should not be set in all caps
+- Uppercase labels must remain short and should not carry important prose
+
+## 4.3 Spacing scale
+
+Use the existing production spacing tokens. The scale is anchored to a 4px grid but begins at 8px for layout spacing. Never remap these token names casually; changing them would alter every page.
+
+```css
+:root {
+  --sp-1: 0.5rem;   /* 8 */
+  --sp-2: 0.75rem;  /* 12 */
+  --sp-3: 1rem;     /* 16 */
+  --sp-4: 1.25rem;  /* 20 */
+  --sp-5: 1.5rem;   /* 24 */
+  --sp-6: 2rem;     /* 32 */
+  --sp-7: 3rem;     /* 48 */
+  --sp-8: 4rem;     /* 64 */
+  --sp-9: 6rem;     /* 96 */
+  --sp-10: 8rem;    /* 128 */
+}
+```
+
+### Rhythm law
+
+`page-section gap > chapter/group gap > internal content gap > label-to-value gap`
+
+Typical use:
+
+- Major page section: `--sp-9` to `--sp-10`
+- Chapter or evidence group: `--sp-7` to `--sp-8`
+- Related content block: `--sp-5` to `--sp-6`
+- Paragraph or row relationship: `--sp-2` to `--sp-4`
+- Label to value: `--sp-1` to `--sp-2`
+
+If a page feels flat, increase the relationship gap before adding a line or background.
+
+## 4.4 Sizing and layout tokens
+
+```css
+:root {
+  --page-max: 90rem;       /* 1440 */
+  --content-max: 78rem;    /* 1248 */
+  --text-max: 44rem;
+  --gutter-mobile: 1rem;
+  --gutter-tablet: 1.5rem;
+  --gutter-desktop: 2rem;
+  --grid-gap: 1.5rem;
+  --hairline: 1px;
+}
+```
+
+Treat these as a coherent starting system. Tune only after checking every page, not to fix one isolated section.
 
 ---
 
-## ═══════════════════════════════════════
-## ส่วนที่ 5: PROJECT PAGE — 03 COUNTER SERVICE POS (สั้น)
-## ═══════════════════════════════════════
+# PART 5 — GRID AND PAGE COMPOSITION
+
+## 5.1 Breakpoint intent
+
+Use content-driven breakpoints rather than device names. Recommended ranges:
+
+- **Compact:** below 720px
+- **Medium:** 720px–1079px
+- **Wide:** 1080px and above
+- **Large canvas:** 1440px and above, while content remains constrained by max-width
+
+The design must not depend on exact popular device widths.
+
+## 5.2 Global container
+
+- Center the page inside `--page-max`
+- Apply responsive outer gutters
+- Keep primary content inside `--content-max`
+- Allow evidence to become wider than narrative text when legibility requires it
+- Do not allow long prose to span the full evidence width
+
+## 5.3 Desktop grid
+
+Use a 12-column grid with consistent gaps.
+
+Recommended patterns:
+
+- Homepage project row: index 1 column, text 5–6 columns, preview 5–6 columns
+- Case hero: thesis 7–8 columns, facts 4–5 columns
+- Narrative chapter: label 2–3 columns, body 5–6 columns, optional note or supporting element in remaining columns
+- Evidence plate: 8–12 columns depending on the artifact
+- At a Glance: three equal or proportionally balanced columns when copy length allows
+
+The grid should align unrelated sections so the page feels like one system, not a sequence of independent cards.
+
+## 5.4 Compact layout
+
+Below the wide breakpoint:
+
+- Collapse complex multi-column compositions into a single reading order
+- Keep section label, heading, body, evidence, and caption adjacent
+- Move metadata below the title
+- Stack At a Glance anchors
+- Place project previews after their descriptions
+- Handwritten notes move inline under their anchor; connectors hide
+- Do not preserve desktop whitespace at the cost of excessive scrolling
+
+## 5.5 Section boundaries
+
+**Space does the work; lines are the exception.**
+
+Allowed divider use:
+
+- Site navigation baseline
+- Repeated homepage project rows
+- Figure or specimen frames
+- Reflection emphasis bar
+- Case navigation top rule
+- Footer top rule
+
+Disallowed:
+
+- A rule between every case chapter
+- A rule touching the top or bottom of a figure
+- Double borders around a component already placed on a bordered surface
+- Rules used to compensate for insufficient spacing
+
+A parent section must look more important than its child chapters through scale, position, and spacing. Never invert the hierarchy.
 
 ---
 
-### THE SETUP
+# PART 6 — SHARED PAGE SHELLS
 
-Cashiers process hundreds of transactions per shift. They do not read every screen from scratch — they rely on positions, repeated flows, and muscle memory built over time.
+## 6.1 Global navigation
 
-The interface needed clearer hierarchy and more consistent spacing. But the flow was fixed. The button positions were fixed. The brand identity was fixed. The screens ranged from 800×600 to 1920×1080.
+Requirements:
 
-Everything was locked except spacing, hierarchy, and contrast.
+- Name or wordmark on the left
+- Work, About, Contact on the right
+- Current-page state visible without relying only on color
+- One structural baseline only
+- Sticky behavior is optional; if used, it must not obscure anchors or consume excessive vertical space
+- Mobile navigation should remain simple; avoid an elaborate menu animation for three links
 
-### WHAT I ACTUALLY DID
+## 6.2 Homepage shell
 
-**Improve hierarchy without moving the controls**
+Order:
 
-Problem: The interface had uneven spacing, weak grouping, and competing visual weight. During routine transactions, important information had to stand out without changing the controls cashiers already knew.
+1. Navigation
+2. Hero
+3. Positioning bridge
+4. Selected work
+5. How I work
+6. Collaboration
+7. About
+8. Contact
+9. Footer
 
-Decision: I kept the button positions in place and adjusted hierarchy through spacing, grouping, contrast, and clearer separation between transaction areas and action areas.
+The selected work section must appear early enough that a recruiter reaches project evidence without reading a long personal manifesto.
 
-Trade-off: The result is less dramatic than a full redesign. That was the point — a cashier should not have to relearn the screen to read it better.
+## 6.3 Case shell
 
-**Build layout rules for two screen realities**
+Order:
 
-Problem: The same POS experience had to work across legacy 800×600 terminals and wider 1920×1080 displays. A simple scale-up or scale-down would either crowd the small screen or overinflate the larger one.
+1. Navigation
+2. Case hero
+3. Fact strip
+4. Honesty note
+5. Cover or primary specimen
+6. At a Glance
+7. The Work, First
+8. Situation and constraints
+9. Decision chapters
+10. Working with the team
+11. Current status
+12. Reflection
+13. Case navigation
+14. Footer
 
-Decision: I designed separate layout profiles for compact and expanded screens. The compact version prioritized essential metadata and tighter rows. The wider version gave more room to transaction details, product areas, and payment actions without simply enlarging everything.
-
-Trade-off: Two layout profiles meant more design maintenance. But one flexible mockup would have hidden the real hardware constraint.
-
-### EVIDENCE
-
-[Fig 1.1] Proposed POS interface: clearer hierarchy within fixed control positions.
-
-[Fig 2.1] Dual-resolution specs: spacing, padding, and border adjustments across hardware profiles.
-
-### WHAT I'D DO DIFFERENTLY
-
-This project needs proof. The entire design rests on one claim: better hierarchy and spacing speed up checkout without moving a single control. If it reaches live testing, I'd log keystroke timing on the terminals — real transaction-speed data, no cashier interrupted.
-
-### METADATA STRIP
-
-Role: UX/UI Designer
-Platform: POS terminal · 800×600 & 1920×1080
-Year: 2023
-Status: Design spec · Review completed
-Scope: Visual hierarchy · Spacing system · Dual-resolution layouts
+Case length may vary. Do not add empty sections merely to preserve identical structure.
 
 ---
 
-# PART 3 — HISTORY & SUPERSEDED (do not rebuild)
+# PART 7 — COMPONENT SYSTEM
 
-This site evolved, and the earlier docs contradict the shipped code. Kept here so the
-reasoning isn't lost. The original files are in `archive/`.
+## 7.1 Kicker
 
-**Naaraan Store Builder — dropped (2026-06-23).** Previously project 04 (a reserve
-thumbnail, e-commerce SaaS · 2022 prototype). Removed from the portfolio entirely: no
-card, page, or nav reference remains, and it is no longer mentioned in the active rules
-above. `naaraan.html` and its assets were moved to `docs/archive/naaraan/`. Do **not**
-re-add it.
+Purpose: category, section, or evidence orientation.
 
-**Original v2 brief (`claude-code-brief.md`) — historical.** The first plan. Several
-ideas were later dropped: a two-color blue/red annotation system, Fraunces/DM Sans
-fonts, and GSAP motion. None shipped.
+- Inter uppercase
+- Short, factual text
+- Increased tracking
+- Secondary color
+- Never use as the only heading for a major section
 
-**Dual-annotation content (`portfolio-content-v2-dual-annotation.md`) — copy kept, spec dropped.**
-Its page copy is the source for Part 2. Its 🔵/🔴 two-color annotation system is deprecated.
+## 7.2 Fact strip
 
-**Implementation notes (`PORTFOLIO-UPDATE-NOTES.md`) — largely superseded / never shipped.**
-Described a "pencil-writing trace" system: JS IntersectionObserver draw-on-scroll,
-classes `.a-note` / `.a-pen`, an SVG `pencil-wobble` filter, a trial on `3bb-member.html`
-Evidence Fig 1.1, and two annotation colors `#3E5C8A` / `#8C857B`. **None of this exists
-in the code** — the site is static with no JS, and the only annotation is the single
-reasoning mark on `index.html`. Ignore that doc's mechanism; Part 1 is what's real.
+Purpose: separate factual context from narrative claims.
 
-**Margin-voice spec (`landing-final-and-margin-voice-spec.md`) — folded into Part 1.**
-This was the accurate, latest direction (single ink tone, reasoning mark), and its rules
-are now Part 1. Three open design decisions remain:
-1. **Group / brace** — its own glyph (needs a small legend) or folded into the connector?
-2. **Thesis note** — one page-level framing line per page: yes or no?
-3. **Weight execution** — double-underline or a bold single arrow?
+Recommended fields:
+
+- Product status
+- Contribution status
+- Timeline or year
+- Role
+- Platform
+- Team or scope
+
+Implementation:
+
+- Use a definition list
+- Maintain equal label styling
+- Allow wrapping without forcing narrow columns
+- No top border when directly following a framed cover or figure
+- On compact screens, stack in two-column label/value rows or a single column
+
+## 7.3 Honesty note
+
+Purpose: clarify confidential reconstruction, unfinished product status, representative data, or contribution boundary.
+
+Visual treatment:
+
+- Quiet surface distinction or a single side rule
+- No warning-icon theatrics
+- Body text remains readable and factual
+- Place near the hero or first evidence, not buried at the bottom
+
+An honesty note must not become a disclaimer that excuses unclear evidence. It should specify exactly what is reconstructed, representative, inherited, or unverified.
+
+## 7.4 At a Glance
+
+Purpose: give a fast reader the case logic.
+
+Required anchors:
+
+- Challenge
+- Response
+- Current outcome
+
+Rules:
+
+- Each anchor should be a short paragraph, not a card full of bullets
+- Equal visual weight does not require equal word count
+- No decorative icons unless they convey unique meaning
+- On mobile, stack with clear gaps rather than retaining a cramped three-column layout
+
+## 7.5 Project index row
+
+Purpose: function as the homepage's main navigation and evidence preview.
+
+Anatomy:
+
+- Project number
+- Category and status
+- Situation-led title or line
+- Short contribution description
+- Preview image or specimen
+- Clear link target across the full row when technically safe
+
+States:
+
+- Default
+- Hover / pointer emphasis
+- Keyboard focus
+- Active press
+
+Do not hide essential project information inside hover-only content.
+
+## 7.6 Decision chapter
+
+Anatomy:
+
+- Chapter index or category
+- Heading
+- Problem
+- Work / decision
+- Trade-off or constraint
+- Evidence
+
+These labels may be visually reduced or integrated into prose, but the reasoning order should remain clear. Not every chapter requires all labels if the prose already communicates them.
+
+## 7.7 Reflection
+
+Purpose: identify a real limitation, next validation step, or improved working method.
+
+Visual treatment:
+
+- One emphasis device, such as a left rule or increased whitespace
+- No generic “I learned communication is important” conclusion
+- Must connect to unresolved evidence or a concrete future test
+
+## 7.8 Case navigation
+
+- Previous and next project titles
+- Back-to-work option
+- Top rule permitted as an ending boundary
+- Keyboard focus visible
+- Do not create circular navigation that hides project order
+
+## 7.9 Footer
+
+- Minimal identity, links, and copyright
+- One top rule permitted
+- No duplicated long biography
+- Contact remains accessible without returning to the homepage
+
+---
+
+# PART 8 — EVIDENCE SYSTEM
+
+## 8.1 Evidence is proof, not decoration
+
+Each artifact must prove a specific statement from the case. Before adding a figure, complete this sentence:
+
+> “This evidence allows the reader to verify that…”
+
+If the answer is only “the interface looks polished,” the artifact is insufficient for a product case study.
+
+## 8.2 Evidence types
+
+### Real interface screen
+
+Use when the screen itself carries the decision clearly.
+
+### Before-and-after comparison
+
+Use only when both states are authentic and directly comparable. Do not manufacture a worse “before” state.
+
+### Flow or state map
+
+Use when the contribution is primarily behavioral, conditional, or migration-related.
+
+### Component or rule specimen
+
+Use when reusable structure is the contribution.
+
+### HTML specimen
+
+Preferred for the CDP when the interaction structure, responsive behavior, or component relationships are clearer as live HTML than as a static screenshot.
+
+### Annotated crop
+
+Use when one region of a larger interface proves the point better than showing the full screen at illegible scale.
+
+## 8.3 Aspect ratio
+
+- Homepage previews and case covers: **16:9**
+- Inline evidence: choose the ratio that preserves legibility and supports the claim
+- Portrait mobile screens may be composed in a wider evidence canvas with one to three devices at readable size
+- POS 800×600 must be padded or composed; never crop UI to force a ratio
+- HTML specimens may use intrinsic height with a documented maximum width
+
+Uniformity is valuable, but not when it makes the evidence harder to read.
+
+## 8.4 One evidence plate, one claim
+
+- Show one focused system, screen, state comparison, or flow
+- If multiple screens are necessary, use no more than three and keep them readable
+- Never use a dense Figma board as evidence without extracting the relevant region
+- Do not display decorative device mockups that obscure the UI
+- Do not use unrelated stock imagery on case pages
+
+## 8.5 Text and captions
+
+- Do not bake figure numbers, titles, captions, or watermarks into raster images
+- Product UI may naturally contain interface text; explanatory portfolio text belongs in HTML
+- Every evidence item requires a lead, title, and caption
+- Caption should state what the reader should notice and why it matters
+- Do not repeat the chapter paragraph verbatim
+
+Recommended anatomy:
+
+```html
+<figure class="evidence">
+  <div class="evidence__frame">...</div>
+  <figcaption class="evidence__caption">
+    <span class="evidence__lead">DEPENDENCY</span>
+    <h3 class="evidence__title">...</h3>
+    <p class="evidence__text">...</p>
+  </figcaption>
+</figure>
+```
+
+## 8.6 Frames
+
+- One hairline frame around images or specimens where the boundary is necessary
+- Avoid strong shadows
+- No rounded “SaaS card” treatment by default
+- A subtle warm surface may distinguish an HTML specimen from the page
+- Full-bleed evidence is allowed when it remains aligned to the grid and the UI stays legible
+
+## 8.7 Real data and confidentiality
+
+- Replace personal, customer, or confidential data with representative values
+- Preserve field length and structural realism
+- Mark reconstructed or representative examples in the honesty note or caption
+- Never invent a customer result to make an unfinished project feel complete
+
+## 8.8 Alt text
+
+Alt text should describe the evidence and its relevant relationship, not every pixel.
+
+Good:
+
+> “Customer identity setup screen beside a locked import state explaining the required prerequisite.”
+
+Weak:
+
+> “Screenshot of a website.”
+
+Complex diagrams need a nearby text summary even when alt text is present.
+
+---
+
+# PART 9 — HTML SPECIMENS
+
+## 9.1 Purpose
+
+HTML specimens are reconstructed evidence, not product demos. They should preserve the structure and behavior necessary to explain the design decision while avoiding confidential product content.
+
+## 9.2 Rules
+
+- Use semantic HTML and shared site tokens where appropriate
+- Visually distinguish specimen chrome from the portfolio page without making it look like a generic browser mockup
+- Preserve realistic density and interaction states
+- Do not simplify the specimen until the design problem disappears
+- Do not add interactions that were not part of the design merely to make the page feel dynamic
+- Any interactive control must be keyboard accessible
+- If the specimen is static, do not imply that it is functional
+
+## 9.3 State presentation
+
+When showing multiple states:
+
+- Prefer state tabs, a controlled comparison, or separate plates
+- Clearly label default, loading, empty, error, locked, incomplete, and success states
+- Do not hide important states behind hover
+- On mobile, stack states if tabs would make the evidence cramped
+
+## 9.4 Fidelity note
+
+Every reconstructed specimen should be covered by the case honesty note. Where needed, add a concise local label such as “HTML reconstruction · representative values.”
+
+---
+
+# PART 10 — HANDWRITTEN REASONING MARK
+
+## 10.1 Scope
+
+Only one annotation type is active:
+
+> **Reasoning mark — an anchored handwritten note explaining why a visible choice exists.**
+
+The previous multi-type, multi-color system is retired. Do not implement gloss, cut, gap, cause, weight, group braces, checkmarks, or red/blue personality categories.
+
+## 10.2 Visual language
+
+- Caveat
+- Single ink tone `--annotation` / `#34404c`
+- Hand-drawn underline or connector SVG
+- No highlighter fill
+- No animation required
+- Never use standard `text-decoration` for the hand-drawn anchor because it may be confused with a link
+
+## 10.3 Use rules
+
+- Anchor the note to a visible decision or evidence region
+- One sentence, approximately 8–14 words
+- Explain why, not what
+- Remove or shorten nearby body copy so the note does not duplicate it
+- Do not place a note merely because a page has none
+- Recommended maximum: two on the homepage and two on a case page
+- Zero is acceptable when the main copy already explains the reasoning clearly
+
+## 10.4 Responsive behavior
+
+At widths below 1080px:
+
+- Move the note directly below its anchor or related evidence
+- Hide long connector paths
+- Preserve reading order in the DOM
+- Use a small directional cue only when needed
+
+The annotation must never overlap body copy, crop outside the viewport, or require pointer hover to read.
+
+---
+
+# PART 11 — MOTION AND INTERACTION
+
+## 11.1 Default behavior
+
+The portfolio does not need JavaScript motion to feel finished. Use movement only to communicate state or affordance.
+
+Allowed:
+
+- Short CSS transitions on links, project rows, buttons, and image emphasis
+- Subtle opacity or transform change on hover
+- Focus transition that does not delay visibility
+- Optional reveal only when content remains immediately available without it
+
+Avoid:
+
+- Scroll hijacking
+- Parallax on case evidence
+- Draw-on-scroll annotation animation
+- Long staggered entrances
+- Cursor followers
+- Motion that makes the reader wait for text or evidence
+
+## 11.2 Timing
+
+- Most hover and focus transitions: 120–220ms
+- Use standard easing or a restrained custom curve
+- Do not transition layout dimensions in ways that cause content shift
+- Respect `prefers-reduced-motion: reduce`
+
+## 11.3 Project-row preview
+
+If hover image swapping is used:
+
+- The default preview must already be meaningful
+- Keyboard focus should produce an equivalent state
+- Mobile must not depend on hover
+- Image changes must not alter layout dimensions
+
+---
+
+# PART 12 — ACCESSIBILITY
+
+## 12.1 Keyboard
+
+- All navigation, links, controls, state tabs, and specimens must be keyboard accessible
+- Focus indicators must be persistent and visible
+- Do not remove outlines without a stronger replacement
+- Ensure logical tab order follows reading order
+
+## 12.2 Touch and target size
+
+- Interactive targets should be at least approximately 44×44 CSS pixels where possible
+- Small text links may use expanded padding or pseudo-element hit areas without creating overlap
+- Do not place multiple small links too close together on compact screens
+
+## 12.3 Color and meaning
+
+- Do not rely on color alone for status, selection, validation, or links
+- Pair color with text, shape, icon, or persistent underline
+- Validate text and UI contrast in both default and interactive states
+
+## 12.4 Typography and zoom
+
+- The site must remain usable at 200% browser zoom
+- Avoid fixed heights for text containers
+- Do not truncate essential labels without an accessible full value
+- Let headings wrap naturally; do not shrink them below the hierarchy needed to avoid wrapping
+
+## 12.5 Images and media
+
+- Meaningful images require alt text
+- Decorative images use empty alt text
+- No portfolio explanation may exist only as text baked into an image
+- Videos require controls, captions when speech exists, and a static alternative for core evidence
+
+---
+
+# PART 13 — RESPONSIVE BEHAVIOR
+
+## 13.1 Homepage
+
+Wide:
+
+- Project rows may use index / text / preview columns
+- Preview aligns consistently across rows
+- Hover emphasis remains secondary to readable default content
+
+Medium:
+
+- Reduce column count
+- Keep project title and description together
+- Preview may move below text while retaining row identity
+
+Compact:
+
+- Single column
+- Project number and status may share one line
+- Preview follows description
+- No hover-dependent content
+
+## 13.2 Case pages
+
+Wide:
+
+- Thesis and facts may sit side by side
+- Narrative remains narrow while evidence can expand
+- At a Glance may use three columns
+- Margin notes may sit beside the grid
+
+Medium:
+
+- Facts move under the thesis
+- At a Glance may use one or two columns
+- Evidence fills the content container
+- Notes move inline
+
+Compact:
+
+- Single reading column
+- Fact labels stack clearly
+- Evidence captions remain directly attached
+- Multi-screen comparisons become vertical or horizontally scrollable only when scrolling is clearly indicated and accessible
+- Large page-section gaps may reduce one spacing step, but hierarchy must remain visible
+
+## 13.3 Tables and state matrices
+
+- Prefer responsive lists or cards for small data sets
+- For genuine tables, preserve semantics and allow horizontal scrolling inside a labeled container
+- Freeze no content with CSS that covers rows on small screens
+- Do not convert a complex comparison into tiny unreadable text merely to avoid scrolling
+
+---
+
+# PART 14 — PERFORMANCE AND ASSET STANDARDS
+
+## 14.1 Images
+
+- Export raster evidence at appropriate 1x and 2x sizes
+- Prefer AVIF or WebP with a PNG fallback only where transparency or fidelity requires it
+- Use responsive `srcset` and `sizes`
+- Add width and height attributes to prevent layout shift
+- Lazy-load below-the-fold images
+- Do not lazy-load the first meaningful hero or project preview
+
+## 14.2 Fonts
+
+- Load only required weights and styles
+- Use `font-display: swap`
+- Preload only the most critical files
+- Provide resilient fallback stacks
+- Never distribute font files as portfolio downloads
+
+## 14.3 CSS and JavaScript
+
+- Remove unused legacy annotation and animation code
+- Avoid shipping a framework for simple static interactions
+- Minification is optional during development and recommended for production
+- Keep JavaScript non-blocking and minimal when introduced
+
+## 14.4 Performance goal
+
+The site should feel immediate on a typical mobile connection. Large case evidence is the main performance risk; visual fidelity should be achieved through correct export dimensions, not oversized source files.
+
+---
+
+# PART 15 — FILE AND ASSET NAMING
+
+## 15.1 General
+
+- Lowercase filenames
+- Hyphen-separated words
+- No spaces
+- Stable descriptive names rather than export timestamps
+- Avoid case-only renaming because it may break on Linux hosting
+
+## 15.2 Suggested evidence naming
+
+```text
+assets/cdp/cover-cdp.webp
+assets/cdp/plate-system-foundation.webp
+assets/cdp/plate-identity-import-gate.webp
+assets/cdp/plate-advanced-search.webp
+assets/cdp/plate-segment-builder.webp
+assets/cdp/plate-campaign-journey.webp
+
+assets/3bb-member/cover-3bb-member.webp
+assets/3bb-member/plate-contribution-boundary.webp
+assets/3bb-member/plate-selected-flows.webp
+assets/3bb-member/plate-migration-states.webp
+
+assets/counter-service-pos/cover-pos.webp
+assets/counter-service-pos/plate-expanded-terminal.webp
+assets/counter-service-pos/plate-compact-terminal.webp
+assets/counter-service-pos/plate-resolution-rules.webp
+```
+
+Do not encode figure numbers into filenames when the same evidence may move during editing. Numbering belongs in HTML presentation, not asset identity.
+
+---
+
+# PART 16 — SEO AND SHARING
+
+## 16.1 Per-page requirements
+
+- Unique `<title>` from `site-content.md`
+- Unique meta description
+- Canonical URL
+- Open Graph title, description, image, and URL
+- Twitter card metadata where relevant
+- Meaningful page heading and internal links
+
+## 16.2 Structured data
+
+Use lightweight Person and WebSite schema on the homepage. Add CreativeWork or Project schema only if the fields are accurate and maintained. Do not invent employer, award, rating, or client data for schema completeness.
+
+## 16.3 Social images
+
+- 1200×630 recommended
+- Use project title, short category, and one strong evidence composition
+- Avoid dense case-study text
+- Keep confidential UI and representative data rules intact
+
+---
+
+# PART 17 — QUALITY CHECKS
+
+## 17.1 Content-to-design check
+
+- Does every section use the current wording from `site-content.md`?
+- Are product and contribution statuses visually distinct?
+- Is an unfinished product prevented from looking falsely launched?
+- Does the strongest evidence appear before long narrative?
+- Has any caption or UI label become stale after copy changes?
+
+## 17.2 Visual hierarchy check
+
+- Can the reader identify page, section, chapter, and caption levels immediately?
+- Is inter-group space visibly larger than intra-group space?
+- Are lines being used only for permitted structural jobs?
+- Does body text remain within a readable measure?
+- Does evidence remain legible at actual render width?
+
+## 17.3 Evidence check
+
+- What exact claim does each plate prove?
+- Is the artifact authentic, reconstructed honestly, or clearly representative?
+- Is explanatory text kept in HTML?
+- Does the caption add interpretation rather than repeat the title?
+- Are mobile screens and POS interfaces large enough to inspect?
+- Are confidential values replaced without destroying structural realism?
+
+## 17.4 Interaction and accessibility check
+
+- Can every action be reached and understood by keyboard?
+- Are focus states visible?
+- Is any content hidden behind hover?
+- Does the page work at 200% zoom?
+- Does reduced-motion mode remain complete?
+- Are tap targets and contrast sufficient?
+
+## 17.5 Responsive check
+
+Review at minimum:
+
+- 360px
+- 430px
+- 768px
+- 1024px
+- 1280px
+- 1440px
+- 1920px
+
+Check real content, not placeholder text. Long project titles, captions, URLs, and metadata are the cases most likely to break the layout.
+
+## 17.6 Final release check
+
+- No placeholder images
+- No wrong-project assets
+- No broken relative links
+- No duplicate H1
+- No outdated project status
+- No unsupported impact claim
+- No legacy blue/red annotation classes or content
+- No text baked into exported evidence except real product UI
+- No case page without a contribution boundary and honesty note
+- No console errors if JavaScript is present
+
+---
+
+# PART 18 — RETIRED DIRECTIONS
+
+The following directions are intentionally retired and must not reappear without a new explicit decision:
+
+- “Making the complex, clear.” as the primary positioning line
+- CDP framed only as Segment & Condition Builder
+- Blue/red Thinking Mark versus Self-bite personalities
+- Seven annotation glyph categories
+- Annotation quotas that force marks onto every page
+- Fraunces / DM Sans as the main font system
+- GSAP or draw-on-scroll handwriting effects
+- Universal 16:9 ratio for every inline evidence item
+- Divider lines between every case-study section
+- Treating existing code as the source of truth when it conflicts with current content or specification
+- Using “What it shipped” as a universal ending regardless of product status
+
+Archive old files for provenance, but do not mix retired rules into active implementation notes.
+
